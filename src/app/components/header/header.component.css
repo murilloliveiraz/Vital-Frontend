@@ -1,5 +1,6 @@
 header {
   height: 80px;
+<<<<<<< HEAD
   background-color: rgb(242, 242, 242);
   border-color: black;
 }
@@ -7,3 +8,7 @@ header {
 .logo {
   width: 30px;
 }
+=======
+  background-color: aquamarine;
+}
+>>>>>>> 874f0e3a454e5d3468cae455656e648505639e6f
