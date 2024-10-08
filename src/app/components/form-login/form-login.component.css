@@ -1,0 +1,22 @@
+#form {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
+
+input {
+  width: 220px;
+}
+
+.forma {
+  background-color: rgb(239, 239, 239);
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: 1;
+  place-content: center;
+  align-items: center;
+  border-radius: 25px;
+  margin-left: 14px;
+  margin-top: 150px;
+}

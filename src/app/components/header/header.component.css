@@ -1,6 +1,9 @@
 header {
   height: 80px;
-  background-color: aquamarine;
+  background-color: rgb(242, 242, 242);
+  border-color: black;
 }
 
-asdasd
+.logo {
+  width: 30px;
+}
