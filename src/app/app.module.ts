@@ -8,6 +8,9 @@ import { ButtonLoginComponent } from './components/button-login/button-login.com
 import { LoginComponent } from './pages/login/login.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NgxSplideModule } from 'ngx-splide';
+import { PacienteServicosComponent } from './components/paciente-servicos/paciente-servicos.component';
+import { PacienteServicosCardComponent } from './components/paciente-servicos-card/paciente-servicos-card.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { HeaderComponent } from './components/header/header.component';
     ButtonLoginComponent,
     LoginComponent,
     FormLoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    PacienteServicosComponent,
+    PacienteServicosCardComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSplideModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
