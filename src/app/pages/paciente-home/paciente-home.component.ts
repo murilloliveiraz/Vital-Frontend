@@ -1,3 +1,4 @@
+import { Exame } from 'src/app/models/exame';
 import { Component } from '@angular/core';
 import Splide from '@splidejs/splide';
 
@@ -7,6 +8,7 @@ import Splide from '@splidejs/splide';
   styleUrls: ['./paciente-home.component.css']
 })
 export class PacienteHomeComponent {
+  exameConcluido: Exame;
 
   constructor() { }
 
