@@ -13,7 +13,8 @@ export class PacienteUltimosExamesComponent {
 
   ngOnInit(): void {
     var splide = new Splide( '#paciente-ultimos-exames-slider', {
-      type   : 'loop',
+      focus  : 0,
+      omitEnd: true,
       drag   : 'free',
       snap   : true,
       perPage: 2,
