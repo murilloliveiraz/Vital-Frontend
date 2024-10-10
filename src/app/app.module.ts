@@ -12,6 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgxSplideModule } from 'ngx-splide';
 import { PacienteServicosComponent } from './components/paciente-servicos/paciente-servicos.component';
 import { PacienteServicosCardComponent } from './components/paciente-servicos-card/paciente-servicos-card.component';
+import { PacienteExameCardComponent } from './components/paciente-exame-card/paciente-exame-card.component';
+import { PacienteUltimosExamesComponent } from './components/paciente-ultimos-exames/paciente-ultimos-exames.component';
+import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/reset-password-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { PacienteServicosCardComponent } from './components/paciente-servicos-ca
     HeaderComponent,
     PacienteServicosComponent,
     PacienteServicosCardComponent,
+    PacienteExameCardComponent,
+    PacienteUltimosExamesComponent,
+    ResetPasswordPopupComponent
   ],
   imports: [
     BrowserModule,

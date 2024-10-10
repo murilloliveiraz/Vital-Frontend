@@ -3,3 +3,11 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.textLoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 55px;
+}
