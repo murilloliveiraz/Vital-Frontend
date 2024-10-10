@@ -5,5 +5,12 @@
   margin-left: 10px;
   margin: 20px;
   margin-top: 8px;
+  font-weight: bold;
+ }
+
+ svg {
+  color: #ffffff;
+  padding: 2px;
+  margin: 0px 3px;
  }
 

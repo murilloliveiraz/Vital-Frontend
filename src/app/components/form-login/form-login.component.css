@@ -20,12 +20,13 @@ input {
   margin-left: 19px;
   margin-top: 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 
 #googleButton {
   margin-top: 20px;
   width: 220px;
-  margin-left: 21px;
+  margin-left: 27px;
 }
 
 .senhaEsq {

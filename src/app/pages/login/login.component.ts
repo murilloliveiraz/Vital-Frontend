@@ -6,11 +6,6 @@ import { ButtonLoginComponent } from 'src/app/components/button-login/button-log
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class LoginComponent {
+ 
 }

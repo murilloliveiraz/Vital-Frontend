@@ -1,18 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'reset-password-pop-up',
-    templateUrl: './reset-password-pop-up.component.html',
-    styleUrls: ['./reset-password-pop-up.component.css']
+  selector: 'reset-password-pop-up',
+  templateUrl: './reset-password-pop-up.component.html',
+  styleUrls: ['./reset-password-pop-up.component.css']
 })
 export class ResetPasswordPopupComponent {
-    isVisible = false;
+  @Output() close = new EventEmitter<void>();
 
-    open() {
-        this.isVisible = true;
-    }
-
-    close() {
-        this.isVisible = false;
-    }
+  onSubmit() {
+    // Aqui você pode implementar a lógica para enviar a solicitação de redefinição de senha
+    console.log('Email enviado!'); // Apenas para teste
+    this.close.emit(); // Fecha o pop-up após o envio
+  }
 }

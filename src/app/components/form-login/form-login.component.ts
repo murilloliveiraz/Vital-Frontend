@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-login.component.css']
 })
 export class FormLoginComponent {
+  showPopup = false;
 
+  openPopup() {
+    this.showPopup = true;
+  }
+
+  closePopup() {
+    this.showPopup = false;
+  }
 }
