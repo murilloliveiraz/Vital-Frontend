@@ -16,6 +16,7 @@ import { PacienteExameCardComponent } from './components/paciente-exame-card/pac
 import { PacienteUltimosExamesComponent } from './components/paciente-ultimos-exames/paciente-ultimos-exames.component';
 import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/reset-password-pop-up.component';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
+import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.
     PacienteExameCardComponent,
     PacienteUltimosExamesComponent,
     ResetPasswordPopupComponent,
-    BottomNavbarComponent
+    BottomNavbarComponent,
+    PacienteHistoricoExamesComponent
   ],
   imports: [
     BrowserModule,
