@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./paciente-historico-exames.component.css']
 })
 export class PacienteHistoricoExamesComponent {
+  selectedButton: string | null = "anteriores";
 
+  selectButton(button: string) {
+    this.selectedButton = button;
+  }
 }

@@ -1,0 +1,10 @@
+.button-header-historico-pacientes {
+  background-color: rgba(16, 128, 153, 10%);
+  border: 1px solid #108099;
+  color: #108099;
+}
+
+.button-header-historico-pacientes-focus {
+  background-color: #108099;
+  color: white;
+}
