@@ -18,6 +18,8 @@ import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
 import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
 import { CardExameHistoricoComponent } from './components/card-exame-historico/card-exame-historico.component';
+import { CommonModule } from '@angular/common';
+import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,14 @@ import { CardExameHistoricoComponent } from './components/card-exame-historico/c
     ResetPasswordPopupComponent,
     BottomNavbarComponent,
     PacienteHistoricoExamesComponent,
-    CardExameHistoricoComponent
+    CardExameHistoricoComponent,
+    MenuAdmComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSplideModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
