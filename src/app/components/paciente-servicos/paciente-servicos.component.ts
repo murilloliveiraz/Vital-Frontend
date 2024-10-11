@@ -12,9 +12,10 @@ export class PacienteServicosComponent {
 
   ngOnInit(): void {
     var splide = new Splide( '#pacientes-servicos-slider', {
-      type   : 'loop',
       perPage: 3,
-      perMove: 1,
+      focus  : 0,
+      omitEnd: true,
+      arrows: false
     } );
 
     splide.mount();

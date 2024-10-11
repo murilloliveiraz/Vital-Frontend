@@ -15,6 +15,9 @@ import { PacienteServicosCardComponent } from './components/paciente-servicos-ca
 import { PacienteExameCardComponent } from './components/paciente-exame-card/paciente-exame-card.component';
 import { PacienteUltimosExamesComponent } from './components/paciente-ultimos-exames/paciente-ultimos-exames.component';
 import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/reset-password-pop-up.component';
+import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
+import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
+import { CardExameHistoricoComponent } from './components/card-exame-historico/card-exame-historico.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/
     PacienteServicosCardComponent,
     PacienteExameCardComponent,
     PacienteUltimosExamesComponent,
-    ResetPasswordPopupComponent
+    ResetPasswordPopupComponent,
+    BottomNavbarComponent,
+    PacienteHistoricoExamesComponent,
+    CardExameHistoricoComponent
   ],
   imports: [
     BrowserModule,
