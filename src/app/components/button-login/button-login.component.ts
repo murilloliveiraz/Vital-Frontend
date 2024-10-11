@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./button-login.component.css']
 })
 export class ButtonLoginComponent {
+  selectedButton: string | null = "paciente";
 
+  selectButton(button: string) {
+    this.selectedButton = button;
+  }
 }
