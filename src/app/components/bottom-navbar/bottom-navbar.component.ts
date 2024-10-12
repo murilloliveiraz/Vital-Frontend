@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-bottom-navbar',
@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./bottom-navbar.component.css']
 })
 export class BottomNavbarComponent {
-  selectedButton: number | null = null;
+  selectedButton: number | null = 0;
+  @Input() buttons: string[] = [];
 
   selectButton(index: number) {
     this.selectedButton = index;

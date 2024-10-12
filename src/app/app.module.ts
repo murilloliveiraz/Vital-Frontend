@@ -23,6 +23,7 @@ import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
 import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
 import { FormContaUsuarioComponent } from './components/form-conta-usuario/form-conta-usuario.component';
 import { FormsModule } from '@angular/forms';
+import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slider/paciente-laudos-slider.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     CardExameHistoricoComponent,
     MenuAdmComponent,
     PacienteContaComponent,
-    FormContaUsuarioComponent
+    FormContaUsuarioComponent,
+    PacienteLaudosSliderComponent
   ],
   imports: [
     BrowserModule,

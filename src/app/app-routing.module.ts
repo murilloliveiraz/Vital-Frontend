@@ -5,6 +5,7 @@ import { PacienteHomeComponent } from './pages/paciente-home/paciente-home.compo
 import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
 import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
+import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slider/paciente-laudos-slider.component';
 
 const routes: Routes = [
   {
