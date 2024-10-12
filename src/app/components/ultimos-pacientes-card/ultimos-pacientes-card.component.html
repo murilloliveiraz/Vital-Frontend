@@ -1,0 +1,12 @@
+<section class="grid grid-rows-3 gap-5">
+  <div *ngFor="let item of ultimosPacientes" class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
+    <div>
+      <h3 class="font-semibold">{{item.nomePaciente}}</h3>
+      <p class="text-sm text-[#0e687b]">{{item.nome}}</p>
+    </div>
+    <div class="flex justify-between items-center">
+      <p class="text-sm text-[#0e687b] font-semibold">{{item.data | date}}</p>
+      <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-12 w-28">Acessar</button>
+    </div>
+  </div>
+</section>

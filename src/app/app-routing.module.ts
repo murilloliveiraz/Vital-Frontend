@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/paciente/paciente-routing.module').then(m => m.PacienteRoutingModule)
   },
   {
+    path: 'medico',
+    loadChildren: () => import('./pages/medico/medico-routing.module').then(m => m.MedicoRoutingModule)
+  },
+  {
     path:'teste-menu', component: MenuAdmComponent
   }
 ];
@@ -24,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

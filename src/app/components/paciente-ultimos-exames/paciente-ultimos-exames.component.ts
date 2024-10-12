@@ -28,6 +28,7 @@ export class PacienteUltimosExamesComponent {
       'Concluído',
       'Laboratório A',
       new Date('09/10,2024').toLocaleDateString('pt-BR'),
+      'Luana Camila',
       'caminho/para/o/s3',
       '/assets/images/resultado.jfif'
     );
