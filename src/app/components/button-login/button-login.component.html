@@ -1,7 +1,7 @@
 
 
 <div id="buttons" class="inline-flex rounded-md shadow-sm" role="group">
-  <button type="button" id="medico" class="inline-flex items-center px-4 py-2 text-sm font-medium text-[#0093B9] bg-white border rounded-s-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-[#0093B9] focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+  <button type="button" id="medico" class="inline-flex items-center px-4 py-2 text-sm font-medium text-[#0093B9] bg-white border rounded-s-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-[#0093B9] focus:text-white"
   [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'medico'}"
       (click)="selectButton('medico')">
       <svg
@@ -14,7 +14,7 @@
       </svg>
     Médico
   </button>
-  <button type="button" id="paciente" class="inline-flex items-center px-4 py-2 text-sm font-medium text-[#0093B9] bg-white border rounded-e-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-[#0093B9] focus:text-white dark:border-white dark:text-white dark dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+  <button type="button" id="paciente" class="inline-flex items-center px-4 py-2 text-sm font-medium text-[#0093B9] bg-white border rounded-e-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-[#0093B9] focus:text-white"
   [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'paciente'}"
       (click)="selectButton('paciente')">
       <svg
