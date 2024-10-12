@@ -21,6 +21,8 @@ import { CardExameHistoricoComponent } from './components/card-exame-historico/c
 import { CommonModule } from '@angular/common';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
 import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
+import { FormContaUsuarioComponent } from './components/form-conta-usuario/form-conta-usuario.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,13 +41,15 @@ import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.co
     PacienteHistoricoExamesComponent,
     CardExameHistoricoComponent,
     MenuAdmComponent,
-    PacienteContaComponent
+    PacienteContaComponent,
+    FormContaUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSplideModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

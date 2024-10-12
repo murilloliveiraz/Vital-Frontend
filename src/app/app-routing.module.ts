@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PacienteHomeComponent } from './pages/paciente-home/paciente-home.component';
 import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
+import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:'teste-menu', component: MenuAdmComponent
+  },
+  {
+    path: 'paciente/conta', component: PacienteContaComponent
   },
   {
     path: '', component: LoginComponent

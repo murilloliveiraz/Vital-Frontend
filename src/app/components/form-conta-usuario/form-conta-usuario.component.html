@@ -1,0 +1,18 @@
+<form class="w-full mx-auto">
+  <div *ngFor="let field of fields" class="w-[340px] mb-3">
+    <label
+      [for]="field.label"
+      class="block mb-2 text-sm font-medium text-gray-900 w-full">
+      {{ field.label }}
+    </label>
+    <input
+      [type]="field.type"
+      [id]="field.label"
+      [placeholder]="field.placeholder"
+      [disabled]="field.disabled"
+      [ngModel]="field.value"
+      [name]="field.label"
+      class="input-color text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    />
+  </div>
+</form>
