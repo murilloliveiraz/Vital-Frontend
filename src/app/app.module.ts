@@ -24,6 +24,7 @@ import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.co
 import { FormContaUsuarioComponent } from './components/form-conta-usuario/form-conta-usuario.component';
 import { FormsModule } from '@angular/forms';
 import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slider/paciente-laudos-slider.component';
+import { PacienteComponent } from './pages/paciente/paciente.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slid
     MenuAdmComponent,
     PacienteContaComponent,
     FormContaUsuarioComponent,
-    PacienteLaudosSliderComponent
+    PacienteLaudosSliderComponent,
+    PacienteComponent,
   ],
   imports: [
     BrowserModule,

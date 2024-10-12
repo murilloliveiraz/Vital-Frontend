@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { PacienteHomeComponent } from './pages/paciente-home/paciente-home.component';
-import { PacienteHistoricoExamesComponent } from './pages/paciente-historico-exames/paciente-historico-exames.component';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
-import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
-import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slider/paciente-laudos-slider.component';
 
 const routes: Routes = [
   {
@@ -17,20 +13,12 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'paciente', component: PacienteHomeComponent
-  },
-  {
-    path: 'paciente/historico', component: PacienteHistoricoExamesComponent
+    path: 'paciente',
+    loadChildren: () => import('./pages/paciente/paciente-routing.module').then(m => m.PacienteRoutingModule)
   },
   {
     path:'teste-menu', component: MenuAdmComponent
-  },
-  {
-    path: 'paciente/conta', component: PacienteContaComponent
-  },
-  {
-    path: '', component: LoginComponent
-  },
+  }
 ];
 
 
