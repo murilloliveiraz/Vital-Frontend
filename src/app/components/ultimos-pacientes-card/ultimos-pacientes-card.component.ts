@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Exame } from 'src/app/models/exame';
 
 @Component({
@@ -8,4 +9,10 @@ import { Exame } from 'src/app/models/exame';
 })
 export class UltimosPacientesCardComponent {
   @Input() ultimosPacientes: Exame[] = [];
+
+  constructor(private router: Router) {}
+
+  acessarConsulta(exameId: number) {
+    this.router.navigate(['medico/consulta-detalhes', exameId]);
+  }
 }

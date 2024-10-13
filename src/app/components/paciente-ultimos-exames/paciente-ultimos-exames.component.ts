@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import Splide from '@splidejs/splide';
 import { Exame } from 'src/app/models/exame';
+import { Paciente } from 'src/app/models/paciente';
 
 @Component({
   selector: 'app-paciente-ultimos-exames',
@@ -28,8 +29,15 @@ export class PacienteUltimosExamesComponent {
       'Concluído',
       'Laboratório A',
       new Date('09/10,2024').toLocaleDateString('pt-BR'),
-      'Luana Camila',
+      new Paciente(
+        1,
+        "Luana Camila",
+        "Feminino",
+        new Date('04/11,2005'),
+      ),
       'caminho/para/o/s3',
+      '',
+      '',
       '/assets/images/resultado.jfif'
     );
 

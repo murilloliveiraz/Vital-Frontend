@@ -28,6 +28,8 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { MedicoHomepageComponent } from './pages/medico-homepage/medico-homepage.component';
 import { UltimosPacientesCardComponent } from './components/ultimos-pacientes-card/ultimos-pacientes-card.component';
+import { MedicoConsultaDetalhesComponent } from './pages/medico-consulta-detalhes/medico-consulta-detalhes.component';
+import { MedicoInserirRegistroComponent } from './pages/medico-inserir-registro/medico-inserir-registro.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { UltimosPacientesCardComponent } from './components/ultimos-pacientes-ca
     MedicoComponent,
     MedicoHomepageComponent,
     UltimosPacientesCardComponent,
+    MedicoConsultaDetalhesComponent,
+    MedicoInserirRegistroComponent,
   ],
   imports: [
     BrowserModule,
