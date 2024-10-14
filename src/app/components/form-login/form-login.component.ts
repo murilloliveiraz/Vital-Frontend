@@ -6,13 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-login.component.css']
 })
 export class FormLoginComponent {
-  showPopup = false;
+  isPopupVisible = false; // Variável para controlar a visibilidade do popup
 
-  openPopup() {
-    this.showPopup = true;
+  showPopup() {
+    this.isPopupVisible = true; // Muda para verdadeiro para mostrar o popup
   }
 
   closePopup() {
-    this.showPopup = false;
+    this.isPopupVisible = false; // Para esconder o popup
+  }
+
+  isPopupVisible2 = false; // Variável para controlar a visibilidade do popup
+
+  showPopup2() {
+    this.isPopupVisible2 = true; // Muda para verdadeiro para mostrar o popup
+  }
+
+  closePopup2() {
+    this.isPopupVisible2 = false; // Para esconder o popup
   }
 }

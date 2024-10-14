@@ -1,12 +1,12 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'reset-password-pop-up',
-  templateUrl: './reset-password-pop-up.component.html',
-  styleUrls: ['./reset-password-pop-up.component.css']
+  selector: 'app-new-password-popup',
+  templateUrl: './new-password-popup.component.html',
+  styleUrls: ['./new-password-popup.component.css']
 })
-export class ResetPasswordPopupComponent {
-  isPopupVisible = true;
+export class NewPasswordPopupComponent {
+  isPopupVisible2 = true;
 
   @Output() close = new EventEmitter<void>();
 
@@ -19,4 +19,5 @@ export class ResetPasswordPopupComponent {
     console.log('Email enviado!'); // Apenas para teste
     this.close.emit(); // Fecha o pop-up após o envio
   }
+
 }

@@ -1,30 +1,30 @@
-
 <div class="forma">
 
   <app-button-login></app-button-login>
 
 <form id="form" class="max-w-sm mx-auto">
   <div class="mb-5">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
-    <input type="email" id="email" class="bg-gray-50 border border-none text-red-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" placeholder="your@email.com" required />
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Seu email</label>
+    <input type="email" id="email" class="bg-gray-50 border border-none  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" placeholder="seu@email.com" required />
   </div>
   <div class="mb-5">
-    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Sua Senha</label>
     <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
   </div>
   <button type="submit" class="text-white bg-[#0093B9] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-cente">Submit</button>
 </form>
 
-  <button id="googleButton" type="button" class="text-white bg-[#0093B9] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2">
-  <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
-  <path fill-rule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clip-rule="evenodd"/>
-  </svg>
+  <button id="googleButton" type="button" class="text-white bg-[#0093B9] hover:bg-[#4285F4]/90 focus:ring-1 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2">
+  <img id="googleIcon" src="../assets/images/googleicon.png" alt="">
   Sign in with Google
   </button>
 
-  <button  class="loginAdm" type="button" >Entrar como Admnistrador</button>
-  <button class="senhaEsq" (click)="openPopup()" >Esqueci minha senha</button>
+  <button  class="loginAdm" (click)="showPopup2()" >Entrar como Admnistrador</button>
+  <button class="senhaEsq" (click)="showPopup()" >Esqueci minha senha</button>
 
 
 </div>
-<reset-password-pop-up *ngIf="showPopup" (close)="closePopup()"></reset-password-pop-up>
+
+<app-new-password-popup *ngIf="isPopupVisible2" (close)="closePopup2()"></app-new-password-popup>
+
+<reset-password-pop-up *ngIf="isPopupVisible" (close)="closePopup()"></reset-password-pop-up>

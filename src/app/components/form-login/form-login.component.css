@@ -6,6 +6,7 @@
 
 input {
   width: 220px;
+  border: none;
 }
 
 .forma {
@@ -27,9 +28,23 @@ input {
   margin-top: 20px;
   width: 220px;
   margin-left: 27px;
+  color: #0093B9;
+  background-color: white;
+}
+
+#googleIcon {
+  width: 16px;
+  height: auto;
+  margin: 3px;
 }
 
 .senhaEsq {
   font-size: 13px;
-  margin-top: 17px;
+  margin-top: 15px;
+  margin-left: -6px;
+}
+
+.loginAdm {
+  margin-top: 10px;
+  font-size: 15px;
 }

@@ -30,6 +30,7 @@ import { MedicoHomepageComponent } from './pages/medico-homepage/medico-homepage
 import { UltimosPacientesCardComponent } from './components/ultimos-pacientes-card/ultimos-pacientes-card.component';
 import { MedicoConsultaDetalhesComponent } from './pages/medico-consulta-detalhes/medico-consulta-detalhes.component';
 import { MedicoInserirRegistroComponent } from './pages/medico-inserir-registro/medico-inserir-registro.component';
+import { NewPasswordPopupComponent } from './components/new-password-popup/new-password-popup.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MedicoInserirRegistroComponent } from './pages/medico-inserir-registro/
     UltimosPacientesCardComponent,
     MedicoConsultaDetalhesComponent,
     MedicoInserirRegistroComponent,
+    NewPasswordPopupComponent,
   ],
   imports: [
     BrowserModule,
