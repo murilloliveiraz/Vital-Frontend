@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./medico.component.css']
 })
 export class MedicoComponent {
-
+  routes = ['/medico','historico-pacientes']
 }

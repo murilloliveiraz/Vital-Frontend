@@ -1,18 +1,15 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import Splide from '@splidejs/splide';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Exame } from 'src/app/models/exame';
 import { Paciente } from 'src/app/models/paciente';
 
 @Component({
-  selector: 'app-medico-homepage',
-  templateUrl: './medico-homepage.component.html',
-  styleUrls: ['./medico-homepage.component.css']
+  selector: 'app-medico-historico-pacientes',
+  templateUrl: './medico-historico-pacientes.component.html',
+  styleUrls: ['./medico-historico-pacientes.component.css']
 })
-export class MedicoHomepageComponent {
-  constructor(private route: ActivatedRoute, private location: Location) {}
-
+export class MedicoHistoricoPacientesComponent {
   ultimosPacientes: Exame[] = [
     new Exame(
       1,
@@ -66,18 +63,10 @@ export class MedicoHomepageComponent {
       '/assets/images/resultado3.jfif'
     ),
   ];
-  ngOnInit() {
 
-    const splide = new Splide('#propagandas-slider-medico', {
-      type: 'loop',
-      perPage: 1,
-      width: '80%',
-      arrows: false,
-      speed: 400,
-      autoplay: true,
-    });
+  constructor(private router: Router, private route: ActivatedRoute, private location: Location) {}
 
-
-    splide.mount();
+  voltar() {
+    this.location.back();
   }
 }

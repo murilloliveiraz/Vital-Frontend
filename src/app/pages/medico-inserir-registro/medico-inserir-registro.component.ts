@@ -24,8 +24,6 @@ export class MedicoInserirRegistroComponent {
   ngOnInit() {
     const pacienteId = this.route.snapshot.paramMap.get('pacienteId');
     if (pacienteId) {
-      console.log(pacienteId)
-      console.log(this.pacientes)
       this.paciente = this.pacientes.find(paciente => paciente.id.toString() === pacienteId);
     }
     this.formFields = [

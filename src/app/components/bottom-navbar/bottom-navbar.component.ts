@@ -11,6 +11,5 @@ export class BottomNavbarComponent {
 
   selectButton(index: number) {
     this.selectedButton = index;
-    console.log(this.buttons)
   }
 }
