@@ -1,14 +1,14 @@
 <div class="splide max-w-sm h-[60px] items-center mb-5" role="group" id="laudos-slider" aria-label="Splide Basic">
-  <div class="splide__track">
+  <div class="splide__track w-full">
     <ul class="splide__list flex item-center gap-5">
       <li
       *ngFor="let consulta of consultas"
-      class="splide__slide button-header-historico-pacientes p-4 rounded-lg"
+      class="splide__slide button-header-historico-pacientes rounded-lg p-4 text-center"
       (click)="selectConsulta(consulta.id)"
       [ngClass]="{'button-header-historico-pacientes-focus': selectedConsultaId === consulta.id}"
       >
-      {{ consulta.data | date:'dd/MM/yyyy' }}
-    </li>
+      {{ consulta.data | date:'dd/MM/yy' }}
+     </li>
     </ul>
   </div>
 </div>

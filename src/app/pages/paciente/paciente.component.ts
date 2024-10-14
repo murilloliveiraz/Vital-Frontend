@@ -7,7 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PacienteComponent {
   routes = ['/paciente','historico', 'conta']
-  show(){
-    console.log(this.routes)
-  }
+
 }

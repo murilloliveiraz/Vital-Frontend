@@ -24,7 +24,8 @@ export class PacienteLaudosSliderComponent {
       perPage: 3,
       focus  : 0,
       pagination: false,
-      arrows: false
+      arrows: false,
+      autoWidth: true
     });
 
     splide.mount();
