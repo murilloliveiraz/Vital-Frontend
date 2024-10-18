@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/medico/medico-routing.module').then(m => m.MedicoRoutingModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin-routing.module').then(m => m.AdminRoutingModule)
+  },
+  {
     path:'teste-menu', component: MenuAdmComponent
   }
 ];
