@@ -1,0 +1,27 @@
+<nav class="flex gap-5 pl-5 pt-9 mb-10">
+  <button (click)="voltar()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+  </button>
+  <h2 class="font-bold">Cadastrar hospital</h2>
+</nav>
+<main class="flex flex-col gap-9 mb-24 items-center">
+  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" action="POST">
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Nome</label>
+      <input type="text" placeholder="Escreva o nome do hospital" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Endereco </label>
+      <input type="text" placeholder="Escreva o endereço do hospital" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Estado</label>
+      <input type="text" placeholder="Escreva o estado do hospital" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Telefone </label>
+      <input type="text" placeholder="Escreva o telefone do hospital" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+  </form>
+  <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="cadastrarServico()">Cadastrar hospital</button>
+</main>
