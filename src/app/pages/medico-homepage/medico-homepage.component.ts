@@ -71,7 +71,7 @@ export class MedicoHomepageComponent {
     const splide = new Splide('#propagandas-slider-medico', {
       type: 'loop',
       perPage: 1,
-      width: '80%',
+      width: '100%',
       arrows: false,
       speed: 400,
       autoplay: true,

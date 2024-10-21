@@ -17,7 +17,7 @@ export class AdminCadastrarPacienteComponent {
 
   cadastrarPaciente(){
     Swal.fire({
-      title: "Paciente Cadastrado!",
+      title: "Paciente cadastrado!",
       imageUrl: "/assets/images/joiaconcluido.png",
       imageWidth: 250,
       imageHeight: 200,

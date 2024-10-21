@@ -14,6 +14,7 @@ export class PacienteServicosComponent {
     var splide = new Splide( '#pacientes-servicos-slider', {
       perPage: 3,
       focus  : 0,
+      width: "100%",
       omitEnd: true,
       arrows: false
     } );

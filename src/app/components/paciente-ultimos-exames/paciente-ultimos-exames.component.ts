@@ -18,6 +18,8 @@ export class PacienteUltimosExamesComponent {
       omitEnd: true,
       drag   : 'free',
       snap   : true,
+      width: "100%",
+      pagination: false,
       perPage: 2,
       arrows: false
     } );
