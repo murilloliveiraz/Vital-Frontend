@@ -1,0 +1,41 @@
+<nav class="flex gap-5 pl-5 pt-9 mb-10">
+  <button (click)="voltar()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+  </button>
+  <h2 class="font-bold">Cadastrar paciente</h2>
+</nav>
+<main class="flex flex-col gap-9 justify-center mb-24 items-center">
+  <section class="grid grid-cols-3 max-w-sm pl-5 gap-5">
+    <img src="/assets/images/profile-picture.jpeg" alt="Foto de perfil" class="rounded-lg">
+    <div class="grid grid-rows-3 rounded-lg p-4 col-span-2 button-header-historico-pacientes">
+      <p class="font-semibold">Nome: Luana Camilla</p>
+      <p class="font-semibold">Sexo: Feminino</p>
+      <p class="font-semibold">Data de Nascimento: 19/12/2005 </p>
+    </div>
+  </section>
+  <section>
+    <div *ngIf="exames.length > 0 && !agendando">
+      <section
+      class="flex flex-col justify-center items-center gap-5"
+    >
+    <h1 class="text-2xl font-semibold">Últimos exames</h1>
+      <app-card-exame-historico *ngFor="let item of exames"
+        [data]="item.data"
+        [local]="item.local"
+        [titulo]="item.nome"
+      >
+      </app-card-exame-historico>
+    </section>
+    </div>
+    <div *ngIf="exames.length < 1 && !agendando" class="flex justify-center items-center flex-col gap-8">
+      <div class="h-[200px] w-[200px] bg-[#108999] rounded-full flex items-center justify-center">
+        <img src="/assets/images/caderneta.png" alt="">
+      </div>
+      <h1 class="text-xl font-semibold">Agende um novo exame</h1>
+    </div>
+  </section>
+  <section *ngIf="agendando">
+    <app-agendar-exame-form></app-agendar-exame-form>
+  </section>
+  <button *ngIf="!agendando" class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="agendando = !agendando">Agendar Exame</button>
+</main>
