@@ -1,0 +1,10 @@
+<nav class="flex gap-5 pl-5 pt-9 mb-10">
+  <button (click)="voltar()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+  </button>
+  <h2 class="font-bold">Agendar consulta</h2>
+</nav>
+<main class="mb-20 flex flex-col gap-5 justify-center items-center">
+  <app-agendar-consulta-form></app-agendar-consulta-form>
+  <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px]" [routerLink]="'/paciente/checkout'">Avançar</button>
+</main>
