@@ -5,6 +5,8 @@ import { PacienteComponent } from './paciente.component';
 import { PacienteHomeComponent } from '../paciente-home/paciente-home.component';
 import { PacienteContaComponent } from '../paciente-conta/paciente-conta.component';
 import { PacienteHistoricoExamesComponent } from '../paciente-historico-exames/paciente-historico-exames.component';
+import { CheckoutComponent } from '../checkout/checkout.component';
+import { PacienteAgendarConsultaComponent } from '../paciente-agendar-consulta/paciente-agendar-consulta.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,12 @@ const routes: Routes = [
     },
     {
       path: 'conta', component: PacienteContaComponent
+    },
+    {
+      path: 'checkout', component: CheckoutComponent
+    },
+    {
+      path: 'agendar-consulta', component: PacienteAgendarConsultaComponent
     },
    ]
   },

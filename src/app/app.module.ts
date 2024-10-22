@@ -43,6 +43,11 @@ import { AgendarExameFormComponent } from './components/agendar-exame-form/agend
 import { AdminCadastrarHospitalComponent } from './pages/admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from './pages/admin-cadastrar-medico/admin-cadastrar-medico.component';
 import { AdminCadastrarAdminComponent } from './pages/admin-cadastrar-admin/admin-cadastrar-admin.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CreditCardFormComponent } from './components/credit-card-form/credit-card-form.component';
+import { PixFormComponent } from './components/pix-form/pix-form.component';
+import { PacienteAgendarConsultaComponent } from './pages/paciente-agendar-consulta/paciente-agendar-consulta.component';
+import { AgendarConsultaFormComponent } from './components/agendar-consulta-form/agendar-consulta-form.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +87,12 @@ import { AdminCadastrarAdminComponent } from './pages/admin-cadastrar-admin/admi
     AgendarExameFormComponent,
     AdminCadastrarHospitalComponent,
     AdminCadastrarMedicoComponent,
-    AdminCadastrarAdminComponent
+    AdminCadastrarAdminComponent,
+    CheckoutComponent,
+    CreditCardFormComponent,
+    PixFormComponent,
+    PacienteAgendarConsultaComponent,
+    AgendarConsultaFormComponent
   ],
   imports: [
     BrowserModule,
