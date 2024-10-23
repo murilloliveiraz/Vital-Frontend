@@ -1,9 +1,13 @@
 <header class="grid grid-cols-3 place-content-center place-items-center mb-8 mt-8">
-  <button type="button" class="text-white w-11 bg-[#108999] hover:bg-[#108999] focus:ring-4 focus:outline-none focus:ring-[#108999] font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+  <button (click)="toggleSidenav()" type="button" class="text-white w-11 bg-[#108999] hover:bg-[#108999] focus:ring-4 focus:outline-none focus:ring-[#108999] font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
       <span class="material-symbols-outlined">
         menu
       </span>
   </button>
+
+  <!-- Pass the isOpen state to MenuAdmComponent -->
+  <app-menu-adm [isOpen]="isOpen"></app-menu-adm>
+
   <div class="col-span-2">
     <h1 class="text-3xl font-semibold">Bem vindo,</h1>
     <p>Amanda Rodrigues</p>

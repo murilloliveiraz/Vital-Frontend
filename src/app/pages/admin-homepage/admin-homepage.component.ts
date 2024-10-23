@@ -8,6 +8,12 @@ import { Paciente } from 'src/app/models/paciente';
   styleUrls: ['./admin-homepage.component.css']
 })
 export class AdminHomepageComponent {
+  isOpen = false;
+
+  toggleSidenav() {
+    this.isOpen = !this.isOpen;
+  }
+
   ultimosPacientes: Exame[] = [
     new Exame(
       1,
