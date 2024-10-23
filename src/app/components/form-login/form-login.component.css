@@ -1,33 +1,22 @@
-#form {
-  align-items: center;
-  justify-content: center;
-  display: grid;
-}
-
 input {
-  width: 220px;
   border: none;
 }
 
 .forma {
-  background-color: rgb(239, 239, 239);
   width: 380px;
   height: 470px;
   display: grid;
-  grid-template-columns: 1;
   place-content: center;
   align-items: center;
   border-radius: 25px;
-  margin-left: 19px;
-  margin-top: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-weight: bold;
 }
 
 #googleButton {
   margin-top: 20px;
-  width: 220px;
-  margin-left: 27px;
+  display: flex;
+  justify-content: center;
   color: #0093B9;
   background-color: white;
 }
@@ -39,12 +28,17 @@ input {
 }
 
 .senhaEsq {
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: underline;
+  align-self: flex-end;
   margin-top: 15px;
-  margin-left: -6px;
 }
 
 .loginAdm {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #0E687B;
+  text-decoration: underline;
 }

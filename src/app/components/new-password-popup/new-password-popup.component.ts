@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-password-popup',
@@ -8,16 +10,27 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NewPasswordPopupComponent {
   isPopupVisible2 = true;
 
+  constructor(private router: Router){}
+
   @Output() close = new EventEmitter<void>();
 
   onClose() {
-    this.close.emit(); // Emite o evento close para o pai
+    this.close.emit();
   }
 
   onSubmit() {
-    // Aqui você pode implementar a lógica para enviar a solicitação de redefinição de senha
-    console.log('Email enviado!'); // Apenas para teste
-    this.close.emit(); // Fecha o pop-up após o envio
-  }
-
+    Swal.fire({
+        title: "A senha foi restaurada!",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+      setTimeout(() => {
+        this.close.emit();
+        this.router.navigate(['/login']);
+      }, 3000);
+    }
 }

@@ -18,6 +18,7 @@ export class PacienteHomeComponent {
       perPage: 1,
       width: '100%',
       arrows: false,
+      pagination: false,
       speed: 400,
       autoplay: true,
     });

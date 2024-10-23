@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'reset-password-pop-up',
@@ -11,12 +12,22 @@ export class ResetPasswordPopupComponent {
   @Output() close = new EventEmitter<void>();
 
   onClose() {
-    this.close.emit(); // Emite o evento close para o pai
+    this.close.emit(); 
   }
 
   onSubmit() {
-    // Aqui você pode implementar a lógica para enviar a solicitação de redefinição de senha
-    console.log('Email enviado!'); // Apenas para teste
-    this.close.emit(); // Fecha o pop-up após o envio
-  }
+      Swal.fire({
+        title: "Email enviado!",
+        text: "Um email contendo um link para redefinição da sua senha foi enviado.",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+      setTimeout(() => {
+        this.close.emit();
+      }, 3000);
+    }
 }

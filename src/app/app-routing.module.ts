@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
+import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/reset-password-pop-up.component';
+import { NewPasswordPopupComponent } from './components/new-password-popup/new-password-popup.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin-routing.module').then(m => m.AdminRoutingModule)
   },
   {
-    path:'teste-menu', component: MenuAdmComponent
+    path:'atualizar-senha', component: NewPasswordPopupComponent
   }
 ];
 
