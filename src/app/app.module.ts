@@ -48,6 +48,7 @@ import { CreditCardFormComponent } from './components/credit-card-form/credit-ca
 import { PixFormComponent } from './components/pix-form/pix-form.component';
 import { PacienteAgendarConsultaComponent } from './pages/paciente-agendar-consulta/paciente-agendar-consulta.component';
 import { AgendarConsultaFormComponent } from './components/agendar-consulta-form/agendar-consulta-form.component';
+import { AdmLoginFormComponent } from './components/adm-login-form/adm-login-form.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { AgendarConsultaFormComponent } from './components/agendar-consulta-form
     CreditCardFormComponent,
     PixFormComponent,
     PacienteAgendarConsultaComponent,
-    AgendarConsultaFormComponent
+    AgendarConsultaFormComponent,
+    AdmLoginFormComponent
   ],
   imports: [
     BrowserModule,
