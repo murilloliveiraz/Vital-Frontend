@@ -49,6 +49,12 @@ import { PixFormComponent } from './components/pix-form/pix-form.component';
 import { PacienteAgendarConsultaComponent } from './pages/paciente-agendar-consulta/paciente-agendar-consulta.component';
 import { AgendarConsultaFormComponent } from './components/agendar-consulta-form/agendar-consulta-form.component';
 import { AdmLoginFormComponent } from './components/adm-login-form/adm-login-form.component';
+import { AdminServicosComponent } from './pages/admin-servicos/admin-servicos.component';
+import { ServicoCardComponent } from './components/servico-card/servico-card.component';
+import { AdminHospitaisComponent } from './pages/admin-hospitais/admin-hospitais.component';
+import { HospitalCardComponent } from './components/hospital-card/hospital-card.component';
+import { AdminMedicosComponent } from './pages/admin-medicos/admin-medicos.component';
+import { MedicoCardComponent } from './components/medico-card/medico-card.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +100,13 @@ import { AdmLoginFormComponent } from './components/adm-login-form/adm-login-for
     PixFormComponent,
     PacienteAgendarConsultaComponent,
     AgendarConsultaFormComponent,
-    AdmLoginFormComponent
+    AdmLoginFormComponent,
+    AdminServicosComponent,
+    ServicoCardComponent,
+    AdminHospitaisComponent,
+    HospitalCardComponent,
+    AdminMedicosComponent,
+    MedicoCardComponent
   ],
   imports: [
     BrowserModule,

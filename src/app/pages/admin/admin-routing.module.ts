@@ -9,6 +9,9 @@ import { AdminAgendarExameComponent } from '../admin-agendar-exame/admin-agendar
 import { AdminCadastrarHospitalComponent } from '../admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from '../admin-cadastrar-medico/admin-cadastrar-medico.component';
 import { AdminCadastrarAdminComponent } from '../admin-cadastrar-admin/admin-cadastrar-admin.component';
+import { AdminServicosComponent } from '../admin-servicos/admin-servicos.component';
+import { AdminHospitaisComponent } from '../admin-hospitais/admin-hospitais.component';
+import { AdminMedicosComponent } from '../admin-medicos/admin-medicos.component';
 
 const routes: Routes = [
   {
@@ -22,10 +25,19 @@ const routes: Routes = [
       path: 'cadastrar-paciente', component: AdminCadastrarPacienteComponent
     },
     {
+      path: 'servicos', component: AdminServicosComponent
+    },
+    {
       path: 'cadastrar-servico', component: AdminCadastrarServicosComponent
     },
     {
+      path: 'hospitais', component: AdminHospitaisComponent
+    },
+    {
       path: 'cadastrar-hospital', component: AdminCadastrarHospitalComponent
+    },
+    {
+      path: 'medicos', component: AdminMedicosComponent
     },
     {
       path: 'cadastrar-medico', component: AdminCadastrarMedicoComponent
