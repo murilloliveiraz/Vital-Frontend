@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  isOpen = false;
 
+  toggleSidenav() {
+    this.isOpen = !this.isOpen;
+  }
 }
