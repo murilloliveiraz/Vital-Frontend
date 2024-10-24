@@ -1,0 +1,4 @@
+<main class="flex flex-col items-center gap-8">
+  <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/cadastrar-medico'">Cadastrar Medico</button>
+  <app-medico-card *ngFor="let item of medicos" [nome]="item.nome" [especialidade]="item.especialidade" [crm]="item.crm" [cpf]="item.cpf" [email]="item.email"></app-medico-card>
+</main>
