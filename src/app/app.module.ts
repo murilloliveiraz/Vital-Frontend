@@ -55,6 +55,9 @@ import { AdminHospitaisComponent } from './pages/admin-hospitais/admin-hospitais
 import { HospitalCardComponent } from './components/hospital-card/hospital-card.component';
 import { AdminMedicosComponent } from './pages/admin-medicos/admin-medicos.component';
 import { MedicoCardComponent } from './components/medico-card/medico-card.component';
+import { PacienteCardComponent } from './components/paciente-card/paciente-card.component';
+import { AdminAgendamentosComponent } from './pages/admin-agendamentos/admin-agendamentos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -106,14 +109,17 @@ import { MedicoCardComponent } from './components/medico-card/medico-card.compon
     AdminHospitaisComponent,
     HospitalCardComponent,
     AdminMedicosComponent,
-    MedicoCardComponent
+    MedicoCardComponent,
+    PacienteCardComponent,
+    AdminAgendamentosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSplideModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,10 +19,17 @@ export class UltimosPacientesCardComponent {
     } else if (this.tela === 'historico') {
       this.acessarPaciente(item.paciente.id);
     }
+    else {
+      this.acessarConsultaAdmin(item.exameId)
+    }
   }
 
   acessarConsulta(exameId: number) {
     this.router.navigate(['medico/consulta-detalhes', exameId]);
+  }
+
+  acessarConsultaAdmin(exameId: number) {
+    this.router.navigate(['admin/consulta-detalhes', exameId]);
   }
 
   acessarPaciente(pacienteId: number) {

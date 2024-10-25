@@ -35,7 +35,8 @@
               "node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css"
             ],
             "scripts": [
-              "node_modules/@splidejs/splide/dist/js/splide.js"
+              "node_modules/@splidejs/splide/dist/js/splide.js",
+              "node_modules/flowbite/dist/flowbite.min.js"
             ]
           },
           "configurations": {

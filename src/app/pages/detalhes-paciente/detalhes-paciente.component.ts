@@ -15,12 +15,16 @@ export class DetalhesPacienteComponent {
   prontuario: ProntuarioRegistro;
 
   pacientes: Paciente[] = [
-    new Paciente(0, "Luana Camila", "Feminino", new Date('2005-04-11')),
-    new Paciente(1, "João Pedro", "Masculino", new Date('2005-02-16')),
-    new Paciente(2, "Mariana Garcia", "Feminino", new Date('2000-12-24')),
+    new Paciente(0, "Luana Camila", "Feminino", "5646578945132", new Date('2005-04-11')),
+    new Paciente(1, "João Pedro", "Masculino", "5646578945132", new Date('2005-02-16')),
+    new Paciente(2, "Mariana Garcia", "Feminino", "5646578945132", new Date('2000-12-24')),
   ];
 
   selectedButton: string | null = "dados";
+
+  voltar() {
+    this.location.back();
+  }
 
   registrosPaciente: ProntuarioRegistro[] = [
     {

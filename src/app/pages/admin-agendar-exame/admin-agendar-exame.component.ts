@@ -24,6 +24,7 @@ export class AdminAgendarExameComponent {
         0,
         "Luana Camila",
         "Feminino",
+        "5646578945132",
         new Date('04/11,2005'),
       ),
       'caminho/para/o/s3',
@@ -41,6 +42,7 @@ export class AdminAgendarExameComponent {
         1,
         "João Pedro",
         "Masculino",
+        "5646578945132",
         new Date('02/16,2005'),
       ),
       'caminho/para/o/s3',
@@ -58,6 +60,7 @@ export class AdminAgendarExameComponent {
         2,
         "Mariana Garcia",
         "Feminino",
+        "5646578945132",
         new Date('24/12,2000'),
       ),
       'caminho/para/o/s3',
@@ -69,7 +72,7 @@ export class AdminAgendarExameComponent {
 
   voltar() {
     if (this.agendando) {
-      this.agendando = !this.agendando; 
+      this.agendando = !this.agendando;
     } else {
       this.location.back();
     }
