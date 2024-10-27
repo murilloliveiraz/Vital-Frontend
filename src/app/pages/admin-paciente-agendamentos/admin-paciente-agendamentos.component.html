@@ -1,0 +1,89 @@
+<main class="flex flex-col gap-9">
+  <nav class="flex gap-5 pl-5 pt-9">
+    <button (click)="voltar()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    </button>
+    <h2 class="font-bold">{{paciente.nome}}</h2>
+  </nav>
+  <section class="grid grid-cols-3 max-w-sm pl-5 gap-5">
+    <img src="/assets/images/profile-picture.jpeg" alt="Foto de perfil" class="rounded-lg">
+    <div class="grid grid-rows-3 rounded-lg p-4 col-span-2 button-header-historico-pacientes">
+      <p class="font-semibold">Nome: {{paciente.nome}}</p>
+      <p class="font-semibold">Sexo: {{paciente.sexo}}</p>
+      <p class="font-semibold">Data de Nascimento: {{paciente.dataNascimento | date}}</p>
+    </div>
+  </section>
+
+  <div class="flex justify-center items-center">
+    <button
+      type="button"
+      class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+      [ngClass]="{'button-header-historico-pacientes-focus': selectedType === 'exames', 'button-header-historico-pacientes': selectedType !== 'exames'}"
+      (click)="selectType('exames')"
+    >
+      Exames
+    </button>
+
+    <button
+      type="button"
+      class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
+      [ngClass]="{'button-header-historico-pacientes-focus': selectedType === 'consultas', 'button-header-historico-pacientes': selectedType !== 'consultas'}"
+      (click)="selectType('consultas')"
+    >
+      Consultas
+    </button>
+  </div>
+
+  <section>
+    <div class="flex justify-center items-center mb-5">
+      <button
+        type="button"
+        class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'anteriores', 'button-header-historico-pacientes': selectedButton !== 'anteriores'}"
+        (click)="selectButton('anteriores')"
+      >
+        Anteriores
+      </button>
+
+      <button
+        type="button"
+        class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'marcados', 'button-header-historico-pacientes': selectedButton !== 'marcados'}"
+        (click)="selectButton('marcados')"
+      >
+        Marcados
+      </button>
+    </div>
+
+    <section
+      class="flex flex-col justify-center items-center"
+      *ngIf="selectedType === 'exames' && selectedButton !== 'marcados'"
+    >
+      <app-card-exame-historico *ngFor="let item of examesConcluidos" tela="admin" [exame]="item">
+      </app-card-exame-historico>
+    </section>
+
+    <section
+      class="flex flex-col justify-center items-center"
+      *ngIf="selectedType === 'exames' && selectedButton !== 'anteriores'"
+    >
+      <app-card-exame-historico *ngFor="let item of examesAgendados" tela="admin" [exame]="item">
+      </app-card-exame-historico>
+    </section>
+
+
+    <section
+      class="flex flex-col justify-center items-center"
+      *ngIf="selectedType == 'consultas' && selectedButton !== 'anteriores'"
+    >
+      <app-consulta-card *ngFor="let item of consultasAgendadas" [consulta]="item" tela="admin"></app-consulta-card>
+    </section>
+
+    <section
+    class="flex flex-col justify-center items-center"
+    *ngIf="selectedType == 'consultas' && selectedButton !== 'marcados'"
+    >
+      <app-consulta-card *ngFor="let item of consultasConcluidas" [consulta]="item" tela="admin"></app-consulta-card>
+    </section>
+  </section>
+</main>
