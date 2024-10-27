@@ -36,7 +36,8 @@
             ],
             "scripts": [
               "node_modules/@splidejs/splide/dist/js/splide.js",
-              "node_modules/flowbite/dist/flowbite.min.js"
+              "node_modules/flowbite/dist/flowbite.min.js",
+              "node_modules/flowbite-datepicker/dist/js/datepicker-full.min.js"
             ]
           },
           "configurations": {

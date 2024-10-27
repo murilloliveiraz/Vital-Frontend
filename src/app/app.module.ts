@@ -1,7 +1,6 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PacienteHomeComponent } from './pages/paciente-home/paciente-home.component';
@@ -58,6 +57,11 @@ import { MedicoCardComponent } from './components/medico-card/medico-card.compon
 import { PacienteCardComponent } from './components/paciente-card/paciente-card.component';
 import { AdminAgendamentosComponent } from './pages/admin-agendamentos/admin-agendamentos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminPacienteAgendamentosComponent } from './pages/admin-paciente-agendamentos/admin-paciente-agendamentos.component';
+import { AdminHistoricoAgendamentosComponent } from './pages/admin-historico-agendamentos/admin-historico-agendamentos.component';
+import { AdminAnexarDocumentoComponent } from './pages/admin-anexar-documento/admin-anexar-documento.component';
+import { ConsultaCardComponent } from './components/consulta-card/consulta-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -111,7 +115,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminMedicosComponent,
     MedicoCardComponent,
     PacienteCardComponent,
-    AdminAgendamentosComponent
+    AdminAgendamentosComponent,
+    AdminPacienteAgendamentosComponent,
+    AdminHistoricoAgendamentosComponent,
+    AdminAnexarDocumentoComponent,
+    ConsultaCardComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +127,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxSplideModule,
     CommonModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
