@@ -20,7 +20,7 @@ export class UltimosPacientesCardComponent {
       this.acessarPaciente(item.paciente.id);
     }
     else {
-      this.acessarConsultaAdmin(item.exameId)
+      this.acessarPacienteAdmin(item.paciente.id)
     }
   }
 
@@ -28,8 +28,8 @@ export class UltimosPacientesCardComponent {
     this.router.navigate(['medico/consulta-detalhes', exameId]);
   }
 
-  acessarConsultaAdmin(exameId: number) {
-    this.router.navigate(['admin/consulta-detalhes', exameId]);
+  acessarPacienteAdmin(pacienteId: number) {
+    this.router.navigate(['admin/historico/agendamentos-paciente', pacienteId]);
   }
 
   acessarPaciente(pacienteId: number) {
