@@ -1,7 +1,5 @@
-import { Datepicker } from 'flowbite-datepicker';
-import { Component } from '@angular/core';
-import type { DatepickerOptions } from 'flowbite';
-
+import { Component, ElementRef, ViewChild } from '@angular/core';
+declare var Datepicker: any;
 @Component({
   selector: 'app-agendar-consulta-form',
   templateUrl: './agendar-consulta-form.component.html',
@@ -9,26 +7,23 @@ import type { DatepickerOptions } from 'flowbite';
 })
 export class AgendarConsultaFormComponent {
   selectedRadio: string = 'presencial';
-  date: string[] | string = "";
-  options: DatepickerOptions = {
-    format: 'dd/mm/yyyy',
-    onShow: () => console.log("olaaa"),
-    onHide: () => {}
-  };
+  @ViewChild('dateField', { static: true }) dateField!: ElementRef;
+  public selectedDate!: Date;
 
-  datepicker!: Datepicker;
+  ngOnInit(): void { this.initDatePicker();}
 
-  ngAfterViewInit() {
-    const datepickerEl = document.getElementById('datepicker-autohide') as HTMLInputElement;
-    if (datepickerEl) {
-      this.datepicker = new Datepicker(datepickerEl, this.options);
-    }
+  initDatePicker(): void {
+    let date = new Datepicker(this.dateField.nativeElement, {
+      minDate: new Date(),
+      todayHighlight: true,
+      autohide: true,
+      format: "dd/mm/yyyy",
+      daysOfWeekDisabled: [0],
+    });
   }
 
-  selecionarData() {
-    this.datepicker.show();
-    this.date = this.datepicker.getDate();
-    console.log(this.date);
+  onDatePicked($event: any) {
+    this.selectedDate = new Date($event.detail.date);
   }
 
   onRadioChange(event: Event) {
