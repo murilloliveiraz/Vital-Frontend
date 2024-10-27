@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Exame } from 'src/app/models/exame';
 
 @Component({
   selector: 'app-card-exame-historico',
@@ -6,7 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-exame-historico.component.css']
 })
 export class CardExameHistoricoComponent {
-  @Input() local: string = '';
-  @Input() data: string = '';
-  @Input() titulo: string = '';
+  @Input() exame: Exame;
+  @Input() tela: string = '';
 }

@@ -1,7 +1,13 @@
-<article class="flex flex-col gap-8 w-[330px] card-exame-historico p-4 rounded-xl transition">
-  <h3 class="font-semibold text-xl">{{titulo}}</h3>
+<article class="flex items-center justify-between h-[130px] w-[330px] mb-3 card-exame-historico p-4 rounded-xl transition">
   <div>
-    <p class="text-xs mb-2">{{local}}</p>
-    <p class="text-xs">{{data}}</p>
+    <h3 class="font-semibold text-xl">{{exame.nome}}</h3>
+    <div>
+      <p class="text-xs mb-2">{{exame.local}}</p>
+      <p class="text-xs">{{exame.data}}</p>
+    </div>
   </div>
+  <img *ngIf="exame.status == 'Concluido'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="">
+  <img *ngIf="exame.status == 'Agendado' && tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
+  [routerLink]="['anexar-documento', 'exame', exame.exameId]">
+  <img *ngIf="exame.status == 'Agendado' && tela != 'admin'" class="h-12 grayscale-disabled" src="/assets/images/download.svg" alt="download icone" srcset="">
 </article>

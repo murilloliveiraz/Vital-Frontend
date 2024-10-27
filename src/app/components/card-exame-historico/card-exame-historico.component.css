@@ -5,3 +5,7 @@
 .card-exame-historico:hover {
   scale: 104%;
 }
+
+.grayscale-disabled {
+  filter: grayscale(200%) opacity(0.5);
+}
