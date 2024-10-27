@@ -15,6 +15,9 @@ import { AdminMedicosComponent } from '../admin-medicos/admin-medicos.component'
 import { MedicoConsultaDetalhesComponent } from '../medico-consulta-detalhes/medico-consulta-detalhes.component';
 import { DetalhesPacienteComponent } from '../detalhes-paciente/detalhes-paciente.component';
 import { AdminAgendamentosComponent } from '../admin-agendamentos/admin-agendamentos.component';
+import { AdminHistoricoAgendamentosComponent } from '../admin-historico-agendamentos/admin-historico-agendamentos.component';
+import { AdminPacienteAgendamentosComponent } from '../admin-paciente-agendamentos/admin-paciente-agendamentos.component';
+import { AdminAnexarDocumentoComponent } from '../admin-anexar-documento/admin-anexar-documento.component';
 
 const routes: Routes = [
   {
@@ -47,6 +50,16 @@ const routes: Routes = [
     },
     {
       path: 'cadastrar-colaborador', component: AdminCadastrarAdminComponent
+    },
+    {
+      path: 'historico', component: AdminHistoricoAgendamentosComponent
+    },
+    {
+      path: 'historico/agendamentos-paciente/:pacienteId', component: AdminPacienteAgendamentosComponent
+    },
+    {
+      path: 'historico/agendamentos-paciente/:pacienteId/anexar-documento/:tipo/:id',
+      component: AdminAnexarDocumentoComponent
     },
     {
       path: 'agendamentos/novo', component: AdminAgendamentosComponent

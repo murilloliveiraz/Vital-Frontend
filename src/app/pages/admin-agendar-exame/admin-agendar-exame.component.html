@@ -19,11 +19,7 @@
       class="flex flex-col justify-center items-center gap-5"
     >
     <h1 class="text-2xl font-semibold">Últimos exames</h1>
-      <app-card-exame-historico *ngFor="let item of exames"
-        [data]="item.data"
-        [local]="item.local"
-        [titulo]="item.nome"
-      >
+      <app-card-exame-historico *ngFor="let item of exames" [exame]="item">
       </app-card-exame-historico>
     </section>
     </div>
