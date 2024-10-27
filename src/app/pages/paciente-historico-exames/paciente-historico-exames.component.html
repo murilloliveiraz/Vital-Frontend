@@ -39,11 +39,7 @@
     class="flex flex-col justify-center items-center"
     [ngClass]="{'hidden': selectedButton === 'marcados'}"
   >
-    <app-card-exame-historico
-      [data]="'10/09/24 09:30'"
-      [local]="'Hospital Sino Brasileiro'"
-      [titulo]="'Hemograma'"
-    >
+    <app-card-exame-historico *ngFor="let item of examesConcluidos" [exame]="item">
     </app-card-exame-historico>
   </section>
 
@@ -51,11 +47,7 @@
   class="flex flex-col justify-center items-center"
   [ngClass]="{'hidden': selectedButton === 'anteriores'}"
   >
-    <app-card-exame-historico
-    [data]="'17/09/24 09:30'"
-    [local]="'Varella Labs'"
-    [titulo]="'Radiografia'"
-  >
+    <app-card-exame-historico *ngFor="let item of examesAgendados" [exame]="item">
   </app-card-exame-historico>
   </section>
 </main>
