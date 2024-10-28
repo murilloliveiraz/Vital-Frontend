@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
 import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
 import { PacienteContaComponent } from './pages/paciente-conta/paciente-conta.component';
 import { FormContaUsuarioComponent } from './components/form-conta-usuario/form-conta-usuario.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PacienteLaudosSliderComponent } from './components/paciente-laudos-slider/paciente-laudos-slider.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { MedicoComponent } from './pages/medico/medico.component';
@@ -128,7 +128,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
