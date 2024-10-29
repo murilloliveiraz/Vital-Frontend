@@ -19,7 +19,7 @@ export class FormLoginComponent {
 
   constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService,
     private _ngZone: NgZone){}
-  loginForm: FormGroup;
+    loginForm: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -43,7 +43,6 @@ export class FormLoginComponent {
         google.accounts.id.renderButton(
           document.getElementById("googleButton"),
         );
-        console.log("botao")
         //@ts-ignore
         google.accounts.id.prompt((notification: PromptMomentNotification) => {});
       }
@@ -93,8 +92,8 @@ export class FormLoginComponent {
     };
 
     const usuario: UsuarioLoginRequest = {
-      email: this.dadosForm["email"].value,
-      password: this.dadosForm["senha"].value
+      email: this.loginForm.get('email')?.value || '',
+      password: this.loginForm.get('senha')?.value || '',
     }
     this.loginService.login(usuario).subscribe(observer);
   }

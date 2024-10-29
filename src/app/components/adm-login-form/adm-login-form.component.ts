@@ -64,9 +64,10 @@ export class AdmLoginFormComponent {
     };
 
     const usuario: UsuarioLoginRequest = {
-      email: this.dadosForm["email"].value,
-      password: this.dadosForm["senha"].value
+      email: this.loginForm.get('email')?.value || '',
+      password: this.loginForm.get('senha')?.value || '',
     }
+
     this.loginService.login(usuario).subscribe(observer);
   }
 }

@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,8 +61,10 @@ import { AdminPacienteAgendamentosComponent } from './pages/admin-paciente-agend
 import { AdminHistoricoAgendamentosComponent } from './pages/admin-historico-agendamentos/admin-historico-agendamentos.component';
 import { AdminAnexarDocumentoComponent } from './pages/admin-anexar-documento/admin-anexar-documento.component';
 import { ConsultaCardComponent } from './components/consulta-card/consulta-card.component';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTPStatus, LoaderMiddleware } from './middlewares/loader.middleware';
+import { NgxSpinnerModule } from 'ngx-spinner';
+const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,9 +131,18 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    HTTPStatus,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderMiddleware, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  exports: [
+    CommonModule,
+    NgxSpinnerModule,
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

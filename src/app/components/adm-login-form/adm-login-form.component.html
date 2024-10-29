@@ -1,6 +1,6 @@
 <div class="forma bg-gray-50 border border-gray-300">
 <h2 class="mb-8 text-2xl">Login de administrador</h2>
-<form id="form" class=""  [formGroup]="loginForm" (submit)="loginUser()">
+<form id="form" class=""  [formGroup]="loginForm">
   <div class="mb-5 w-full">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
     <input formControlName="email" type="email" id="email" class="bg-gray-50 border border-none  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" placeholder="seu@email.com" required />
@@ -14,7 +14,7 @@
        class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     <button class="senhaEsq" (click)="showPopup()" >Esqueci minha senha</button>
   </div>
-  <button  [disabled]="!loginForm.valid" type="submit" class="text-white bg-[#0093B9] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-cente">Entrar</button>
+  <button (click)="loginUser()"  [disabled]="!loginForm.valid" type="submit" class="text-white bg-[#0093B9] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-cente">Entrar</button>
 </form>
 </div>
 
