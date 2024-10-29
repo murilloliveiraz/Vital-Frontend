@@ -17,9 +17,8 @@ export class FormLoginComponent {
   isPopupVisible = false;
   isADM = false;
 
-  constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService,
-    private _ngZone: NgZone){}
-    loginForm: FormGroup;
+  constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService){}
+  loginForm: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(

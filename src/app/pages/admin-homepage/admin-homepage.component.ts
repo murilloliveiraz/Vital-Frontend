@@ -1,6 +1,8 @@
+import { PacienteResponseContract } from './../../models/paciente/pacienteResponseContract';
 import { Component } from '@angular/core';
 import { Exame } from 'src/app/models/exame';
 import { Paciente } from 'src/app/models/paciente';
+import { PacienteService } from 'src/app/services/paciente.service';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -10,31 +12,17 @@ import { Paciente } from 'src/app/models/paciente';
 export class AdminHomepageComponent {
   isOpen = false;
 
+  constructor(public pacienteService: PacienteService) {}
+
   toggleSidenav() {
     this.isOpen = !this.isOpen;
   }
 
-  pacientes: Paciente[] = [
-      new Paciente(
-        0,
-        "Luana Camila",
-        "Feminino",
-        "11256879123",
-        new Date('04/11/2005'),
-      ),
-      new Paciente(
-        1,
-        "João Pedro",
-        "Masculino",
-        "12316547897",
-        new Date('02/16/2005'),
-      ),
-      new Paciente(
-        2,
-        "Mariana Garcia",
-        "Feminino",
-        "127845645645",
-        new Date('12/24/2000'),
-      ),
-  ];
+  pacientes: PacienteResponseContract[] = [];
+
+  ngOnInit(): void {
+    this.pacienteService.getAll().subscribe((data: PacienteResponseContract[]) => {
+      this.pacientes = data;
+    });
+  }
 }

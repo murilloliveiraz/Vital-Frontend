@@ -54,7 +54,7 @@ export class AdmLoginFormComponent {
         this.authService.setToken(usuario.token);
         this.authService.setEmailUser(this.dadosForm["email"].value);
         this.authService.UsuarioAutenticado(true);
-        if(usuario.role == "Admin"){
+        if(usuario.role == "Administrador"){
           this.router.navigate(['/admin']);
         }
       },

@@ -50,6 +50,7 @@ export class NewPasswordPopupComponent {
           confirmButtonText: "Concluído",
         });
         this.close.emit();
+        this.router.navigate["/login"]
         this.isPopupVisible2 = false;
       },
       error: (err: any) => {

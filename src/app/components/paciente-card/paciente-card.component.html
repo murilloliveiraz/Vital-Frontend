@@ -6,7 +6,7 @@
     </div>
     <div class="flex justify-between items-center">
       <div>
-        <p class="text-sm text-[#0e687b] font-semibold">{{paciente.dataNascimento| date}}</p>
+        <p class="text-sm text-[#0e687b] font-semibold">{{paciente.dataNascimento| date: 'dd/MM/yyyy' }}</p>
         <p class="text-sm font-normal">CPF: {{paciente.cpf}}</p>
       </div>
       <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-12 w-28" (click)="redirecionar(paciente)">Acessar</button>

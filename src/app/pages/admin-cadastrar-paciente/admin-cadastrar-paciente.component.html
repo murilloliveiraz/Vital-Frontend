@@ -5,10 +5,10 @@
   <h2 class="font-bold">Cadastrar paciente</h2>
 </nav>
 <main class="flex flex-col gap-9 mb-24 items-center">
-  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" action="POST">
+  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" [formGroup]="cadastroForm">
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Nome completo</label>
-      <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <input type="text" formControlName="nome" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Data de nascimento</label>
@@ -18,26 +18,26 @@
              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
            </svg>
        </div>
-        <input id="datepicker-autohide" datepicker-format="dd-mm-yyyy" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Select date">
-      </div>
+       <input id="datepicker-autohide" #dateField (changeDate)="onDatePicked($event)" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Select date">
+        </div>
     </div>
     <div class="mb-6 flex items-center gap-8">
       <div class="flex items-center">
-        <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
+        <input formControlName="sexo" id="default-radio-1" type="radio" value="Feminino" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
         <label for="default-radio-1" class="ms-2 text-sm font-semibold text-gray-900">Feminino</label>
       </div>
       <div class="flex items-center">
-          <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
+          <input formControlName="sexo" checked id="default-radio-2" type="radio" value="Masculino" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
           <label for="default-radio-2" class="ms-2 text-sm font-semibold text-gray-900">Masculino</label>
       </div>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Email</label>
-      <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <input  formControlName="email" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">CPF</label>
-      <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <input formControlName="cpf" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
     </div>
   </form>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="cadastrarPaciente()">Inserir Registro</button>
