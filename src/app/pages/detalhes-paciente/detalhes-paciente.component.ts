@@ -29,6 +29,7 @@ export class DetalhesPacienteComponent {
       tipo: 'Consulta Inicial',
       data: new Date('2024-10-14'),
       conteudo: {
+        tipo: 'Exame de Rotina',
         exame: 'Hemograma completo',
         local: 'Hospital ABC',
         queixaDoPaciente: 'Dor de cabeça frequente',
@@ -52,6 +53,7 @@ export class DetalhesPacienteComponent {
       tipo: 'Exame de Rotina',
       data: new Date('2024-09-20'),
       conteudo: {
+        tipo: 'Exame de Rotina',
         exame: 'Ultrassonografia abdominal',
         local: 'Clínica XYZ',
         diagnostico: 'Nenhuma alteração detectada'

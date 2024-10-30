@@ -13,7 +13,7 @@ import { Paciente } from 'src/app/models/paciente';
 export class MedicoHomepageComponent {
   constructor(private route: ActivatedRoute, private location: Location) {}
 
-  ultimosPacientes: Exame[] = [
+  ultimosExames: Exame[] = [
     new Exame(
       1,
       'Exame de Sangue',

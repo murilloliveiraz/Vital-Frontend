@@ -1,4 +1,5 @@
 export interface RegistroConteudo {
+  tipo: string;
   exame?: string;
   local?: string;
   queixaDoPaciente?: string;

@@ -1,60 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import Splide from '@splidejs/splide';
-import { ProntuarioRegistro } from 'src/app/models/prontuario/prontuarioRegistro';
-import { ProntuarioService } from 'src/app/services/prontuario.service';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormField } from 'src/app/interfaces/FormField';
 
 @Component({
-  selector: 'app-prontuario-slider',
-  templateUrl: './prontuario-slider.component.html',
-  styleUrls: ['./prontuario-slider.component.css']
+  selector: 'app-prontuario-form',
+  templateUrl: './prontuario-form.component.html',
+  styleUrls: ['./prontuario-form.component.css']
 })
-export class ProntuarioSliderComponent {
-  constructor(private prontuarioService: ProntuarioService) {}
-
-  registrosProntuarioPaciente: ProntuarioRegistro[];
-
-  selectedRegistroId: string = null;
-
-  ngOnInit(): void {
-    this.prontuarioService.getPatientMedicalRecord(8)
-      .subscribe((data: ProntuarioRegistro[]) => {
-        this.registrosProntuarioPaciente = data;
-        console.log(this.registrosProntuarioPaciente)
-      });
-  }
-
-  ngAfterViewInit(): void {
-    var splide = new Splide('#prontuario-slider', {
-      perPage: 3,
-      focus  : 0,
-      pagination: false,
-      arrows: false,
-      autoWidth: true
-    });
-
-    splide.mount();
-  }
-
-  selectRegistro(registroId: string) {
-    this.selectedRegistroId = registroId;
-    const consultaSelecionada = this.getRegistroSelecionado();
-
-    if (consultaSelecionada) {
-      this.prontuarioFormFields = this.prontuarioFormFields.map(field => {
-        const campo = field.controlName.toLowerCase().replace(' ', '');
-        return {
-          ...field,
-          value: consultaSelecionada.conteudo[campo] || ''
-        };
-      });
-    }
-  }
-
-  getRegistroSelecionado(): ProntuarioRegistro {
-    return this.registrosProntuarioPaciente.find(registro => registro.id == this.selectedRegistroId);
-  }
-
-  prontuarioFormFields = [
+export class ProntuarioFormComponent {
+  formFields: FormField[] =  [
     { inputType: 'input', controlName: "Tipo" ,label: 'Tipo do Registro', type: 'text', value: '', placeholder: 'Tipo do registro', disabled: false },
     { inputType: 'input', controlName: "Exame" ,label: 'Exame', type: 'text', value: '', placeholder: 'Nome do exame', disabled: false },
     { inputType: 'input', controlName: "Local" ,label: 'Local', type: 'text', value: '', placeholder: 'Hospital ou clínica', disabled: false },
@@ -68,6 +22,23 @@ export class ProntuarioSliderComponent {
     { inputType: 'textarea', controlName: "Diagnostico" ,label: 'Diagnóstico', type: 'text', value: '', placeholder: 'Diagnóstico preliminar ou final', disabled: false },
     { inputType: 'textarea', controlName: "Plano" ,label: 'Plano de tratamento', type: 'text', value: '', placeholder: 'Descreva o plano de tratamento', disabled: false },
     { inputType: 'textarea', controlName: "Medicacoes" ,label: 'Medicações prescritas', type: 'text', value: '', placeholder: 'Liste as medicações prescritas', disabled: false },
-    { inputType: 'textarea', controlName: "Observacao" ,label: 'Observações adicionais', type: 'text', value: '', placeholder: 'Quaisquer outras observações relevantes', disabled: false }
+    { inputType: 'textarea', controlName: "Observacoes" ,label: 'Observações adicionais', type: 'text', value: '', placeholder: 'Quaisquer outras observações relevantes', disabled: false }
   ];
+  formGroup!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.formGroup = this.fb.group({});
+    this.formFields.forEach(field => {
+      this.formGroup.addControl(
+        field.controlName,
+        new FormControl('')
+      );
+    });
+  }
+
+  getFormData(): any {
+    return this.formGroup.value;
+  }
 }

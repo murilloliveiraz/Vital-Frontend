@@ -1,3 +1,4 @@
+import { PacienteResponseContract } from './../../models/paciente/pacienteResponseContract';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Exame } from 'src/app/models/exame';
@@ -8,19 +9,22 @@ import { Exame } from 'src/app/models/exame';
   styleUrls: ['./ultimos-pacientes-card.component.css']
 })
 export class UltimosPacientesCardComponent {
-  @Input() ultimosPacientes: Exame[] = [];
+  @Input() ultimosPacientes: PacienteResponseContract[] = [];
+  @Input() ultimosExames: Exame[] = [];
   @Input() tela: string = '';
 
   constructor(private router: Router) {}
 
-  redirecionar(item: Exame) {
-    if (this.tela === 'home') {
-      this.acessarConsulta(item.exameId);
-    } else if (this.tela === 'historico') {
-      this.acessarPaciente(item.paciente.id);
-    }
-    else {
-      this.acessarPacienteAdmin(item.paciente.id)
+  redirecionarParaConsulta(exame: Exame) {
+      this.acessarConsulta(exame.exameId);
+  }
+
+  redirecionarParaPaciente(paciente: PacienteResponseContract) {
+    if(this.tela == "historico"){
+      this.acessarPaciente(paciente.id);
+    } else {
+      this.acessarPacienteAdmin(paciente.id)
+
     }
   }
 

@@ -9,7 +9,7 @@ import { Paciente } from 'src/app/models/paciente';
   styleUrls: ['./admin-historico-agendamentos.component.css']
 })
 export class AdminHistoricoAgendamentosComponent {
-  ultimosPacientes: Exame[] = [
+  ultimosExames: Exame[] = [
     new Exame(
       1,
       'Exame de Sangue',

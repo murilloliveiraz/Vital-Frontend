@@ -1,6 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProntuarioFormComponent } from 'src/app/components/prontuario-form/prontuario-form.component';
+import { FormField } from 'src/app/interfaces/FormField';
 import { Paciente } from 'src/app/models/paciente';
 import Swal from 'sweetalert2';
 
@@ -10,8 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./medico-inserir-registro.component.css']
 })
 export class MedicoInserirRegistroComponent {
+  @ViewChild(ProntuarioFormComponent) prontuarioFormComponent!: ProntuarioFormComponent;
   paciente: Paciente;
-  formFields = [];
 
   constructor(private route: ActivatedRoute, private location: Location) {}
 
@@ -26,34 +28,25 @@ export class MedicoInserirRegistroComponent {
     if (pacienteId) {
       this.paciente = this.pacientes.find(paciente => paciente.id.toString() === pacienteId);
     }
-    this.formFields = [
-      { inputType: 'input', label: 'Exame', type: 'text', value: '', placeholder: 'Nome do exame', disabled: false },
-      { inputType: 'input', label: 'Local', type: 'text', value: '', placeholder: 'Hospital ou clínica', disabled: false },
-      { inputType: 'textarea', label: 'Queixa do paciente', type: 'text', value: '', placeholder: 'Descreva a queixa principal do paciente', disabled: false },
-      { inputType: 'textarea', label: 'Observações pré-exame', type: 'text', value: '', placeholder: 'Observações da clínica antes do exame', disabled: false },
-      { inputType: 'textarea', label: 'História clínica', type: 'text', value: '', placeholder: 'Resumo da história clínica relevante', disabled: false },
-      { inputType: 'textarea', label: 'Exame físico', type: 'text', value: '', placeholder: 'Resultados do exame físico', disabled: false },
-      { inputType: 'input', label: 'Pressão arterial', type: 'text', value: '', placeholder: 'Ex: 120/80 mmHg', disabled: false },
-      { inputType: 'input', label: 'Frequência cardíaca', type: 'number', value: '', placeholder: 'bpm', disabled: false },
-      { inputType: 'input', label: 'Temperatura', type: 'number', value: '', placeholder: '°C', disabled: false },
-      { inputType: 'textarea', label: 'Diagnóstico', type: 'text', value: '', placeholder: 'Diagnóstico preliminar ou final', disabled: false },
-      { inputType: 'textarea', label: 'Plano de tratamento', type: 'text', value: '', placeholder: 'Descreva o plano de tratamento', disabled: false },
-      { inputType: 'textarea', label: 'Medicações prescritas', type: 'text', value: '', placeholder: 'Liste as medicações prescritas', disabled: false },
-      { inputType: 'textarea', label: 'Observações adicionais', type: 'text', value: '', placeholder: 'Quaisquer outras observações relevantes', disabled: false }
-    ];
   }
 
   inserirRegistro(){
-    Swal.fire({
-      title: "Registro Inserido!",
-      text: "O registro foi inserido no prontuário do paciente.",
-      imageUrl: "/assets/images/joiaconcluido.png",
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "Registro inserido icone",
-      confirmButtonColor: "#0099B9",
-      confirmButtonText: "Concluído",
-    });
+    if (this.prontuarioFormComponent?.formGroup.valid) {
+      const formData = this.prontuarioFormComponent.formGroup.value;
+      console.log('Dados do Formulário:', formData);
+      Swal.fire({
+        title: "Registro Inserido!",
+        text: "O registro foi inserido no prontuário do paciente.",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    } else {
+      console.log('Formulário inválido');
+    }
   }
 
   voltar() {
