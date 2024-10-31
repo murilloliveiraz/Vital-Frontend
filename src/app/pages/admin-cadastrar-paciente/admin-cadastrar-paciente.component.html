@@ -32,6 +32,28 @@
       </div>
     </div>
     <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Medicamentos</label>
+      <input  formControlName="medicamentos" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Alergias</label>
+      <input  formControlName="alergias" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Historico Familiar</label>
+      <input  formControlName="historicoFamiliar" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6 flex items-center gap-8">
+      <div class="flex items-center">
+        <input formControlName="pcd" id="default-radio-1" type="radio" value="Sim" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
+        <label for="default-radio-1" class="ms-2 text-sm font-semibold text-gray-900">Sim</label>
+      </div>
+      <div class="flex items-center">
+          <input formControlName="pcd" checked id="default-radio-2" type="radio" value="Não" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2">
+          <label for="default-radio-2" class="ms-2 text-sm font-semibold text-gray-900">Não</label>
+      </div>
+    </div>
+    <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Email</label>
       <input  formControlName="email" type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
     </div>

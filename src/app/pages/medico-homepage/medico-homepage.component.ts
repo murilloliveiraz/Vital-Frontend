@@ -17,7 +17,7 @@ export class MedicoHomepageComponent {
   proximosExames: AgendarExameResponse[] = [];
 
   ngOnInit() {
-    this.examesService.obterExamesAgendadosPorMedico(1).subscribe({
+    this.examesService.obterExamesAgendadosPorMedico(3).subscribe({
       next: (data: AgendarExameResponse[]) => {
         this.proximosExames = data;
       },

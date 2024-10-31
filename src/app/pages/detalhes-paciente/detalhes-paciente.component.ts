@@ -22,56 +22,9 @@ export class DetalhesPacienteComponent {
     this.location.back();
   }
 
-  registrosPaciente: ProntuarioRegistro[] = [
-    {
-      id: 0,
-      pacienteId: 8,
-      tipo: 'Consulta Inicial',
-      data: new Date('2024-10-14'),
-      conteudo: {
-        tipo: 'Exame de Rotina',
-        exame: 'Hemograma completo',
-        local: 'Hospital ABC',
-        queixaDoPaciente: 'Dor de cabeça frequente',
-        historiaClinica: 'Paciente relatou histórico de enxaquecas.',
-        pressaoArterial: '120/80 mmHg',
-        frequenciaCardiaca: 75,
-        temperatura: 36.5,
-        diagnostico: 'Enxaqueca crônica',
-        planoDeTratamento: 'Iniciar tratamento com analgésicos e repouso'
-      },
-      observacoes: {
-        alergias: 'Alergia a penicilina',
-        pcd: false,
-        medicamentos: 'Ibuprofeno 400mg',
-        historicoFamiliar: 'Histórico de diabetes na família'
-      }
-    },
-    {
-      id: 1,
-      pacienteId: 1,
-      tipo: 'Exame de Rotina',
-      data: new Date('2024-09-20'),
-      conteudo: {
-        tipo: 'Exame de Rotina',
-        exame: 'Ultrassonografia abdominal',
-        local: 'Clínica XYZ',
-        diagnostico: 'Nenhuma alteração detectada'
-      },
-      observacoes: {
-        alergias: 'Nenhuma',
-        pcd: true,
-        medicamentos: 'Nenhum',
-        historicoFamiliar: 'Histórico de hipertensão na família'
-      }
-    }
-  ];
-
-
   dadosFormFields = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private location: Location, public pacienteService: PacienteService) {}
-
+  constructor(private route: ActivatedRoute, private location: Location, public pacienteService: PacienteService) {}
 
   ngOnInit() {
     const pacienteId = this.route.snapshot.paramMap.get('id');
@@ -79,13 +32,12 @@ export class DetalhesPacienteComponent {
       const pacienteIdNumber = Number(pacienteId);
       this.pacienteService.getById(pacienteIdNumber).subscribe((data: PacienteResponseContract) => {
         this.paciente = data;
-        this.prontuario = this.registrosPaciente.find(prontuario => prontuario.pacienteId == this.paciente.id);
-        if (this.prontuario && this.prontuario.observacoes) {
+        if (this.paciente) {
           this.dadosFormFields = [
-            { inputType: 'textarea', label: 'Alergias', type: 'text', value: this.prontuario.observacoes.alergias, placeholder: 'Descreva as alergias', disabled: false },
-            { inputType: 'input', label: 'PCD', type: 'text', value: this.prontuario.observacoes.pcd ? 'Sim' : 'Não', placeholder: 'Sim ou Não', disabled: true },
-            { inputType: 'textarea', label: 'Medicamentos', type: 'text', value: this.prontuario.observacoes.medicamentos, placeholder: 'Medicamentos contínuos', disabled: false },
-            { inputType: 'textarea', label: 'Histórico Familiar', type: 'text', value: this.prontuario.observacoes.historicoFamiliar, placeholder: 'Histórico de doenças na família', disabled: false },
+            { inputType: 'textarea', label: 'Alergias', type: 'text', value: this.paciente?.alergias, placeholder: 'Descreva as alergias', disabled: false },
+            { inputType: 'input', label: 'PCD', type: 'text', value: this.paciente?.pcd ? 'Sim' : 'Não', placeholder: 'Sim ou Não', disabled: true },
+            { inputType: 'textarea', label: 'Medicamentos', type: 'text', value: this.paciente?.medicamentos, placeholder: 'Medicamentos contínuos', disabled: false },
+            { inputType: 'textarea', label: 'Histórico Familiar', type: 'text', value: this.paciente?.historicoFamiliar, placeholder: 'Histórico de doenças na família', disabled: false },
             { inputType: 'input', label: 'Nome', type: 'text', value: this.paciente?.nome, placeholder: 'Nome do Paciente', disabled: true },
             { inputType: 'input', label: 'Sexo', type: 'text', value: this.paciente?.sexo, placeholder: 'Sexo', disabled: true },
             { inputType: 'input', label: 'Data de nascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true }

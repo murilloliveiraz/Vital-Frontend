@@ -27,6 +27,10 @@ export class AdminCadastrarPacienteComponent {
         nome: ['', [Validators.required]],
         cpf: ['', [Validators.required]],
         sexo: ['', [Validators.required]],
+        pcd: ['', [Validators.required]],
+        alergias: ['', [Validators.required]],
+        medicamentos: ['', [Validators.required]],
+        historicoFamiliar: ['', [Validators.required]],
       }
     )
     this.initDatePicker();
@@ -79,7 +83,11 @@ export class AdminCadastrarPacienteComponent {
       email: this.dadosForm["email"]?.value,
       dataNascimento: this.selectedDate,
       sexo: this.dadosForm["sexo"]?.value,
-      criadoPorUsuarioId: 0
+      criadoPorUsuarioId: 0,
+      pcd: this.dadosForm["pcd"]?.value,
+      alergias: this.dadosForm["alergias"]?.value,
+      medicamentos: this.dadosForm["medicamentos"]?.value,
+      historicoFamiliar: this.dadosForm["historicoFamiliar"]?.value,
     }
 
     this.pacienteService.create(paciente).subscribe(observer);
