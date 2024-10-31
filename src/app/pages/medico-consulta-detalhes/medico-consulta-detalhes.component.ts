@@ -70,7 +70,7 @@ export class MedicoConsultaDetalhesComponent {
     ),
   ];
 
-  constructor(private router: Router ,private route: ActivatedRoute, private location: Location) {}
+  constructor(private router: Router , private route: ActivatedRoute, private location: Location) {}
 
   ngOnInit() {
     const exameId = this.route.snapshot.paramMap.get('id');

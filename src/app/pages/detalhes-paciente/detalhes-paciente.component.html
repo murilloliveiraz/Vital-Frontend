@@ -39,6 +39,6 @@
   class="flex flex-col justify-center items-center"
   [ngClass]="{'hidden': selectedButton === 'dados'}"
   >
-    <app-prontuario-slider></app-prontuario-slider>
+    <app-prontuario-slider [pacienteId]="paciente.id"></app-prontuario-slider>
   </section>
 </main>

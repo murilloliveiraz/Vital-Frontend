@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Splide from '@splidejs/splide';
 import { ProntuarioRegistro } from 'src/app/models/prontuario/prontuarioRegistro';
 import { ProntuarioService } from 'src/app/services/prontuario.service';
@@ -9,6 +9,7 @@ import { ProntuarioService } from 'src/app/services/prontuario.service';
   styleUrls: ['./prontuario-slider.component.css']
 })
 export class ProntuarioSliderComponent {
+  @Input() pacienteId: number;
   constructor(private prontuarioService: ProntuarioService) {}
 
   registrosProntuarioPaciente: ProntuarioRegistro[];
@@ -16,7 +17,7 @@ export class ProntuarioSliderComponent {
   selectedRegistroId: string = null;
 
   ngOnInit(): void {
-    this.prontuarioService.getPatientMedicalRecord(8)
+    this.prontuarioService.getPatientMedicalRecord(this.pacienteId)
       .subscribe((data: ProntuarioRegistro[]) => {
         this.registrosProntuarioPaciente = data;
         console.log(this.registrosProntuarioPaciente)

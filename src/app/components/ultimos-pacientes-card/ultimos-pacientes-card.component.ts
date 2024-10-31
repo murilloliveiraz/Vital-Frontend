@@ -2,6 +2,8 @@ import { PacienteResponseContract } from './../../models/paciente/pacienteRespon
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Exame } from 'src/app/models/exame';
+import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
+import { PacienteService } from './../../services/paciente.service';
 
 @Component({
   selector: 'app-ultimos-pacientes-card',
@@ -10,13 +12,14 @@ import { Exame } from 'src/app/models/exame';
 })
 export class UltimosPacientesCardComponent {
   @Input() ultimosPacientes: PacienteResponseContract[] = [];
-  @Input() ultimosExames: Exame[] = [];
+  @Input() proximosExames: AgendarExameResponse[] = [];
   @Input() tela: string = '';
+  pacientes: PacienteResponseContract[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private pacienteService: PacienteService) {}
 
-  redirecionarParaConsulta(exame: Exame) {
-      this.acessarConsulta(exame.exameId);
+  redirecionarParaConsulta(exame: AgendarExameResponse) {
+    this.acessarConsulta(exame.exameId);
   }
 
   redirecionarParaPaciente(paciente: PacienteResponseContract) {
@@ -24,7 +27,6 @@ export class UltimosPacientesCardComponent {
       this.acessarPaciente(paciente.id);
     } else {
       this.acessarPacienteAdmin(paciente.id)
-
     }
   }
 
