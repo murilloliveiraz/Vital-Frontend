@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormContaUsuarioComponent } from 'src/app/components/form-conta-usuario/form-conta-usuario.component';
 import { ProntuarioRegistro } from 'src/app/interfaces/ProntuarioRegistro';
 import { Paciente } from 'src/app/models/paciente';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./detalhes-paciente.component.css']
 })
 export class DetalhesPacienteComponent {
+  @ViewChild(FormContaUsuarioComponent) pacienteFormComponent!: FormContaUsuarioComponent;
   paciente: PacienteResponseContract;
   prontuario: ProntuarioRegistro;
 
@@ -34,13 +36,13 @@ export class DetalhesPacienteComponent {
         this.paciente = data;
         if (this.paciente) {
           this.dadosFormFields = [
-            { inputType: 'textarea', label: 'Alergias', type: 'text', value: this.paciente?.alergias, placeholder: 'Descreva as alergias', disabled: false },
-            { inputType: 'input', label: 'PCD', type: 'text', value: this.paciente?.pcd ? 'Sim' : 'Não', placeholder: 'Sim ou Não', disabled: true },
-            { inputType: 'textarea', label: 'Medicamentos', type: 'text', value: this.paciente?.medicamentos, placeholder: 'Medicamentos contínuos', disabled: false },
-            { inputType: 'textarea', label: 'Histórico Familiar', type: 'text', value: this.paciente?.historicoFamiliar, placeholder: 'Histórico de doenças na família', disabled: false },
-            { inputType: 'input', label: 'Nome', type: 'text', value: this.paciente?.nome, placeholder: 'Nome do Paciente', disabled: true },
-            { inputType: 'input', label: 'Sexo', type: 'text', value: this.paciente?.sexo, placeholder: 'Sexo', disabled: true },
-            { inputType: 'input', label: 'Data de nascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true }
+            { inputType: 'textarea', label: 'Alergias', controlName: 'alergias', type: 'text', value: this.paciente?.alergias, placeholder: 'Descreva as alergias', disabled: false },
+            { inputType: 'input', label: 'PCD', controlName: 'pcd', type: 'text', value: this.paciente?.pcd ? 'Sim' : 'Não', placeholder: 'Sim ou Não', disabled: true },
+            { inputType: 'textarea', label: 'Medicamentos', controlName: 'medicamentos', type: 'text', value: this.paciente?.medicamentos, placeholder: 'Medicamentos contínuos', disabled: false },
+            { inputType: 'textarea', label: 'Histórico Familiar', controlName: 'historicoFamiliar', type: 'text', value: this.paciente?.historicoFamiliar, placeholder: 'Histórico de doenças na família', disabled: false },
+            { inputType: 'input', label: 'Nome', controlName: 'nome', type: 'text', value: this.paciente?.nome, placeholder: 'Nome do Paciente', disabled: true },
+            { inputType: 'input', label: 'Sexo', controlName: 'sexo', type: 'text', value: this.paciente?.sexo, placeholder: 'Sexo', disabled: true },
+            { inputType: 'input', label: 'Data de nascimento', controlName: 'dataDeNascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true }
           ];
         }
       });
@@ -58,6 +60,8 @@ export class DetalhesPacienteComponent {
   }
 
   salvarAlteracoes(){
+    const formData = this.pacienteFormComponent.formGroup.value;
+    console.log(formData)
     Swal.fire({
       title: "Alterações Salvas!",
       text: "O registro foi inserido no prontuário do paciente.",

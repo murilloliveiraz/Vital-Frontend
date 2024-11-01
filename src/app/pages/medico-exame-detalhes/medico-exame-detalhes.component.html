@@ -3,14 +3,14 @@
     <button (click)="voltar()">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
     </button>
-    <h2 class="font-bold">{{paciente.nome}}</h2>
+    <h2 class="font-bold">{{paciente?.nome}}</h2>
   </nav>
   <section class="grid grid-cols-3 max-w-sm pl-5 gap-5">
     <img src="/assets/images/profile-picture.jpeg" alt="Foto de perfil" class="rounded-lg">
     <div class="grid grid-rows-3 rounded-lg p-4 col-span-2 button-header-historico-pacientes">
-      <p class="font-semibold">Nome: {{paciente.nome}}</p>
-      <p class="font-semibold">Sexo: {{paciente.sexo}}</p>
-      <p class="font-semibold">Data de Nascimento: {{paciente.dataNascimento | date: "dd/MM/yyyy"}}</p>
+      <p class="font-semibold">Nome: {{paciente?.nome}}</p>
+      <p class="font-semibold">Sexo: {{paciente?.sexo}}</p>
+      <p class="font-semibold">Data de Nascimento: {{paciente?.dataNascimento | date: "dd/MM/yyyy"}}</p>
     </div>
   </section>
   <section
@@ -18,5 +18,8 @@
   >
     <app-form-conta-usuario [fields]="formFields"></app-form-conta-usuario>
   </section>
-  <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="inserirRegistro()">Inserir Registro</button>
+  <div class="flex flex-col gap-4">
+    <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="inserirRegistro()">Inserir Registro</button>
+    <button class="button-header-historico-pacientes focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="concluirExame()">Concluir</button>
+  </div>
 </main>

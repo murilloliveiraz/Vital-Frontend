@@ -6,6 +6,7 @@ import { ExamesService } from './../../services/exames.service';
 import { of, switchMap } from 'rxjs';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-medico-exame-detalhes',
@@ -26,7 +27,6 @@ export class MedicoExameDetalhesComponent {
       const exameId = Number(exameIdParameter)
       this.examesService.obterExamePorId(exameId).pipe(
         switchMap((exame: AgendarExameResponse) => {
-          console.log(exame)
           this.exame = exame;
           if (this.exame) {
             this.formFields = [
@@ -51,6 +51,21 @@ export class MedicoExameDetalhesComponent {
 
   inserirRegistro() {
     this.router.navigate(['medico/exame-detalhes', this.exame.exameId.toString(), 'inserir-registro', this.exame.pacienteId.toString()]);
+  }
+
+  concluirExame(){
+    this.examesService.concluirExame(this.exame.exameId).subscribe(() => {
+      Swal.fire({
+        title: "Exame Concluído!",
+        text: "O status do exame foi alterado para: Concluido.",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
   }
 
 

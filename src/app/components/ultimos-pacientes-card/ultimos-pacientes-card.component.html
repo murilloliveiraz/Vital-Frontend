@@ -2,13 +2,13 @@
   <ng-container *ngIf="tela == 'historico'">
     <div *ngFor="let paciente of ultimosPacientes" class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
       <div>
-        <h3 class="font-semibold">{{paciente.nome}}</h3>
-        <p class="text-sm text-[#0e687b]">{{paciente.sexo}}</p>
+        <h3 class="font-semibold">{{paciente.nome || ""}}</h3>
+        <p class="text-sm text-[#0e687b]">{{paciente.sexo || ""}}</p>
       </div>
       <div class="flex justify-between items-center">
         <div>
           <p class="text-sm text-[#0e687b] font-semibold">{{paciente.dataNascimento| date: 'dd/MM/yyyy' }}</p>
-          <p class="text-sm font-normal">CPF: {{paciente.cpf}}</p>
+          <p class="text-sm font-normal">CPF: {{paciente.cpf || ""}}</p>
         </div>
         <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-12 w-28" (click)="redirecionarParaPaciente(paciente)">Acessar</button>
       </div>
@@ -17,8 +17,8 @@
   <ng-container *ngIf="tela == 'home' && proximosExames.length >= 1">
     <div *ngFor="let item of proximosExames" class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
       <div>
-        <h3 class="font-semibold">{{item.pacienteNome}}</h3>
-        <p class="text-sm text-[#0e687b]">{{ item.nome }}</p>
+        <h3 class="font-semibold">{{item.pacienteNome || ""}}</h3>
+        <p class="text-sm text-[#0e687b]">{{ item.nome || ""}}</p>
       </div>
       <div class="flex justify-between items-center">
         <p class="text-sm text-[#0e687b] font-semibold">{{ item.data | date: 'dd/MM/yyyy' }}</p>

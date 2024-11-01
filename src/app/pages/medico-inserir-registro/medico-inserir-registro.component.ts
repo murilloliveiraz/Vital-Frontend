@@ -3,7 +3,6 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { ProntuarioFormComponent } from 'src/app/components/prontuario-form/prontuario-form.component';
-import { FormField } from 'src/app/interfaces/FormField';
 import { RegistroConteudo } from 'src/app/interfaces/RegistroConteudo';
 import { Paciente } from 'src/app/models/paciente';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
