@@ -1,5 +1,6 @@
 input {
   border: none;
+  background-color: #ececec;
 }
 
 .forma {
@@ -41,4 +42,32 @@ input {
   font-weight: normal;
   color: #0E687B;
   text-decoration: underline;
+}
+
+@media (min-width: 1200px) {
+
+  #loginButton {
+    width: 300px;
+  }
+
+  .forma {
+    margin-left: 800px;
+    width: 500px;
+    height: 600px;
+  }
+
+  form {
+    margin-left: 23px;
+    width: 300px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  #googleButton {
+    width: 300px;
+    align-items: center;
+    justify-items: center;
+    margin-left: 23px;
+  }
+
 }

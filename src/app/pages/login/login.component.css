@@ -11,4 +11,44 @@ main {
   font-size: 20px;
   margin-top: 55px;
   font-weight: bold;
+  margin-left: 25px;
+}
+
+.imageLogin {
+  display: none;
+}
+
+h2 {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+
+  h2 {
+    display: flex;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    z-index: 1;
+    margin-top: 300px;
+    margin-bottom: -470px;
+    margin-right: 750px;
+    color: #0B8FAC;
+  }
+
+  .textLoginPage{
+    display: flex;
+    margin-left: 780px;
+  }
+
+  .imageLogin {
+    display: flex;
+    width: 1000px;
+    z-index: -10;
+    margin-bottom: -850px;
+    margin-right: 880px;
+    margin-top: 20px;
+    opacity: 13%;
+  }
+
 }
