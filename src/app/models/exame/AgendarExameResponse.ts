@@ -8,4 +8,6 @@ export class AgendarExameResponse {
     medicoId: number;
     emailParaReceberResultado: string;
     status: string;
+    queixasDoPaciente: string;
+    observacoesDaClinica: string;
 }

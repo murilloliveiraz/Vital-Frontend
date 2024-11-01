@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import Splide from '@splidejs/splide';
-import { Exame } from 'src/app/models/exame';
 import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
-import { Paciente } from 'src/app/models/paciente';
 import { ExamesService } from 'src/app/services/exames.service';
+import { MedicoService } from 'src/app/services/medico.service';
+import { MedicoResponseContract } from './../../models/medico/medicoResponseContract';
+import { AuthService } from 'src/app/services/auth.service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-medico-homepage',
@@ -13,18 +14,26 @@ import { ExamesService } from 'src/app/services/exames.service';
   styleUrls: ['./medico-homepage.component.css']
 })
 export class MedicoHomepageComponent {
-  constructor(private route: ActivatedRoute, private location: Location, private examesService: ExamesService) {}
+  constructor(private route: ActivatedRoute, private location: Location, private examesService: ExamesService, private medicoService: MedicoService, private authService: AuthService) {}
   proximosExames: AgendarExameResponse[] = [];
+  medico: MedicoResponseContract;
 
   ngOnInit() {
-    this.examesService.obterExamesAgendadosPorMedico(3).subscribe({
-      next: (data: AgendarExameResponse[]) => {
-        this.proximosExames = data;
-      },
-      error: (error) => {
-        console.error('Erro ao buscar exames:', error);
-      }
-    });
+    const emailUserLogado = this.authService.getEmailUser();
+    if (emailUserLogado) {
+      this.medicoService.getByEmail(emailUserLogado).pipe(
+        switchMap((medico: MedicoResponseContract) => {
+          this.medico = medico;
+          return medico ? this.examesService.obterExamesAgendadosPorMedico(medico.id) : of([]);
+        })
+      ).subscribe({
+        next: (exames: AgendarExameResponse[]) => {
+          this.proximosExames = exames;
+        },
+        error: (error) => {
+          console.error('Erro ao carregar dados:', error);
+        }
+      });
+    }
   }
-
 }

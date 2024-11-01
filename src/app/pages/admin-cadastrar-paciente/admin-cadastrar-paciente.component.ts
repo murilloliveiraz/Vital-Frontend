@@ -70,7 +70,6 @@ export class AdminCadastrarPacienteComponent {
           confirmButtonColor: "#0099B9",
           confirmButtonText: "Concluído",
         });
-        console.log(paciente)
       },
       error: (err: any) => {
         alert('Ocorreu um erro');

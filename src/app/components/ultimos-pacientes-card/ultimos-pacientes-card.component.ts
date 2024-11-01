@@ -18,8 +18,12 @@ export class UltimosPacientesCardComponent {
 
   constructor(private router: Router, private pacienteService: PacienteService) {}
 
-  redirecionarParaConsulta(exame: AgendarExameResponse) {
-    this.acessarConsulta(exame.exameId);
+  redirecionarParaConsulta(agendamentoId: number) {
+    if(this.proximosExames.length >= 1){
+      this.acessarExame(agendamentoId);
+    } else {
+      this.acessarConsulta(agendamentoId)
+    }
   }
 
   redirecionarParaPaciente(paciente: PacienteResponseContract) {
@@ -30,8 +34,12 @@ export class UltimosPacientesCardComponent {
     }
   }
 
-  acessarConsulta(exameId: number) {
-    this.router.navigate(['medico/consulta-detalhes', exameId]);
+  acessarConsulta(consultaId: number) {
+    this.router.navigate(['medico/consulta-detalhes', consultaId]);
+  }
+
+  acessarExame(exameId: number) {
+    this.router.navigate(['medico/exame-detalhes', exameId]);
   }
 
   acessarPacienteAdmin(pacienteId: number) {

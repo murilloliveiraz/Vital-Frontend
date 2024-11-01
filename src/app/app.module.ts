@@ -65,6 +65,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HTTPStatus, LoaderMiddleware } from './middlewares/loader.middleware';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProntuarioFormComponent } from './components/prontuario-form/prontuario-form.component';
+import { MedicoExameDetalhesComponent } from './pages/medico-exame-detalhes/medico-exame-detalhes.component';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     AdminHistoricoAgendamentosComponent,
     AdminAnexarDocumentoComponent,
     ConsultaCardComponent,
-    ProntuarioFormComponent
+    ProntuarioFormComponent,
+    MedicoExameDetalhesComponent
   ],
   imports: [
     BrowserModule,

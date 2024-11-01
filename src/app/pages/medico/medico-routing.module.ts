@@ -7,6 +7,7 @@ import { MedicoInserirRegistroComponent } from '../medico-inserir-registro/medic
 import { MedicoHistoricoPacientesComponent } from '../medico-historico-pacientes/medico-historico-pacientes.component';
 import { DetalhesPacienteComponent } from '../detalhes-paciente/detalhes-paciente.component';
 import { CommonModule } from '@angular/common';
+import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
     },
     {
       path: 'consulta-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent
+    },
+    {
+      path: 'exame-detalhes/:id', component: MedicoExameDetalhesComponent
+    },
+    {
+      path: 'exame-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent
     },
     {
       path: 'historico-pacientes', component: MedicoHistoricoPacientesComponent

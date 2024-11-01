@@ -4,4 +4,6 @@ export class AgendarExameRequest {
     data: Date;
     pacienteId: number;
     medicoId: number;
+    queixasDoPaciente: string;
+    observacoesDaClinica: string;
 }

@@ -20,6 +20,7 @@ export class ProntuarioSliderComponent {
     this.prontuarioService.getPatientMedicalRecord(this.pacienteId)
       .subscribe((data: ProntuarioRegistro[]) => {
         this.registrosProntuarioPaciente = data;
+        console.log(data)
       });
   }
 
