@@ -1,5 +1,9 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MedicoRequestContract } from 'src/app/models/medico/medicoRequestContract';
+import { MedicoResponseContract } from 'src/app/models/medico/medicoResponseContract';
+import { MedicoService } from 'src/app/services/medico.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,21 +12,57 @@ import Swal from 'sweetalert2';
   styleUrls: ['./admin-cadastrar-medico.component.css']
 })
 export class AdminCadastrarMedicoComponent {
-  constructor(private location: Location) {}
+  constructor(public medicoService: MedicoService ,private location: Location, public formBuilder: FormBuilder) {}
+  cadastroForm: FormGroup;
+
+  ngOnInit(): void {
+    this.cadastroForm = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        nome: ['', [Validators.required]],
+        cpf: ['', [Validators.required]],
+        crm: ['', [Validators.required]],
+        especialidade: ['', [Validators.required]],
+      }
+    )
+  }
+
+  get dadosForm(){
+    return this, this.cadastroForm.controls;
+  }
 
   voltar() {
     this.location.back();
   }
 
-  cadastrarServico(){
-    Swal.fire({
-      title: "Médico cadastrado!",
-      imageUrl: "/assets/images/joiaconcluido.png",
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "Registro inserido icone",
-      confirmButtonColor: "#0099B9",
-      confirmButtonText: "Concluído",
-    });
+  cadastrarMedico() {
+    const observer = {
+      next: (medico: MedicoResponseContract) => {
+        Swal.fire({
+          title: "Médico cadastrado!",
+          imageUrl: "/assets/images/joiaconcluido.png",
+          imageWidth: 250,
+          imageHeight: 200,
+          imageAlt: "Registro inserido icone",
+          confirmButtonColor: "#0099B9",
+          confirmButtonText: "Concluído",
+        });
+      },
+      error: (err: any) => {
+        alert('Ocorreu um erro');
+      }
+    };
+
+    const medico: MedicoRequestContract = {
+      nome: this.dadosForm["nome"]?.value,
+      cpf: this.dadosForm["cpf"]?.value,
+      email: this.dadosForm["email"]?.value,
+      crm: this.dadosForm["crm"]?.value,
+      especialidade: this.dadosForm["especialidade"]?.value,
+      hospitalId: 0,
+      criadoPorUsuarioId: 0
+    }
+
+    this.medicoService.create(medico).subscribe(observer);
   }
 }
