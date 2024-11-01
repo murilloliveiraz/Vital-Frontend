@@ -34,7 +34,7 @@ export class AdminCadastrarHospitalComponent {
     this.location.back();
   }
 
-  cadastrarServico() {
+  cadastrarHospital() {
     const observer = {
       next: (hospital: HospitalResponseContract) => {
         Swal.fire({
@@ -59,7 +59,6 @@ export class AdminCadastrarHospitalComponent {
       telefone: this.dadosForm["telefone"]?.value,
     }
 
-    console.log(hospital)
     this.hospitalService.create(hospital).subscribe(observer);
   }
 }

@@ -5,24 +5,14 @@
   <h2 class="font-bold">Cadastrar serviço</h2>
 </nav>
 <main class="flex flex-col gap-9 mb-24 items-center">
-  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" action="POST">
+  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" [formGroup]="cadastroForm">
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Nome do serviço</label>
-      <input type="text" placeholder="Escreva o nome do serviço" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-    </div>
-    <div class="mb-6">
-      <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Unidade Hospitalar</label>
-      <select id="hospitais" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <option selected>Escolha um hospital</option>
-        <option value="US">Hospital Albert Einstein - Alphaville</option>
-        <option value="CA">Hospital Albert Einstein - Morumbi</option>
-        <option value="FR">Hospital Albert Einstein - Chácara Klabin</option>
-        <option value="DE">Hospital Albert Einstein - Ibirapuera</option>
-      </select>
+      <input type="text" formControlName="nome" placeholder="Escreva o nome do serviço" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Descrição</label>
-      <textarea id="message" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Escreva uma descrição para o serviço...."></textarea>
+      <textarea id="message" formControlName="descricao" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Escreva uma descrição para o serviço...."></textarea>
     </div>
   </form>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="cadastrarServico()">Cadastrar serviço</button>

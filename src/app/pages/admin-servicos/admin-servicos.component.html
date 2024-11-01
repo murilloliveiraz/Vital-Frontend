@@ -1,4 +1,4 @@
 <main class="flex flex-col items-center gap-8">
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/cadastrar-servico'">Cadastrar Serviço</button>
-  <app-servico-card *ngFor="let item of servicosHospitalares" [descricao]="item.descricao" [titulo]="item.titulo"></app-servico-card>
+  <app-servico-card *ngFor="let item of servicosHospitalares" [descricao]="item.descricao" [titulo]="item.nome"></app-servico-card>
 </main>
