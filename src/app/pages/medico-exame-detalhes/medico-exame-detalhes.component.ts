@@ -26,6 +26,7 @@ export class MedicoExameDetalhesComponent {
       const exameId = Number(exameIdParameter)
       this.examesService.obterExamePorId(exameId).pipe(
         switchMap((exame: AgendarExameResponse) => {
+          console.log(exame)
           this.exame = exame;
           if (this.exame) {
             this.formFields = [

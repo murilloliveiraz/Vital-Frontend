@@ -12,6 +12,6 @@ export interface RegistroConteudo {
   diagnostico?: string;
   planoDeTratamento?: string;
   observacoes?: string;
-  medicamentos?: string;
+  medicacoes?: string;
   [key: string]: any;
 }
