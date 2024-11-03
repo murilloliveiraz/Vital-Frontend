@@ -16,7 +16,7 @@
   <section
     class="flex flex-col justify-center items-center w-[384px] pl-5"
   >
-    <app-form-conta-usuario [fields]="formFields"></app-form-conta-usuario>
+    <app-form-conta-usuario [fields]="formFields" *ngIf="formFields.length > 0"></app-form-conta-usuario>
   </section>
   <div class="flex flex-col gap-4">
     <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="inserirRegistro()">Inserir Registro</button>

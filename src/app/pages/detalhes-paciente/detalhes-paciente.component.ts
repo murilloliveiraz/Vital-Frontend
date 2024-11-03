@@ -1,12 +1,18 @@
 import { Location } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormContaUsuarioComponent } from 'src/app/components/form-conta-usuario/form-conta-usuario.component';
+import { Agendamento } from 'src/app/interfaces/Agendamento';
 import { ProntuarioRegistro } from 'src/app/interfaces/ProntuarioRegistro';
-import { Paciente } from 'src/app/models/paciente';
+import { AgendarConsultaResponseContract } from 'src/app/models/consulta/agendarConsultaResponseContract';
+import { ConsultaConcluidaResponseContract } from 'src/app/models/consulta/consultaConcluidaResponseContract';
+import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
+import { ExameConcluidoResponse } from 'src/app/models/exame/ExameConcluidoResponse';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
+import { ExamesService } from 'src/app/services/exames.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import Swal from 'sweetalert2';
+import { PacienteRequestContract } from 'src/app/models/paciente/pacienteRequestContract';
 
 @Component({
   selector: 'app-detalhes-paciente',
@@ -17,6 +23,12 @@ export class DetalhesPacienteComponent {
   @ViewChild(FormContaUsuarioComponent) pacienteFormComponent!: FormContaUsuarioComponent;
   paciente: PacienteResponseContract;
   prontuario: ProntuarioRegistro;
+  examesConcluidos: ExameConcluidoResponse[] = [];
+  examesAgendados: AgendarExameResponse[] = [];
+  consultasexamesConcluidos: ConsultaConcluidaResponseContract[] = [];
+  consultasAgendados: AgendarConsultaResponseContract[] = [];
+  tela: string = '';
+  agendamentos: Agendamento[] = []
 
   selectedButton: string | null = "dados";
 
@@ -26,10 +38,20 @@ export class DetalhesPacienteComponent {
 
   dadosFormFields = [];
 
-  constructor(private route: ActivatedRoute, private location: Location, public pacienteService: PacienteService) {}
+  constructor(private route: ActivatedRoute, private location: Location, public pacienteService: PacienteService, public examesService: ExamesService, public router: Router) {}
 
   ngOnInit() {
     const pacienteId = this.route.snapshot.paramMap.get('id');
+    const fullUrl = this.router.url;
+    const isMedico = fullUrl.includes('/medico');
+    const isAdmin = fullUrl.includes('/admin');
+    if (isMedico) {
+      this.tela = "medico"
+    } else if (isAdmin) {
+      this.tela = "admin"
+    } else {
+      console.log('Tela desconhecida');
+    }
     if (pacienteId) {
       const pacienteIdNumber = Number(pacienteId);
       this.pacienteService.getById(pacienteIdNumber).subscribe((data: PacienteResponseContract) => {
@@ -44,9 +66,23 @@ export class DetalhesPacienteComponent {
             { inputType: 'input', label: 'Sexo', controlName: 'sexo', type: 'text', value: this.paciente?.sexo, placeholder: 'Sexo', disabled: true },
             { inputType: 'input', label: 'Data de nascimento', controlName: 'dataDeNascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true }
           ];
+          this.buscarExamesAgendados(pacienteIdNumber)
+          this.buscarExamesConcluidos(pacienteIdNumber)
         }
       });
     }
+  }
+
+  buscarExamesAgendados(id: number){
+    this.examesService.obterExamesAgendadosPorPaciente(id).subscribe((data: AgendarExameResponse[]) => {
+      this.examesAgendados = data;
+    });
+  }
+
+  buscarExamesConcluidos(id: number){
+    this.examesService.obterExamesConcluidosPorPaciente(id).subscribe((data: ExameConcluidoResponse[]) => {
+      this.examesConcluidos = data;
+    });
   }
 
   formatDate(date: Date): string | null {
@@ -59,18 +95,40 @@ export class DetalhesPacienteComponent {
     this.selectedButton = button;
   }
 
-  salvarAlteracoes(){
+  salvarAlteracoes() {
+    const observer = {
+      next: (paciente: PacienteResponseContract) => {
+        Swal.fire({
+          title: "Alterações Salvas!",
+          text: "O registro foi inserido no prontuário do paciente.",
+          imageUrl: "/assets/images/joiaconcluido.png",
+          imageWidth: 250,
+          imageHeight: 200,
+          imageAlt: "Registro inserido icone",
+          confirmButtonColor: "#0099B9",
+          confirmButtonText: "Concluído",
+        });
+      },
+      error: (err: any) => {
+        alert('Ocorreu um erro');
+      }
+    };
+
     const formData = this.pacienteFormComponent.formGroup.value;
-    console.log(formData)
-    Swal.fire({
-      title: "Alterações Salvas!",
-      text: "O registro foi inserido no prontuário do paciente.",
-      imageUrl: "/assets/images/joiaconcluido.png",
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "Registro inserido icone",
-      confirmButtonColor: "#0099B9",
-      confirmButtonText: "Concluído",
-    });
+
+    const paciente: PacienteRequestContract = {
+      nome: this.paciente.nome,
+      email: this.paciente.email,
+      dataNascimento: this.paciente.dataNascimento,
+      cpf: this.paciente.cpf,
+      pcd: this.paciente.pcd,
+      sexo: this.paciente.sexo,
+      criadoPorUsuarioId: this.paciente.criadoPorUsuarioId,
+      alergias: formData.alergias,
+      medicamentos: formData.medicamentos,
+      historicoFamiliar: formData.historicoFamiliar,
+    }
+
+    this.pacienteService.update(this.paciente.id, paciente).subscribe(observer);
   }
 }

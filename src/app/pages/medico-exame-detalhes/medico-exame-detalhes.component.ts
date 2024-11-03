@@ -30,10 +30,10 @@ export class MedicoExameDetalhesComponent {
           this.exame = exame;
           if (this.exame) {
             this.formFields = [
-              { inputType: 'input', label: 'Exame', type: 'text', value: this.exame.nome || '', placeholder: 'nome do exame', disabled: true },
-              { inputType: 'input', label: 'Local', type: 'text', value: this.exame.local || '', placeholder: 'hospital', disabled: true },
-              { inputType: 'textarea', label: 'Queixa do paciente', type: 'text', value: this.exame.queixasDoPaciente || '', placeholder: 'queixa', disabled: true },
-              { inputType: 'textarea', label: 'Observações pré-exame', type: 'text', value: this.exame.observacoesDaClinica || '', placeholder: 'Observações da clínica', disabled: true }
+              { inputType: 'input', controlName: "exame",  label: 'Exame', type: 'text', value: this.exame.nome || '', placeholder: 'nome do exame', disabled: true },
+              { inputType: 'input', controlName: "local", label: 'Local', type: 'text', value: this.exame.local || '', placeholder: 'hospital', disabled: true },
+              { inputType: 'textarea', controlName: "queixa", label: 'Queixa do paciente', type: 'text', value: this.exame.queixasDoPaciente || '', placeholder: 'queixa', disabled: true },
+              { inputType: 'textarea', controlName: "observações", label: 'Observações pré-exame', type: 'text', value: this.exame.observacoesDaClinica || '', placeholder: 'Observações da clínica', disabled: true }
             ];
           }
           return exame ? this.pacienteService.getById(exame.pacienteId) : of();
@@ -50,11 +50,11 @@ export class MedicoExameDetalhesComponent {
   }
 
   inserirRegistro() {
-    this.router.navigate(['medico/exame-detalhes', this.exame.exameId.toString(), 'inserir-registro', this.exame.pacienteId.toString()]);
+    this.router.navigate(['medico/exame-detalhes', this.exame.id.toString(), 'inserir-registro', this.exame.pacienteId.toString()]);
   }
 
   concluirExame(){
-    this.examesService.concluirExame(this.exame.exameId).subscribe(() => {
+    this.examesService.concluirExame(this.exame.id).subscribe(() => {
       Swal.fire({
         title: "Exame Concluído!",
         text: "O status do exame foi alterado para: Concluido.",

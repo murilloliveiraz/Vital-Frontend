@@ -58,10 +58,6 @@ const routes: Routes = [
       path: 'historico/agendamentos-paciente/:pacienteId', component: AdminPacienteAgendamentosComponent
     },
     {
-      path: 'historico/agendamentos-paciente/:pacienteId/anexar-documento/:tipo/:id',
-      component: AdminAnexarDocumentoComponent
-    },
-    {
       path: 'agendamentos/novo', component: AdminAgendamentosComponent
     },
     {
@@ -69,6 +65,10 @@ const routes: Routes = [
     },
     {
       path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent
+    },
+    {
+      path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
+      component: AdminAnexarDocumentoComponent
     },
    ]
   },

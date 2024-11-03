@@ -8,6 +8,6 @@
   </div>
   <img *ngIf="exame.status == 'Concluido'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="">
   <img *ngIf="exame.status == 'Agendado' && tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
-  [routerLink]="['anexar-documento', 'exame', exame.exameId]">
+  [routerLink]="['anexar-documento', 'exame', exame.id]">
   <img *ngIf="exame.status == 'Agendado' && tela != 'admin'" class="h-12 grayscale-disabled" src="/assets/images/download.svg" alt="download icone" srcset="">
 </article>

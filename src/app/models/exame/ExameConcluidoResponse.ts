@@ -1,5 +1,5 @@
 export class ExameConcluidoResponse {
-    exameId: number;
+    id: number;
     nome: string;
     status: string;
     local: string;

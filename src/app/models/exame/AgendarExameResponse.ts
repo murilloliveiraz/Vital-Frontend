@@ -1,5 +1,5 @@
 export class AgendarExameResponse {
-    exameId: number;
+    id: number;
     nome: string;
     pacienteNome: string;
     local: string;
@@ -10,4 +10,5 @@ export class AgendarExameResponse {
     status: string;
     queixasDoPaciente: string;
     observacoesDaClinica: string;
+    tipo: 'exame';
 }

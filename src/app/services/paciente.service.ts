@@ -42,7 +42,7 @@ export class PacienteService {
     return this.httpClient.get<PacienteResponseContract[]>(`${this.baseURL}/pesquisar/nome?name=${name}`);
   }
 
-  update(id: number, paciente: PacienteRequestContract): Observable<void> {
-    return this.httpClient.put<void>(`${this.baseURL}/${id}`, paciente);
+  update(id: number, paciente: PacienteRequestContract): Observable<PacienteResponseContract> {
+    return this.httpClient.put<PacienteResponseContract>(`${this.baseURL}/${id}`, paciente);
   }
 }

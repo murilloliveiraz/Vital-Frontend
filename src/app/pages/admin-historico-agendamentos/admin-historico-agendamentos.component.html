@@ -15,6 +15,6 @@
     </div>
   </form>
   <section class="grid gap-5 place-content-center">
-    <app-ultimos-pacientes-card [proximosExames]="proximosExames" tela="agendamentos-paciente"></app-ultimos-pacientes-card>
+    <app-ultimos-pacientes-card *ngIf="agendamentos.length > 0" [agendamentos]="agendamentos" tela="agendamentos"></app-ultimos-pacientes-card>
   </section>
 </main>

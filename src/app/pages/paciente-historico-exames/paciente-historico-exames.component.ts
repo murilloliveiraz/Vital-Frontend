@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Exame } from 'src/app/models/exame';
+import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
+import { ExameConcluidoResponse } from 'src/app/models/exame/ExameConcluidoResponse';
 import { Paciente } from 'src/app/models/paciente';
 
 @Component({
@@ -10,65 +12,9 @@ import { Paciente } from 'src/app/models/paciente';
 export class PacienteHistoricoExamesComponent {
   selectedButton: string | null = "anteriores";
 
-  examesConcluidos: Exame[] = [
-    new Exame(
-      1,
-      'Exame de Sangue',
-      'Concluido',
-      'Laboratório A',
-      new Date('2024-10-09').toLocaleDateString('pt-BR'),
-      new Paciente(
-        0,
-        "Luana Camila",
-        "Feminino",
-        "5646578945132",
-        new Date('04/11/2005'),
-      ),
-      'caminho/para/o/s3',
-      'Dor no peito',
-      'Jejum de 8 horas',
-      '/assets/images/resultado1.jfif'
-    ),
-    new Exame(
-      3,
-      'Raio-X',
-      'Concluido',
-      'Laboratório C',
-      new Date('2024-10-07').toLocaleDateString('pt-BR'),
-      new Paciente(
-        0,
-        "Luana Camila",
-        "Feminino",
-        "5646578945132",
-        new Date('04/11/2005'),
-      ),
-      'caminho/para/o/s3',
-      'Muita dor no braço',
-      'Nenhum pré-preparo',
-      '/assets/images/resultado3.jfif'
-    ),
-  ];
+  examesConcluidos: ExameConcluidoResponse[] = [];
 
-  examesAgendados: Exame[] = [
-    new Exame(
-      2,
-      'Exame de Urina',
-      'Agendado',
-      'Laboratório B',
-      new Date('2024-10-08').toLocaleDateString('pt-BR'),
-      new Paciente(
-        0,
-        "Luana Camila",
-        "Feminino",
-        "5646578945132",
-        new Date('04/11/2005'),
-      ),
-      'caminho/para/o/s3',
-      'Dor no membro',
-      'Jejum de 8 horas',
-      null // Exame agendado, sem URL de resultado
-    ),
-  ];
+  examesAgendados: AgendarExameResponse[] = [];
 
   selectButton(button: string) {
     this.selectedButton = button;
