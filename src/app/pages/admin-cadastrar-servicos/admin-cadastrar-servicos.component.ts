@@ -22,6 +22,8 @@ export class AdminCadastrarServicosComponent {
       {
         nome: ['', [Validators.required]],
         descricao: ['', [Validators.required]],
+        especializacao: ['', [Validators.required]],
+        valor: ['', [Validators.required]],
       }
     )
   }
@@ -55,6 +57,8 @@ export class AdminCadastrarServicosComponent {
     const servico: ServicoRequestContract = {
       nome: this.dadosForm["nome"]?.value,
       descricao: this.dadosForm["descricao"]?.value,
+      especializacao: this.dadosForm["especializacao"]?.value,
+      valor: this.dadosForm["valor"]?.value,
     }
 
     this.servicoService.create(servico).subscribe(observer);

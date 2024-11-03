@@ -14,6 +14,14 @@
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Descrição</label>
       <textarea id="message" formControlName="descricao" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Escreva uma descrição para o serviço...."></textarea>
     </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Especialização</label>
+      <input type="text" formControlName="especializacao" placeholder="Escreva o nome da especialização" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Valor</label>
+      <input type="number" formControlName="valor" placeholder="Escreva o valor do serviço" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    </div>
   </form>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="cadastrarServico()">Cadastrar serviço</button>
 </main>

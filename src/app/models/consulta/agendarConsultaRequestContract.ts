@@ -3,6 +3,7 @@ export class AgendarConsultaRequestContract {
   valorConsulta: number;
   tipoConsulta: string;
   local?: string;
+  statusPagamento?: string;
   data: Date;
   pacienteId: number;
   medicoId: number;

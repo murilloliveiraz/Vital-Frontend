@@ -30,7 +30,7 @@ export class HospitalService {
   }
 
   getByName(nome: string): Observable<HospitalResponseContract> {
-    return this.httpClient.get<HospitalResponseContract>(`${this.baseURL}/pesquisar/nome?nome=${nome}`);
+    return this.httpClient.get<HospitalResponseContract>(`${this.baseURL}/pesquisar/nome?name=${nome}`);
   }
 
   getAllByLocation(estado: string): Observable<HospitalResponseContract[]> {
