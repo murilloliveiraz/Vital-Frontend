@@ -54,7 +54,7 @@
   >
     <app-card-exame-historico *ngFor="let item of examesAgendados" [tela]="tela" [exame]="item">
     </app-card-exame-historico>
-    <h1 *ngIf="examesConcluidos.length < 1">Nenhum exame agendado</h1>
+    <h1 *ngIf="examesAgendados.length < 1">Nenhum exame agendado</h1>
   </section>
 
 
@@ -63,7 +63,7 @@
     *ngIf="selectedType == 'consultas' && selectedButton !== 'concluidos'"
   >
     <app-consulta-card *ngFor="let item of consultasAgendadas" [consulta]="item" [tela]="tela"></app-consulta-card>
-    <h1 *ngIf="examesConcluidos.length < 1">Nenhuma consulta agendada</h1>
+    <h1 *ngIf="consultasAgendadas.length < 1">Nenhuma consulta agendada</h1>
   </section>
 
   <section
@@ -71,6 +71,6 @@
   *ngIf="selectedType == 'consultas' && selectedButton !== 'agendados'"
   >
     <app-consulta-card *ngFor="let item of consultasConcluidas" [consulta]="item" [tela]="tela"></app-consulta-card>
-    <h1 *ngIf="examesConcluidos.length < 1">Nenhuma consulta concluída</h1>
+    <h1 *ngIf="consultasConcluidas.length < 1">Nenhuma consulta concluída</h1>
   </section>
 </section>

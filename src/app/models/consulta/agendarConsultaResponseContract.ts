@@ -4,6 +4,7 @@ export class AgendarConsultaResponseContract {
   id: number;
   nome: string;
   valorConsulta: number;
+  queixasDoPaciente?: string;
   tipoConsulta: string;
   pacienteNome: string;
   local?: string;
