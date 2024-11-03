@@ -22,8 +22,6 @@ export class PacienteHomeComponent {
       speed: 400,
       autoplay: true,
     });
-
-
     splide.mount();
   }
 }

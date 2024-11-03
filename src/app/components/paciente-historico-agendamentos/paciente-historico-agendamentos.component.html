@@ -43,16 +43,18 @@
     class="flex flex-col justify-center items-center"
     *ngIf="selectedType === 'exames' && selectedButton !== 'agendados'"
   >
-    <app-card-exame-historico *ngFor="let item of examesConcluidos" tela="admin" [exame]="item">
+    <app-card-exame-historico *ngFor="let item of examesConcluidos" [tela]="tela" [exame]="item">
     </app-card-exame-historico>
+    <h1 *ngIf="examesConcluidos.length < 1">Nenhum exame concluído</h1>
   </section>
 
   <section
     class="flex flex-col justify-center items-center"
     *ngIf="selectedType === 'exames' && selectedButton !== 'concluidos'"
   >
-    <app-card-exame-historico *ngFor="let item of examesAgendados" tela="admin" [exame]="item">
+    <app-card-exame-historico *ngFor="let item of examesAgendados" [tela]="tela" [exame]="item">
     </app-card-exame-historico>
+    <h1 *ngIf="examesConcluidos.length < 1">Nenhum exame agendado</h1>
   </section>
 
 
@@ -60,13 +62,15 @@
     class="flex flex-col justify-center items-center"
     *ngIf="selectedType == 'consultas' && selectedButton !== 'concluidos'"
   >
-    <app-consulta-card *ngFor="let item of consultasAgendadas" [consulta]="item" tela="admin"></app-consulta-card>
+    <app-consulta-card *ngFor="let item of consultasAgendadas" [consulta]="item" [tela]="tela"></app-consulta-card>
+    <h1 *ngIf="examesConcluidos.length < 1">Nenhuma consulta agendada</h1>
   </section>
 
   <section
   class="flex flex-col justify-center items-center"
   *ngIf="selectedType == 'consultas' && selectedButton !== 'agendados'"
   >
-    <app-consulta-card *ngFor="let item of consultasConcluidas" [consulta]="item" tela="admin"></app-consulta-card>
+    <app-consulta-card *ngFor="let item of consultasConcluidas" [consulta]="item" [tela]="tela"></app-consulta-card>
+    <h1 *ngIf="examesConcluidos.length < 1">Nenhuma consulta concluída</h1>
   </section>
 </section>

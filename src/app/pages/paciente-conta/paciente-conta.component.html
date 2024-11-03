@@ -2,40 +2,7 @@
   <nav class="flex gap-5 pl-5 pt-9">
     <h2 class="font-bold">Meus dados</h2>
   </nav>
-  <section class="grid grid-cols-3  max-w-sm pl-5 gap-5">
-    <img src="/assets/images/profile-picture.jpeg" alt="Foto de perfil" class="rounded-lg">
-    <div class="grid grid-rows-2 col-span-2">
-      <button
-      type="button"
-      class="focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-16"
-      [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'laudos', 'button-header-historico-pacientes': selectedButton !== 'laudos'}"
-      (click)="selectButton('laudos')"
-    >
-      Laudos disponíveis
-    </button>
-
-    <button
-      type="button"
-      class="focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-16"
-      [ngClass]="{'button-header-historico-pacientes-focus': selectedButton === 'dados', 'button-header-historico-pacientes': selectedButton !== 'dados'}"
-      (click)="selectButton('dados')"
-    >
-    Dados
-    </button>
-    </div>
-  </section>
-
-  <section
-    class="flex flex-col justify-center items-center w-[384px] pl-5"
-    [ngClass]="{'hidden': selectedButton === 'laudos'}"
-  >
+  <section class="grid max-w-sm pl-5 gap-5" *ngIf="formFields && formFields.length >= 1">
     <app-form-conta-usuario [fields]="formFields"></app-form-conta-usuario>
-  </section>
-
-  <section
-  class="flex flex-col justify-center items-center"
-  [ngClass]="{'hidden': selectedButton === 'dados'}"
-  >
-    <app-paciente-laudos-slider></app-paciente-laudos-slider>
   </section>
 </main>
