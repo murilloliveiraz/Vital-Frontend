@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@mercadopago/sdk-js": "^0.0.3",
     "@splidejs/splide": "^4.1.4",
     "@types/google-one-tap": "^1.2.6",
     "flowbite": "^2.5.2",
