@@ -7,6 +7,7 @@ import { AgendarConsultaFormResponse } from 'src/app/interfaces/AgendarConsultaF
 import { MedicoResponseContract } from 'src/app/models/medico/medicoResponseContract';
 import { MedicoService } from './../../services/medico.service';
 import { HospitalServicoService } from 'src/app/services/hospitalServico.service';
+import { ServicoService } from './../../services/servico.service';
 declare var Datepicker: any;
 @Component({
   selector: 'app-agendar-consulta-form',
@@ -25,10 +26,11 @@ export class AgendarConsultaFormComponent {
   valor: number;
   hospital: HospitalResponseContract;
 
-  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService) {}
+  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService, public servicoService: ServicoService) {}
 
   ngOnInit(): void {
     this.getAllHospitais();
+    this.getAllServices();
     this.initDatePicker();
     this.agendamentoForm = this.formBuilder.group(
       {
@@ -43,6 +45,12 @@ export class AgendarConsultaFormComponent {
 
   getAllHospitalServices(id: number){
     this.hospitalServicoService.getAllByHospitalId(id).subscribe((data: ServicoResponseContract[]) => {
+      this.servicosHospitalares = data;
+    });
+  }
+
+  getAllServices(){
+    this.servicoService.getAll().subscribe((data: ServicoResponseContract[]) => {
       this.servicosHospitalares = data;
     });
   }

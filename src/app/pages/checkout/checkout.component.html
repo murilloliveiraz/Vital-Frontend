@@ -29,6 +29,12 @@
   </div>
 
   <app-credit-card-form *ngIf="selectedButton === 'credito'"></app-credit-card-form>
-  <app-pix-form *ngIf="selectedButton === 'pix'"></app-pix-form>
+  <app-pix-form *ngIf="selectedButton === 'pix' && !loadingPixData"
+               [qrCodeBase64]="qrCodeBase64"
+               [qrCodeChavePix]="qrCodeChavePix"
+               [total]="consulta.valorConsulta">
+  </app-pix-form>
+
+  <div *ngIf="selectedButton === 'pix' && loadingPixData">Carregando dados do Pix...</div>
 </main>
 

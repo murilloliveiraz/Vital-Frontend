@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./pix-form.component.css']
 })
 export class PixFormComponent {
+  @Input() total: number;
+  @Input() qrCodeBase64: string;
+  @Input() qrCodeChavePix: string;
   copied: boolean = false;
 
   constructor(private router: Router) {}

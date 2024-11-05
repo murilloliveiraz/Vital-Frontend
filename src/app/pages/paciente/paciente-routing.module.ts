@@ -23,7 +23,7 @@ const routes: Routes = [
       path: 'conta', component: PacienteContaComponent
     },
     {
-      path: 'checkout', component: CheckoutComponent
+      path: 'checkout/:id', component: CheckoutComponent
     },
     {
       path: 'agendar-consulta', component: PacienteAgendarConsultaComponent

@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AgendarConsultaFormComponent } from 'src/app/components/agendar-consulta-form/agendar-consulta-form.component';
 import { AgendarConsultaFormResponse } from 'src/app/interfaces/AgendarConsultaFormResponse';
 import { AgendarConsultaRequestContract } from 'src/app/models/consulta/agendarConsultaRequestContract';
@@ -21,6 +21,7 @@ export class PacienteAgendarConsultaComponent {
   @ViewChild(AgendarConsultaFormComponent) agendarConsultaFormComponent!: AgendarConsultaFormComponent;
   paciente: Paciente;
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     public pacienteService: PacienteService,
@@ -71,6 +72,9 @@ export class PacienteAgendarConsultaComponent {
     if(formData.tipoConsulta == "presencial"){
       this.AgendarConsultaPresencial(consulta);
     }
+    else {
+      this.AgendarConsultaRemota(consulta);
+    }
   }
 
   private AgendarConsultaPresencial(consulta: AgendarConsultaRequestContract) {
@@ -86,6 +90,17 @@ export class PacienteAgendarConsultaComponent {
           confirmButtonColor: "#0099B9",
           confirmButtonText: "Concluído",
         });
+      },
+      error: (error) => {
+        alert('Erro ao agendar consulta');
+      }
+    });
+  }
+
+  private AgendarConsultaRemota(consulta: AgendarConsultaRequestContract) {
+    this.consultaService.agendarConsultaRemota(consulta).subscribe({
+      next: (consulta: AgendarConsultaResponseContract) => {
+        this.router.navigate([`paciente/checkout/${consulta.id}`]);
       },
       error: (error) => {
         alert('Erro ao agendar consulta');
