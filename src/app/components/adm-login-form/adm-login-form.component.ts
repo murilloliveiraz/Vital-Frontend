@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { LoginComponent } from './../../pages/login/login.component';
+import { Component, EventEmitter, Output, ViewChild, AfterViewInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioLoginRequest } from 'src/app/models/usuario/usuarioLoginRequest';
@@ -11,25 +12,32 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './adm-login-form.component.html',
   styleUrls: ['./adm-login-form.component.css']
 })
+
 export class AdmLoginFormComponent {
   isPopupVisible = false; // Variável para controlar a visibilidade do popup
 
+
   showPopup() {
-    this.isPopupVisible = true; // Muda para verdadeiro para mostrar o popup
+    this.isPopupVisible = true;
+   // Muda para verdadeiro para mostrar o popup
   }
+
 
   closePopup() {
     this.isPopupVisible = false; // Para esconder o popup
+
   }
 
   isPopupVisible2 = false; // Variável para controlar a visibilidade do popup
 
   showPopup2() {
     this.isPopupVisible2 = true; // Muda para verdadeiro para mostrar o popup
+
   }
 
   closePopup2() {
     this.isPopupVisible2 = false; // Para esconder o popup
+
   }
 
   constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService){}
