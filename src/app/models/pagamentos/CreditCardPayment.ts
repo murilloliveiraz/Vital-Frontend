@@ -1,5 +1,5 @@
 export class CreditCardPayment {
-  transactionAmount: number;
+    transactionAmount: number;
     token: string;
     nomeServico: string;
     valorConsulta: number;

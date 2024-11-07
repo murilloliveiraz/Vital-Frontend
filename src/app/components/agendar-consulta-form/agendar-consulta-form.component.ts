@@ -52,6 +52,7 @@ export class AgendarConsultaFormComponent {
   getAllServices(){
     this.servicoService.getAll().subscribe((data: ServicoResponseContract[]) => {
       this.servicosHospitalares = data;
+      console.log(this.servicosHospitalares)
     });
   }
 
@@ -97,7 +98,8 @@ export class AgendarConsultaFormComponent {
     const selectElement = event.target as HTMLSelectElement;
     const selectedValue = selectElement.value;
     this.valor = this.servicosHospitalares.find(s => s.nome == selectedValue).valor;
-    this.medicoService.getAllBySpecialization(selectedValue).subscribe((data: MedicoResponseContract[]) => {
+    const especializacao = this.servicosHospitalares.find(s => s.nome == selectedValue).especializacao;
+    this.medicoService.getAllBySpecialization(especializacao).subscribe((data: MedicoResponseContract[]) => {
       this.medicos = data;
     });
   }

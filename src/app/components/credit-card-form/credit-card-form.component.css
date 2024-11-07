@@ -1,0 +1,3 @@
+progress::-moz-progress-bar { background: #108999; }
+progress::-webkit-progress-value { background: #108999; }
+progress { color: #108999; }
