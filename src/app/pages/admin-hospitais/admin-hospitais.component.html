@@ -1,4 +1,4 @@
 <main class="flex flex-col items-center gap-8">
-  <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/cadastrar-hospital'">Cadastrar Hospital</button>
+  <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/hospitais/novo'">Cadastrar Hospital</button>
   <app-hospital-card *ngFor="let item of hospitais" [nome]="item.nome" [endereco]="item.endereco" [estado]="item.estado" [telefone]="item.telefone"></app-hospital-card>
 </main>
