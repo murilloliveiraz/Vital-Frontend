@@ -68,6 +68,7 @@ import { MedicoExameDetalhesComponent } from './pages/medico-exame-detalhes/medi
 import { PacienteHistoricoAgendamentosComponent } from './components/paciente-historico-agendamentos/paciente-historico-agendamentos.component';
 import { AdminColaboradoresComponent } from './pages/admin-colaboradores/admin-colaboradores.component';
 import { AdminCadastrarColaboradorComponent } from './pages/admin-cadastrar-colaborador/admin-cadastrar-colaborador.component';
+import { ColaboradorCardComponent } from './components/colaborador-card/colaborador-card.component';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     MedicoExameDetalhesComponent,
     PacienteHistoricoAgendamentosComponent,
     AdminColaboradoresComponent,
-    AdminCadastrarColaboradorComponent
+    AdminCadastrarColaboradorComponent,
+    ColaboradorCardComponent
   ],
   imports: [
     BrowserModule,
