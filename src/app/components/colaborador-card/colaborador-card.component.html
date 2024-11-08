@@ -1,0 +1,12 @@
+<div class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
+  <div>
+    <h3 class="font-semibold">{{colaborador.nome}}</h3>
+    <p class="text-sm text-[#0e687b]">{{colaborador.cargo}}</p>
+  </div>
+  <div class="flex justify-between items-center">
+    <div>
+      <p class="text-sm text-[#0e687b] font-semibold">Data da contratação: {{colaborador.dataCriacao| date: 'dd/MM/yyyy' }}</p>
+      <p class="text-sm font-normal">CPF: {{colaborador.email}}</p>
+    </div>
+  </div>
+</div>
