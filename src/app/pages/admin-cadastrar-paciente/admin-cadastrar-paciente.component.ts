@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PacienteRequestContract } from 'src/app/models/paciente/pacienteRequestContract';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
+import { AuthService } from 'src/app/services/auth.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import Swal from 'sweetalert2';
 declare var Datepicker: any;
@@ -14,13 +15,15 @@ declare var Datepicker: any;
   styleUrls: ['./admin-cadastrar-paciente.component.css']
 })
 export class AdminCadastrarPacienteComponent {
-  constructor(public pacienteService: PacienteService ,private location: Location, public formBuilder: FormBuilder) {}
+  email: string = "";
+  constructor(public pacienteService: PacienteService ,private location: Location, public formBuilder: FormBuilder, private authService: AuthService) {}
 
   cadastroForm: FormGroup;
   @ViewChild('dateField', { static: true }) dateField!: ElementRef;
   public selectedDate!: Date;
 
   ngOnInit(): void {
+    this.email = this.authService.getEmailUser();
     this.cadastroForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -82,7 +85,7 @@ export class AdminCadastrarPacienteComponent {
       email: this.dadosForm["email"]?.value,
       dataNascimento: this.selectedDate,
       sexo: this.dadosForm["sexo"]?.value,
-      criadoPorUsuarioId: 0,
+      criadoPorEmail: this.email,
       pcd: this.dadosForm["pcd"]?.value,
       alergias: this.dadosForm["alergias"]?.value,
       medicamentos: this.dadosForm["medicamentos"]?.value,

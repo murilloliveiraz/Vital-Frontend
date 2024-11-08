@@ -9,22 +9,32 @@
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Nome completo</label>
       <input type="text" formControlName="nome" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <p *ngIf="cadastroForm.get('nome')?.errors?.['required'] &&  cadastroForm.get('nome')?.touched"
+          class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Email</label>
       <input type="text" formControlName="email" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <p *ngIf="cadastroForm.get('email')?.errors?.['required'] &&  cadastroForm.get('email')?.touched"
+          class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">CPF</label>
       <input type="text" formControlName="cpf" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <p *ngIf="cadastroForm.get('cpf')?.errors?.['required'] &&  cadastroForm.get('cpf')?.touched"
+          class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">CRM</label>
       <input type="text" formControlName="crm" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <p *ngIf="cadastroForm.get('crm')?.errors?.['required'] &&  cadastroForm.get('crm')?.touched"
+          class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Especialidade</label>
       <input type="text" formControlName="especialidade" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <p *ngIf="cadastroForm.get('especialidade')?.errors?.['required'] &&  cadastroForm.get('especialidade')?.touched"
+          class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
   </form>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="cadastrarMedico()">Cadastrar médico</button>

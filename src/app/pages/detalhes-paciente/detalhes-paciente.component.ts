@@ -146,7 +146,7 @@ export class DetalhesPacienteComponent {
       cpf: this.paciente.cpf,
       pcd: this.paciente.pcd,
       sexo: this.paciente.sexo,
-      criadoPorUsuarioId: this.paciente.criadoPorUsuarioId,
+      criadoPorEmail: this.paciente.criadoPorEmail,
       alergias: formData.alergias,
       medicamentos: formData.medicamentos,
       historicoFamiliar: formData.historicoFamiliar,
