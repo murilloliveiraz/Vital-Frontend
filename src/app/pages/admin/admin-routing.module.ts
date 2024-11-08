@@ -18,6 +18,7 @@ import { AdminAgendamentosComponent } from '../admin-agendamentos/admin-agendame
 import { AdminHistoricoAgendamentosComponent } from '../admin-historico-agendamentos/admin-historico-agendamentos.component';
 import { AdminPacienteAgendamentosComponent } from '../admin-paciente-agendamentos/admin-paciente-agendamentos.component';
 import { AdminAnexarDocumentoComponent } from '../admin-anexar-documento/admin-anexar-documento.component';
+import { AuthGuard } from '../guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -25,50 +26,65 @@ const routes: Routes = [
    component: AdminComponent,
    children: [
     {
-      path: '', component: AdminHomepageComponent
+      path: '', component: AdminHomepageComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-paciente', component: AdminCadastrarPacienteComponent
+      path: 'cadastrar-paciente', component: AdminCadastrarPacienteComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'servicos', component: AdminServicosComponent
+      path: 'servicos', component: AdminServicosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-servico', component: AdminCadastrarServicosComponent
+      path: 'cadastrar-servico', component: AdminCadastrarServicosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'hospitais', component: AdminHospitaisComponent
+      path: 'hospitais', component: AdminHospitaisComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-hospital', component: AdminCadastrarHospitalComponent
+      path: 'cadastrar-hospital', component: AdminCadastrarHospitalComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'medicos', component: AdminMedicosComponent
+      path: 'medicos', component: AdminMedicosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-medico', component: AdminCadastrarMedicoComponent
+      path: 'cadastrar-medico', component: AdminCadastrarMedicoComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-colaborador', component: AdminCadastrarAdminComponent
+      path: 'cadastrar-colaborador', component: AdminCadastrarAdminComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'historico', component: AdminHistoricoAgendamentosComponent
+      path: 'historico', component: AdminHistoricoAgendamentosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'historico/agendamentos-paciente/:pacienteId', component: AdminPacienteAgendamentosComponent
+      path: 'historico/agendamentos-paciente/:pacienteId', component: AdminPacienteAgendamentosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'agendamentos/novo', component: AdminAgendamentosComponent
+      path: 'agendamentos/novo', component: AdminAgendamentosComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent
+      path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent
+      path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent,
+      canActivate:[AuthGuard]
     },
     {
       path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
-      component: AdminAnexarDocumentoComponent
+      component: AdminAnexarDocumentoComponent,
+      canActivate:[AuthGuard]
     },
    ]
   },

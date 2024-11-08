@@ -1,48 +1,48 @@
-import { Inject, Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, UrlTree, RouterStateSnapshot, CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+  CanActivate,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuardService {
-  constructor(private authService: AuthService, private router: Router) { }
-      canActivate(
-          next: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot
-        ):
-          | Observable<boolean | UrlTree>
-          | Promise<boolean | UrlTree>
-          | boolean
-          | UrlTree {
-          return new Promise(resolve =>
-            this.authService.checkToken().then((x) => {
-              this.authService.UsuarioEstaAutenticado().then(status => {
-                let redirect: string = state.root.queryParams['redirect'];
-                let blnUnAuthorize = false;
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
 
-                //validation
-                if (status === false)
-                  blnUnAuthorize = true;
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return new Promise((resolve) =>
+      this.authService.checkToken().then((x) => {
+        this.authService
+          .UsuarioEstaAutenticado()
+          .then((status) => {
+            const redirect: string = state.root.queryParams['redirect'];
+            let blnUnAuthorize = !status;
 
-                //redirect
-                if (blnUnAuthorize && redirect != null && redirect.length > 0)
-                  this.router.navigate(["login", { redirect }]);
-                else if (blnUnAuthorize)
-                  this.router.navigate(["login"]);
+            if (blnUnAuthorize) {
+              const navigationExtras = redirect ? { queryParams: { redirect } } : {};
+              this.router.navigate(['login'], navigationExtras);
+            }
 
-                resolve(status);
-              })
-                .catch(() => {
-                  this.router.navigate(["login"]);
-                  resolve(false);
-                })
-            }))
-
-        }
-}
-
-export const AuthGuard: CanActivateFn = (next: ActivatedRouteSnapshot,  state: RouterStateSnapshot): boolean => {
-  return Inject(AuthGuardService).canActivate(next, state);
+            resolve(status);
+          })
+          .catch(() => {
+            this.router.navigate(['login']);
+            resolve(false);
+          });
+      })
+    );
+  }
 }

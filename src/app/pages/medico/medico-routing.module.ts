@@ -8,6 +8,7 @@ import { MedicoHistoricoPacientesComponent } from '../medico-historico-pacientes
 import { DetalhesPacienteComponent } from '../detalhes-paciente/detalhes-paciente.component';
 import { CommonModule } from '@angular/common';
 import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
+import { AuthGuard } from '../guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -15,25 +16,32 @@ const routes: Routes = [
    component: MedicoComponent,
    children: [
     {
-      path: '', component: MedicoHomepageComponent
+      path: '', component: MedicoHomepageComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent
+      path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'consulta-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent
+      path: 'consulta-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'exame-detalhes/:id', component: MedicoExameDetalhesComponent
+      path: 'exame-detalhes/:id', component: MedicoExameDetalhesComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'exame-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent
+      path: 'exame-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'historico-pacientes', component: MedicoHistoricoPacientesComponent
+      path: 'historico-pacientes', component: MedicoHistoricoPacientesComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent
+      path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent,
+      canActivate:[AuthGuard]
     },
    ]
   },

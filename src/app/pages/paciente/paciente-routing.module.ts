@@ -7,6 +7,7 @@ import { PacienteContaComponent } from '../paciente-conta/paciente-conta.compone
 import { PacienteHistoricoExamesComponent } from '../paciente-historico-exames/paciente-historico-exames.component';
 import { CheckoutComponent } from '../checkout/checkout.component';
 import { PacienteAgendarConsultaComponent } from '../paciente-agendar-consulta/paciente-agendar-consulta.component';
+import { AuthGuard } from '../guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -14,19 +15,24 @@ const routes: Routes = [
    component: PacienteComponent,
    children: [
     {
-      path: '', component: PacienteHomeComponent
+      path: '', component: PacienteHomeComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'historico', component: PacienteHistoricoExamesComponent
+      path: 'historico', component: PacienteHistoricoExamesComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'conta', component: PacienteContaComponent
+      path: 'conta', component: PacienteContaComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'checkout/:id', component: CheckoutComponent
+      path: 'checkout/:id', component: CheckoutComponent,
+      canActivate:[AuthGuard]
     },
     {
-      path: 'agendar-consulta', component: PacienteAgendarConsultaComponent
+      path: 'agendar-consulta', component: PacienteAgendarConsultaComponent,
+      canActivate:[AuthGuard]
     },
    ]
   },

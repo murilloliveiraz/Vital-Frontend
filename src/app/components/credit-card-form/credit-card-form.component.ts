@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgendarConsultaResponseContract } from 'src/app/models/consulta/agendarConsultaResponseContract';
 import { CreditCardPayment } from 'src/app/models/pagamentos/CreditCardPayment';
@@ -13,9 +14,15 @@ import Swal from 'sweetalert2';
 })
 export class CreditCardFormComponent {
   @Input() consulta: AgendarConsultaResponseContract;
-  constructor(private router: Router, private mercadopagoService: MercadoPagoService, private creditCardService: CartaoCreditoService) {}
+  checkout: FormGroup;
+  constructor(private router: Router, private mercadopagoService: MercadoPagoService, private creditCardService: CartaoCreditoService, public formBuilder: FormBuilder) {}
 
   async ngOnInit() {
+    this.checkout = this.formBuilder.group(
+      {
+        nome: ['', [Validators.required]],
+      }
+    )
     await this.mercadopagoService.initialize();
 
     const mpInstance = this.mercadopagoService.getMercadoPagoInstance();
@@ -25,13 +32,17 @@ export class CreditCardFormComponent {
     this.createCardForm(mpInstance, valorConsulta);
   }
 
+  get dadosForm(){
+    return this, this.checkout.controls;
+  }
+
   private getValorConsulta(): number {
     return this.consulta?.valorConsulta ?? 0;
   }
 
   private createCardForm(mpInstance: any, valorConsulta: number) {
     const cardForm = mpInstance.cardForm({
-      amount: valorConsulta.toString(),
+      amount: "1.5",
       iframe: true,
       form: {
         id: "form-checkout",
@@ -94,7 +105,7 @@ export class CreditCardFormComponent {
             token,
             consultaId: this.consulta.id,
             emailPagador: email,
-            nomePagador: cardholderName,
+            nomePagador:  this.dadosForm["nome"]?.value,
             nomeServico: this.consulta.nome,
             valorConsulta: this.consulta.valorConsulta,
             paymentMethodId: payment_method_id,
@@ -103,6 +114,8 @@ export class CreditCardFormComponent {
             type: identificationType,
             transactionAmount: Number(amount),
           };
+
+          console.log(creditCardRequest)
 
           this.creditCardService.createPayment(creditCardRequest).subscribe({
             next: (response: any) => {
