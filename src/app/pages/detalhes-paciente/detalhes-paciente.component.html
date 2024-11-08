@@ -58,6 +58,12 @@
   class="flex flex-col justify-center items-center"
   [ngClass]="{'hidden': selectedButton === 'prontuario' || selectedButton === 'dados'}"
 >
-  <app-paciente-historico-agendamentos [examesAgendados]="examesAgendados" [examesConcluidos]="examesConcluidos" [tela]="tela"></app-paciente-historico-agendamentos>
+  <app-paciente-historico-agendamentos
+    [examesAgendados]="examesAgendados"
+    [examesConcluidos]="examesConcluidos"
+    [consultasAgendadas]="consultasAgendados"
+    [consultasConcluidas]="consultasConcluidos"
+    [tela]="tela">
+  </app-paciente-historico-agendamentos>
 </section>
 </main>

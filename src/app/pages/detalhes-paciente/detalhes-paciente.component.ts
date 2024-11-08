@@ -13,6 +13,7 @@ import { ExamesService } from 'src/app/services/exames.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import Swal from 'sweetalert2';
 import { PacienteRequestContract } from 'src/app/models/paciente/pacienteRequestContract';
+import { ConsultaService } from 'src/app/services/consulta.service';
 
 @Component({
   selector: 'app-detalhes-paciente',
@@ -25,7 +26,7 @@ export class DetalhesPacienteComponent {
   prontuario: ProntuarioRegistro;
   examesConcluidos: ExameConcluidoResponse[] = [];
   examesAgendados: AgendarExameResponse[] = [];
-  consultasexamesConcluidos: ConsultaConcluidaResponseContract[] = [];
+  consultasConcluidos: ConsultaConcluidaResponseContract[] = [];
   consultasAgendados: AgendarConsultaResponseContract[] = [];
   tela: string = '';
   agendamentos: Agendamento[] = []
@@ -38,7 +39,13 @@ export class DetalhesPacienteComponent {
 
   dadosFormFields = [];
 
-  constructor(private route: ActivatedRoute, private location: Location, public pacienteService: PacienteService, public examesService: ExamesService, public router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    public pacienteService: PacienteService,
+    public consultasService: ConsultaService,
+    public examesService: ExamesService,
+    public router: Router) {}
 
   ngOnInit() {
     const pacienteId = this.route.snapshot.paramMap.get('id');
@@ -68,6 +75,8 @@ export class DetalhesPacienteComponent {
           ];
           this.buscarExamesAgendados(pacienteIdNumber)
           this.buscarExamesConcluidos(pacienteIdNumber)
+          this.buscarConsultasAgendados(pacienteIdNumber)
+          this.buscarConsultasConcluidos(pacienteIdNumber)
         }
       });
     }
@@ -82,6 +91,20 @@ export class DetalhesPacienteComponent {
   buscarExamesConcluidos(id: number){
     this.examesService.obterExamesConcluidosPorPaciente(id).subscribe((data: ExameConcluidoResponse[]) => {
       this.examesConcluidos = data;
+    });
+  }
+
+  buscarConsultasAgendados(id: number){
+    this.consultasService.getConsultasAgendadasPorPaciente(id).subscribe((data: AgendarConsultaResponseContract[]) => {
+      this.consultasAgendados = data;
+      console.log(data)
+    });
+  }
+
+  buscarConsultasConcluidos(id: number){
+    this.consultasService.getConsultasConcluidasPorPaciente(id).subscribe((data: ConsultaConcluidaResponseContract[]) => {
+      this.consultasConcluidos = data;
+      console.log(data)
     });
   }
 
