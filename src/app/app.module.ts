@@ -41,7 +41,6 @@ import { AdminAgendarExameComponent } from './pages/admin-agendar-exame/admin-ag
 import { AgendarExameFormComponent } from './components/agendar-exame-form/agendar-exame-form.component';
 import { AdminCadastrarHospitalComponent } from './pages/admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from './pages/admin-cadastrar-medico/admin-cadastrar-medico.component';
-import { AdminCadastrarAdminComponent } from './pages/admin-cadastrar-admin/admin-cadastrar-admin.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CreditCardFormComponent } from './components/credit-card-form/credit-card-form.component';
 import { PixFormComponent } from './components/pix-form/pix-form.component';
@@ -67,6 +66,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProntuarioFormComponent } from './components/prontuario-form/prontuario-form.component';
 import { MedicoExameDetalhesComponent } from './pages/medico-exame-detalhes/medico-exame-detalhes.component';
 import { PacienteHistoricoAgendamentosComponent } from './components/paciente-historico-agendamentos/paciente-historico-agendamentos.component';
+import { AdminColaboradoresComponent } from './pages/admin-colaboradores/admin-colaboradores.component';
+import { AdminCadastrarColaboradorComponent } from './pages/admin-cadastrar-colaborador/admin-cadastrar-colaborador.component';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -106,7 +107,6 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     AgendarExameFormComponent,
     AdminCadastrarHospitalComponent,
     AdminCadastrarMedicoComponent,
-    AdminCadastrarAdminComponent,
     CheckoutComponent,
     CreditCardFormComponent,
     PixFormComponent,
@@ -127,7 +127,9 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     ConsultaCardComponent,
     ProntuarioFormComponent,
     MedicoExameDetalhesComponent,
-    PacienteHistoricoAgendamentosComponent
+    PacienteHistoricoAgendamentosComponent,
+    AdminColaboradoresComponent,
+    AdminCadastrarColaboradorComponent
   ],
   imports: [
     BrowserModule,

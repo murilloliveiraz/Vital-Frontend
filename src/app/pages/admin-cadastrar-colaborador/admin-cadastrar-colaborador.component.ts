@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-admin-cadastrar-admin',
-  templateUrl: './admin-cadastrar-admin.component.html',
-  styleUrls: ['./admin-cadastrar-admin.component.css']
+  selector: 'app-admin-cadastrar-colaborador',
+  templateUrl: './admin-cadastrar-colaborador.component.html',
+  styleUrls: ['./admin-cadastrar-colaborador.component.css']
 })
-export class AdminCadastrarAdminComponent {
+export class AdminCadastrarColaboradorComponent {
   constructor(private location: Location) {}
 
   voltar() {

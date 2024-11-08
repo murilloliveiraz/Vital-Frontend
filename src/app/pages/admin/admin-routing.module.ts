@@ -8,7 +8,6 @@ import { AdminCadastrarServicosComponent } from '../admin-cadastrar-servicos/adm
 import { AdminAgendarExameComponent } from '../admin-agendar-exame/admin-agendar-exame.component';
 import { AdminCadastrarHospitalComponent } from '../admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from '../admin-cadastrar-medico/admin-cadastrar-medico.component';
-import { AdminCadastrarAdminComponent } from '../admin-cadastrar-admin/admin-cadastrar-admin.component';
 import { AdminServicosComponent } from '../admin-servicos/admin-servicos.component';
 import { AdminHospitaisComponent } from '../admin-hospitais/admin-hospitais.component';
 import { AdminMedicosComponent } from '../admin-medicos/admin-medicos.component';
@@ -19,6 +18,8 @@ import { AdminHistoricoAgendamentosComponent } from '../admin-historico-agendame
 import { AdminPacienteAgendamentosComponent } from '../admin-paciente-agendamentos/admin-paciente-agendamentos.component';
 import { AdminAnexarDocumentoComponent } from '../admin-anexar-documento/admin-anexar-documento.component';
 import { AuthGuard } from '../guard/auth-guard.service';
+import { AdminColaboradoresComponent } from '../admin-colaboradores/admin-colaboradores.component';
+import { AdminCadastrarColaboradorComponent } from '../admin-cadastrar-colaborador/admin-cadastrar-colaborador.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
       canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-paciente', component: AdminCadastrarPacienteComponent,
+      path: 'pacientes/novo', component: AdminCadastrarPacienteComponent,
       canActivate:[AuthGuard]
     },
     {
@@ -38,7 +39,7 @@ const routes: Routes = [
       canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-servico', component: AdminCadastrarServicosComponent,
+      path: 'servicos/novo', component: AdminCadastrarServicosComponent,
       canActivate:[AuthGuard]
     },
     {
@@ -46,7 +47,7 @@ const routes: Routes = [
       canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-hospital', component: AdminCadastrarHospitalComponent,
+      path: 'hospitais/novo', component: AdminCadastrarHospitalComponent,
       canActivate:[AuthGuard]
     },
     {
@@ -54,11 +55,7 @@ const routes: Routes = [
       canActivate:[AuthGuard]
     },
     {
-      path: 'cadastrar-medico', component: AdminCadastrarMedicoComponent,
-      canActivate:[AuthGuard]
-    },
-    {
-      path: 'cadastrar-colaborador', component: AdminCadastrarAdminComponent,
+      path: 'medico/novo', component: AdminCadastrarMedicoComponent,
       canActivate:[AuthGuard]
     },
     {
@@ -84,6 +81,13 @@ const routes: Routes = [
     {
       path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
       component: AdminAnexarDocumentoComponent,
+      canActivate:[AuthGuard]
+    },
+    {
+      path: 'colaboradores', component: AdminColaboradoresComponent,
+      canActivate:[AuthGuard]
+    },{
+      path: 'colaboradores/novo', component: AdminCadastrarColaboradorComponent,
       canActivate:[AuthGuard]
     },
    ]
