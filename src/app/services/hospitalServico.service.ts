@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment';
+import { HospitalResponseContract } from '../models/hospital/hospitalResponseContract';
+import { ServicoResponseContract } from '../models/servico/servicoResponseContract';
 export interface HospitalServicoRequestContract {
   hospitalId: number;
   servicoId: number;
@@ -15,14 +17,19 @@ export class HospitalServicoService {
 
   constructor(private http: HttpClient) { }
 
-  getAllByHospitalId(id: number): Observable<any> {
+  getAllByHospitalId(id: number): Observable<ServicoResponseContract[]> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<ServicoResponseContract[]>(url);
   }
 
-  getByHospitalIdAndServicoId(hospitalId: number, servicoId: number): Observable<any> {
+  getByHospitalIdAndServicoId(hospitalId: number, servicoId: number): Observable<ServicoResponseContract> {
     const url = `${this.apiUrl}/${hospitalId}/${servicoId}`;
-    return this.http.get<any>(url);
+    return this.http.get<ServicoResponseContract>(url);
+  }
+
+  GetAllHospitalsThatOfferAnSpecificService(servicoId: number): Observable<HospitalResponseContract[]> {
+    const url = `${this.apiUrl}/hospitais-por-servico/${servicoId}`;
+    return this.http.get<HospitalResponseContract[]>(url);
   }
 
   post(hospitalServico: HospitalServicoRequestContract): Observable<any> {
