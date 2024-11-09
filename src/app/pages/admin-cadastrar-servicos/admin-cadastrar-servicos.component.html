@@ -25,6 +25,14 @@
           class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
     </div>
     <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Categoria do Serviço</label>
+      <select formControlName="servico" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected class="text-sm">Selecione a categoria</option>
+        <option class="text-sm" value="Exame">Exame</option>
+        <option class="text-sm" value="Consulta">Consulta</option>
+      </select>
+      </div>
+    <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Valor</label>
       <input type="number" formControlName="valor" placeholder="Escreva o valor do serviço" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
       <p *ngIf="cadastroForm.get('valor')?.errors?.['required'] &&  cadastroForm.get('valor')?.touched"

@@ -24,6 +24,7 @@ export class AdminCadastrarServicosComponent {
         descricao: ['', [Validators.required]],
         especializacao: ['', [Validators.required]],
         valor: ['', [Validators.required]],
+        tipoServico: ['', [Validators.required]]
       }
     )
   }
@@ -59,6 +60,7 @@ export class AdminCadastrarServicosComponent {
       descricao: this.dadosForm["descricao"]?.value,
       especializacao: this.dadosForm["especializacao"]?.value,
       valor: this.dadosForm["valor"]?.value,
+      tipoServico: this.dadosForm["tipoServico"]?.value
     }
 
     this.servicoService.create(servico).subscribe(observer);
