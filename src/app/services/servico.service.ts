@@ -25,6 +25,14 @@ export class ServicoService {
     return this.httpClient.get<ServicoResponseContract[]>(this.baseURL);
   }
 
+  getAllExamsServices(): Observable<ServicoResponseContract[]> {
+    return this.httpClient.get<ServicoResponseContract[]>(`${this.baseURL}/exames`);
+  }
+
+  getAllAppointmentsServices(): Observable<ServicoResponseContract[]> {
+    return this.httpClient.get<ServicoResponseContract[]>(`${this.baseURL}/consultas`);
+  }
+
   getAllIncludingDeleteds(): Observable<ServicoResponseContract[]> {
     return this.httpClient.get<ServicoResponseContract[]>(`${this.baseURL}/listar-todos`);
   }
