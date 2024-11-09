@@ -3,4 +3,5 @@ export class ServicoRequestContract{
   descricao: string = "";
   especializacao: string = "";
   valor: number;
+  tipoServico: string = "";
 }
