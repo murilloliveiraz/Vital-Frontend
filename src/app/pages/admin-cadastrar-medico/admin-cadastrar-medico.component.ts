@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminCadastrarMedicoComponent {
   email: string = "";
-  hospitalId: number;
+  hospitalId: number = 1;
   constructor(public medicoService: MedicoService ,private location: Location, public formBuilder: FormBuilder, private authService: AuthService) {}
   cadastroForm: FormGroup;
 
