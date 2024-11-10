@@ -146,6 +146,7 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
   ],
   providers: [
     HTTPStatus,
+    RxJS,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderMiddleware, multi: true },
   ],
   bootstrap: [AppComponent],
