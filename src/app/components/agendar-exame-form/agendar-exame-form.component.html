@@ -1,27 +1,50 @@
 <section class="flex flex-col justify-center items-center gap-7">
-  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" action="POST">
+  <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" [formGroup]="agendamentoForm">
+    <div class="cpf-select mb-6">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Paciente</label>
+      <input
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [(ngModel)]="cpfInput"
+        formControlName="cpfPaciente"
+        (input)="filterPacienteList()"
+        placeholder="Digite o CPF"
+        (focus)="showSuggestions = true"
+        (blur)="hideSuggestions()"
+      />
+
+      <!-- Lista de sugestões filtradas -->
+      <ul *ngIf="showSuggestions && filteredPacienteList.length">
+        <li
+          *ngFor="let paciente of filteredPacienteList"
+          (click)="selectPaciente(paciente)"
+        >
+          {{ paciente.cpf }} - {{ paciente.nome }}
+        </li>
+      </ul>
+    </div>
+
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Exame</label>
-      <select id="exames" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <select id="exames" formControlName="servico" (change)="onServicoPicked($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option selected class="text-sm">Escolha um exame</option>
-        <option class="text-sm" value="Eletrocardiograma">Eletrocardiograma</option>
-        <option class="text-sm" value="Endoscopia">Endoscopia</option>
-        <option class="text-sm" value="Hemograma">Hemograma</option>
+        <option *ngFor="let item of servicosHospitalares" class="text-sm" value="{{item.servicoId}}">{{item.nome}}</option>
       </select>
-      </div>
+    </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Unidade Hospitalar</label>
-      <select id="hospitais" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <select id="hospitais" formControlName="local" (change)="onHospitalPicked($event)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option class="text-sm" selected>Escolha um hospital</option>
-        <option class="text-sm" value="Alphaville">Hospital Albert Einstein - Alphaville</option>
-        <option class="text-sm" value="Morumbi">Hospital Albert Einstein - Morumbi</option>
-        <option class="text-sm" value="Chácara Klabin">Hospital Albert Einstein - Chácara Klabin</option>
-        <option class="text-sm" value="Ibirapuera">Hospital Albert Einstein - Ibirapuera</option>
+        <option *ngFor="let item of hospitais" class="text-sm" value="{{item.hospitalId}}">{{item.nome + " - " + item.endereco}}</option>
       </select>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Preparo</label>
-      <textarea id="message" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Descreva o preparo do paciente"></textarea>
+      <textarea id="message" formControlName="observacoes" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Descreva o preparo do paciente"></textarea>
+    </div>
+    <div class="mb-6">
+      <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Queixas do paciente</label>
+      <textarea id="message" formControlName="queixas" rows="4" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Descreva as queixas do paciente"></textarea>
     </div>
     <div class="mb-6">
       <label for="default-input" class="block mb-4 text-sm font-semibold text-gray-900">Data:</label>
@@ -42,12 +65,31 @@
                   <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
               </svg>
           </div>
-          <input type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" [incremental]="30" min="09:00" max="18:00" value="00:00" required />
+          <input type="time" id="time" (change)="onTimePicked($event)" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" [incremental]="30" min="09:00" max="18:00" value="00:00" required />
       </div>
     </div>
     <div class="mb-6">
-      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Médico:</label>
-      <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Medico</label>
+      <select id="exames" (change)="onMedicoChange($event)" formControlName="medico" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected class="text-sm">Escolha um médico</option>
+        <option class="text-sm" [value]="item.id | number" *ngFor="let item of medicos">{{item.nome}}</option>
+      </select>
+      <p  *ngIf="agendamentoForm.get('servico')?.errors?.['required'] &&  agendamentoForm.get('servico')?.touched"
+       class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
+    </div>
+    <div class="mb-5 w-full">
+      <label for="email" class="block mb-2 text-sm font-semibold text-gray-900 ">Email para receber atualizações</label>
+      <input type="email" id="email" formControlName="email" class="bg-gray-50 border border-none  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" placeholder="seu@email.com" required />
+      <p *ngIf="agendamentoForm.get('email')?.errors?.['required'] &&  agendamentoForm.get('email')?.touched"
+       class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
+    </div>
+    <div class="mt-6 grow sm:mt-8 lg:mt-0">
+      <div class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6">
+          <dl class="flex items-center justify-between gap-4 pt-2">
+            <dt class="text-base font-bold text-gray-900">Total</dt>
+            <dd class="text-base font-bold text-gray-900">R${{valor}}</dd>
+          </dl>
+      </div>
     </div>
   </form>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="agendarExame()">Agendar Exame</button>
