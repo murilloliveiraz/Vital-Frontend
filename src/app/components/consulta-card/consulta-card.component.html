@@ -3,12 +3,12 @@
     <h3 class="font-semibold text-xl">{{consulta?.nome}}</h3>
     <div>
       <p class="text-xs mb-2">{{consulta?.local}}</p>
-      <p class="text-xs">{{consulta?.data}}</p>
+      <p class="text-xs">{{consulta?.data | date: 'dd/MM/yy HH:mm'}}</p>
       <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{consulta.tipoConsulta}}</span>
     </div>
     <p class="text-xs">{{medico?.nome}}</p>
   </div>
-  <img *ngIf="consulta?.status == 'Concluida'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="" (click)="downloadAllDocuments(consulta)">
+  <img *ngIf="consulta?.status == 'Concluido' && tela == 'paciente'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="" (click)="downloadAllDocuments(consulta)">
   <img *ngIf="consulta?.status == 'Agendado' && tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
   [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
   <button

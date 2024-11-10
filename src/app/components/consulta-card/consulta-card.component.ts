@@ -18,9 +18,13 @@ export class ConsultaCardComponent {
   constructor(private downloadService: DownloadService) {}
 
   downloadAllDocuments(consulta: AgendarConsultaResponseContract | ConsultaConcluidaResponseContract) {
-    consulta.documentos.forEach(documento => {
-      const fileName = documento.downloadURL.split('/').pop() || 'documento';
-      this.downloadService.downloadFile(documento.downloadURL, fileName);
+    consulta.documentos.forEach((documento, index) => {
+      console.log(documento)
+      if (documento.arquivoResultadoUrl) {
+        setTimeout(() => {
+          window.open(documento.arquivoResultadoUrl, '_blank');
+        }, index * 500); // 500 ms de atraso entre cada abertura
+      }
     });
   }
 }
