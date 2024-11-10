@@ -31,11 +31,12 @@ export class PacienteContaComponent {
       next: (paciente: PacienteResponseContract) => {
         if (paciente) {
           this.paciente = paciente;
+          console.log(paciente)
           this.formFields = [
-            { inputType: 'input', label: 'Nome', type: 'text', value: this.paciente.nome, placeholder: 'Insira seu nome', disabled: true },
-            { inputType: 'input', label: 'Email', type: 'email', value: this.paciente.email, placeholder: 'name@email.com', disabled: true },
-            { inputType: 'input', label: 'Sexo', type: 'text', value: this.paciente.sexo, placeholder: 'sexo', disabled: true },
+            { inputType: 'input', label: 'Nome', type: 'text', value: this.paciente.nome, controlName: 'nome', placeholder: 'Insira seu nome', disabled: true },
             { inputType: 'input', label: 'Data de nascimento', controlName: 'dataDeNascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true },
+            { inputType: 'input', label: 'Email', type: 'email', value: this.paciente.email, controlName: 'email', placeholder: 'name@email.com', disabled: true },
+            { inputType: 'input', label: 'Sexo', type: 'text', value: this.paciente.sexo,controlName: 'sexo', placeholder: 'sexo', disabled: true },
             { inputType: 'textarea', label: 'Alergias', controlName: 'alergias', type: 'text', value: this.paciente?.alergias, placeholder: 'Descreva as alergias', disabled: true },
             { inputType: 'input', label: 'PCD', controlName: 'pcd', type: 'text', value: this.paciente?.pcd ? 'Sim' : 'Não', placeholder: 'Sim ou Não', disabled: true },
             { inputType: 'textarea', label: 'Medicamentos', controlName: 'medicamentos', type: 'text', value: this.paciente?.medicamentos, placeholder: 'Medicamentos contínuos', disabled: true },
