@@ -6,5 +6,6 @@ export interface AgendarConsultaFormResponse {
     queixas: string;
     email: string;
     medicoId: number;
+    pacienteId?: number;
     valor: number;
 }
