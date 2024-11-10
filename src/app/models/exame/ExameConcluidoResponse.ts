@@ -6,5 +6,6 @@ export class ExameConcluidoResponse {
     medicoId: number;
     data: Date;
     s3KeyPath: string;
-    ArquivoResultadoUrl: string;
+    arquivoResultadoUrl: string;
+    urlResultadoClinicaExterna?: string;
 }
