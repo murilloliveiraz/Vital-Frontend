@@ -3,11 +3,11 @@
     <h3 class="font-semibold text-xl">{{exame.nome}}</h3>
     <div>
       <p class="text-xs mb-2">{{exame.local}}</p>
-      <p class="text-xs">{{exame.data}}</p>
+      <p class="text-xs">{{exame.data | date: 'dd/MM/yy HH:mm'}}</p>
     </div>
   </div>
-  <img *ngIf="exame.status == 'Concluido'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="">
-  <img *ngIf="exame.status == 'Agendado' && tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
+  <img *ngIf="exame.status == 'Concluido' && tela != 'admin'" class="h-12 cursor-pointer" src="/assets/images/download.svg" alt="download icone" (click)="downloadAllDocuments(exame)" srcset="">
+  <img *ngIf="tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
   [routerLink]="['anexar-documento', 'exame', exame.id]">
   <img *ngIf="exame.status == 'Agendado' && tela != 'admin'" class="h-12 grayscale-disabled" src="/assets/images/download.svg" alt="download icone" srcset="">
 </article>
