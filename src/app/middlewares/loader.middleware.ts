@@ -22,65 +22,50 @@ export class HTTPStatus {
 }
 
 @Injectable()
-export class LoaderMiddleware implements HttpInterceptor{
-  private _requests = 0;
+export class LoaderMiddleware implements HttpInterceptor {
+    private _requests = 0;
 
     constructor(
         private spinner: NgxSpinnerService,
-        private status: HTTPStatus,
         private authService: AuthService,
         private router: Router,
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+        // Only increment requests if this is the first request
+        if (this._requests === 0) {
+            this.spinner.show();
+        }
         ++this._requests;
-        let headers;
+
+        let headers = req.headers;
+
         if (req.url.includes('api.ipify.org')) {
-            headers: new HttpHeaders({
-                contentType: "false",
-                processData: "false",
-            });
-        }
-        else if (req.body instanceof FormData) {
-
-            headers: new HttpHeaders({
-                contentType: "false",
-                processData: "false",
-                Authorization: "Bearer " + this.authService.getToken
-            });
-
+            headers = headers.set("Content-Type", "application/json");
+        } else if (req.body instanceof FormData) {
+            headers = headers.set("Authorization", "Bearer " + this.authService.getToken);
         } else {
-
-            headers = new HttpHeaders()
-                .append("accept", "application/json")
-                .append("Content-Type", "application/json")
-                .append("Authorization", "Bearer " + this.authService.getToken);
+            headers = headers
+                .set("Accept", "application/json")
+                .set("Content-Type", "application/json")
+                .set("Authorization", "Bearer " + this.authService.getToken);
         }
 
-        let request = req.clone({ headers });
-        this.status.setHttpStatus(true);
-        this.spinner.show();
+        const request = req.clone({ headers });
 
         return next.handle(request).pipe(
-            map((event) => {
-                return event;
-            }),
-            catchError((error: Response) => {
+            map((event) => event),
+            catchError((error) => {
                 if (error.status === 401) {
                     this.router.navigate(["/login"]);
                 }
-                return throwError(error);
+                return throwError(() => new Error(error.message));
             }),
             finalize(() => {
                 --this._requests;
-                this.status.setHttpStatus(this._requests > 0);
-                this.status.getHttpStatus().subscribe((status: boolean) => {
-                    if (!status)
-                      setTimeout(() => {
-                        
-                      }, 5000);
-                        this.spinner.hide();
-                });
+                if (this._requests === 0) {
+                    this.spinner.hide();
+                }
             })
         );
     }
