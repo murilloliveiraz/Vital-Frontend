@@ -55,7 +55,7 @@ const routes: Routes = [
       canActivate:[AuthGuard]
     },
     {
-      path: 'medico/novo', component: AdminCadastrarMedicoComponent,
+      path: 'medicos/novo', component: AdminCadastrarMedicoComponent,
       canActivate:[AuthGuard]
     },
     {
