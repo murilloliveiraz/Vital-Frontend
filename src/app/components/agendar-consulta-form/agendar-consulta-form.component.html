@@ -1,6 +1,29 @@
 
 <section class="flex flex-col justify-center items-center gap-7">
   <form class="bg-[rgb(239,239,239)] w-[380px] py-6 px-4 rounded-lg" [formGroup]="agendamentoForm">
+    <div class="cpf-select mb-6" *ngIf="isADM">
+      <label for="default-input" class="block mb-4 text-sm text-gray-900 font-semibold">Paciente</label>
+      <input
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [(ngModel)]="cpfInput"
+        formControlName="cpfPaciente"
+        (input)="filterPacienteList()"
+        placeholder="Digite o CPF"
+        (focus)="showSuggestions = true"
+        (blur)="hideSuggestions()"
+      />
+
+      <!-- Lista de sugestões filtradas -->
+      <ul *ngIf="showSuggestions && filteredPacienteList.length">
+        <li
+          *ngFor="let paciente of filteredPacienteList"
+          (click)="selectPaciente(paciente)"
+        >
+          {{ paciente.cpf }} - {{ paciente.nome }}
+        </li>
+      </ul>
+    </div>
     <div class="mb-6 flex items-center gap-8">
       <div class="flex items-center">
         <input
@@ -9,7 +32,8 @@
           value="presencial"
           name="default-radio"
           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2"
-          (change)="onRadioChange($event)">
+          (change)="onRadioChange($event)"
+          checked>
         <label for="default-radio-1" class="ms-2 text-sm font-semibold text-gray-900">Presencial</label>
       </div>
       <div class="flex items-center">
@@ -19,8 +43,7 @@
           value="remota"
           name="default-radio"
           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2"
-          (change)="onRadioChange($event)"
-          checked>
+          (change)="onRadioChange($event)">
         <label for="default-radio-2" class="ms-2 text-sm font-semibold text-gray-900">Remota</label>
       </div>
       <p  *ngIf="!selectedRadio"

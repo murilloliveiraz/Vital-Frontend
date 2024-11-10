@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { HospitalResponseContract } from 'src/app/models/hospital/hospitalResponseContract';
 import { ServicoResponseContract } from 'src/app/models/servico/servicoResponseContract';
 import { HospitalService } from 'src/app/services/hospital.service';
@@ -8,6 +8,8 @@ import { MedicoResponseContract } from 'src/app/models/medico/medicoResponseCont
 import { MedicoService } from './../../services/medico.service';
 import { HospitalServicoService } from 'src/app/services/hospitalServico.service';
 import { ServicoService } from './../../services/servico.service';
+import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
+import { PacienteService } from 'src/app/services/paciente.service';
 declare var Datepicker: any;
 @Component({
   selector: 'app-agendar-consulta-form',
@@ -25,8 +27,14 @@ export class AgendarConsultaFormComponent {
   agendamentoForm: FormGroup;
   valor: number;
   hospital: HospitalResponseContract;
+  cpfInput: string = '';
+  showSuggestions = false;
+  pacienteId: number;
+  pacienteList: PacienteResponseContract[] = [];
+  filteredPacienteList: PacienteResponseContract[] = [];
+  @Input() isADM: boolean = false;
 
-  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService, public servicoService: ServicoService) {}
+  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService, public servicoService: ServicoService, private pacienteService: PacienteService) {}
 
   ngOnInit(): void {
     this.getAllHospitais();
@@ -37,10 +45,37 @@ export class AgendarConsultaFormComponent {
         servico: ['', [Validators.required]],
         local: ['', [Validators.required]],
         queixas: ['', [Validators.required]],
+        cpfPaciente: ['', [Validators.required]],
         medico: [0, [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
       }
     )
+    const observer = {
+      next: (pacientes: PacienteResponseContract[]) => {
+        this.pacienteList = pacientes;
+      },
+      error: (err: any) => {
+        alert('Ocorreu um erro');
+      }
+    };
+    this.pacienteService.getAll().subscribe(observer);
+  }
+
+  filterPacienteList() {
+    const input = this.cpfInput.replace(/\D/g, '');
+    this.filteredPacienteList = this.pacienteList.filter(paciente =>
+      paciente.cpf.replace(/\D/g, '').includes(input)
+    );
+  }
+
+  selectPaciente(paciente: PacienteResponseContract) {
+    this.cpfInput = paciente.nome;
+    this.pacienteId = paciente.id;
+    this.showSuggestions = false;
+  }
+
+  hideSuggestions() {
+    setTimeout(() => this.showSuggestions = false, 200);
   }
 
   getAllHospitalServices(id: number){
@@ -50,14 +85,13 @@ export class AgendarConsultaFormComponent {
   }
 
   getAllServices(){
-    this.servicoService.getAll().subscribe((data: ServicoResponseContract[]) => {
+    this.servicoService.getAllAppointmentsServices().subscribe((data: ServicoResponseContract[]) => {
       this.servicosHospitalares = data;
-      console.log(this.servicosHospitalares)
     });
   }
 
-  getMedicosOfEspecialization(especializacao: string){
-    this.medicoService.getAllBySpecialization(especializacao).subscribe((data: MedicoResponseContract[]) => {
+  getMedicosOfEspecializationAtHospital(especializacao: string, hospitalId: number){
+    this.medicoService.getAllBySpecializationAndHospitalId(especializacao, hospitalId).subscribe((data: MedicoResponseContract[]) => {
       this.medicos = data;
     });
   }
@@ -99,9 +133,7 @@ export class AgendarConsultaFormComponent {
     const selectedValue = selectElement.value;
     this.valor = this.servicosHospitalares.find(s => s.nome == selectedValue).valor;
     const especializacao = this.servicosHospitalares.find(s => s.nome == selectedValue).especializacao;
-    this.medicoService.getAllBySpecialization(especializacao).subscribe((data: MedicoResponseContract[]) => {
-      this.medicos = data;
-    });
+    this.getMedicosOfEspecializationAtHospital(especializacao, this.hospital.hospitalId);
   }
 
 
@@ -136,6 +168,7 @@ export class AgendarConsultaFormComponent {
       queixas: this.dadosForm["queixas"].value,
       email: this.dadosForm["email"].value,
       medicoId: this.dadosForm["medico"].value,
+      pacienteId: this.pacienteId || 0,
       valor: this.valor
     }
     return dados;

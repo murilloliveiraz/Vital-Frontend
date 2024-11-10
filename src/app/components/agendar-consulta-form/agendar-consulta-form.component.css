@@ -1,0 +1,26 @@
+.cpf-select {
+  position: relative;
+}
+
+.cpf-select ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cpf-select ul li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.cpf-select ul li:hover {
+  background-color: #f0f0f0;
+}

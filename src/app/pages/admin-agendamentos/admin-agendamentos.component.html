@@ -2,7 +2,7 @@
   <button (click)="voltar()">
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
   </button>
-  <h2 class="font-bold">Agendamentos</h2>
+  <h2 class="font-bold">Novo Agendamento</h2>
 </nav>
 <main class="flex flex-col gap-9 justify-center mb-24 items-center">
   <div class="flex justify-center gap-5 items-center">
@@ -28,7 +28,7 @@
     <app-agendar-exame-form></app-agendar-exame-form>
   </section>
   <section *ngIf="agendamento == 'consulta'" class="flex flex-col gap-5 justify-center items-center">
-    <app-agendar-consulta-form></app-agendar-consulta-form>
+    <app-agendar-consulta-form [isADM]="true"></app-agendar-consulta-form>
     <button class="button-header-historico-pacientes-focus focus:ring-4 font-semibold rounded-lg text-lg px-3 py-2 h-12 w-[270px]" (click)="agendarConsulta()">Agendar Consulta</button>
   </section>
 </main>
