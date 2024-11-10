@@ -89,7 +89,7 @@ export class CheckoutComponent {
   selectButton(button: string) {
     this.selectedButton = button;
     if (button === 'pix') {
-      // this.pagarComPix();
+      this.pagarComPix();
     }
   }
 
