@@ -64,6 +64,10 @@ export class ExamesService {
     return this.http.put<ExameConcluidoResponse>(`${this.apiUrl}/concluir/${id}`, id);
   }
 
+  adicionarResultadoUrlExterna(id: number, url: string): Observable<ExameConcluidoResponse> {
+    return this.http.patch<ExameConcluidoResponse>(`${this.apiUrl}/${id}`, { url });
+  }
+
   deletarExame(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
