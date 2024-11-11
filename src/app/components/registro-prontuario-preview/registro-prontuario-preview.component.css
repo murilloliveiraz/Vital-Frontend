@@ -1,0 +1,14 @@
+.input-color{
+  background-color: rgba(16, 128, 153, 10%);
+  border: 1px solid #108099;
+}
+
+.card-exame-historico {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-exame-historico:hover {
+  scale: 104%;
+  transition: all 200ms;
+  cursor: pointer;
+}

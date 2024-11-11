@@ -1,43 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import Splide from '@splidejs/splide';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProntuarioRegistro } from 'src/app/models/prontuario/prontuarioRegistro';
-import { ProntuarioService } from 'src/app/services/prontuario.service';
 
 @Component({
-  selector: 'app-prontuario-slider',
-  templateUrl: './prontuario-slider.component.html',
-  styleUrls: ['./prontuario-slider.component.css']
+  selector: 'app-registro-prontuario-preview',
+  templateUrl: './registro-prontuario-preview.component.html',
+  styleUrls: ['./registro-prontuario-preview.component.css']
 })
-export class ProntuarioSliderComponent {
-  @Input() pacienteId: number;
-  constructor(private prontuarioService: ProntuarioService) {}
-
-  registrosProntuarioPaciente: ProntuarioRegistro[];
-
+export class RegistroProntuarioPreviewComponent {
+  @Input() registrosProntuarioPaciente: ProntuarioRegistro[];
   selectedRegistroId: string = null;
 
-  ngOnInit(): void {
-    if (this.pacienteId) {
-      this.prontuarioService.getPatientMedicalRecord(this.pacienteId)
-        .subscribe((data: ProntuarioRegistro[]) => {
-          this.registrosProntuarioPaciente = data;
-        });
-    } else {
-      console.error("pacienteId não está definido.");
-    }
-  }
-
-  // ngAfterViewInit(): void {
-  //   var splide = new Splide('#prontuario-slider', {
-  //     perPage: 3,
-  //     focus  : 0,
-  //     pagination: false,
-  //     arrows: false,
-  //     autoWidth: true
-  //   });
-
-  //   splide.mount();
-  // }
+  constructor(private router: Router) {}
 
   selectRegistro(registroId: string) {
     this.selectedRegistroId = registroId;
@@ -51,6 +25,7 @@ export class ProntuarioSliderComponent {
         };
       });
     }
+    this.router.navigate(['medico/prontuario-registro', registroId]);
   }
 
   getRegistroSelecionado(): ProntuarioRegistro {

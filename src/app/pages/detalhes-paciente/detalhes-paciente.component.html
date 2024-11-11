@@ -49,10 +49,11 @@
 
 <section
   class="flex flex-col justify-center items-center"
-  [ngClass]="{'hidden': selectedButton === 'dados' || selectedButton === 'agendamentos'}"
+  *ngIf="paciente && (selectedButton !== 'dados' && selectedButton !== 'agendamentos')"
 >
-  <app-prontuario-slider [pacienteId]="paciente?.id"></app-prontuario-slider>
+  <app-prontuario-slider [pacienteId]="paciente.id"></app-prontuario-slider>
 </section>
+
 
 <section
   class="flex flex-col justify-center items-center"

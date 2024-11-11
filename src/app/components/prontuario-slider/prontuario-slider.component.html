@@ -1,17 +1,3 @@
 <main class="flex flex-col items-center">
-  <div class="splide max-w-sm h-[60px] items-center mb-5" role="group" id="prontuario-slider" aria-label="Splide Basic">
-    <div class="splide__track w-full">
-      <ul class="splide__list flex items-center gap-5">
-        <li
-        *ngFor="let registro of registrosProntuarioPaciente"
-        class="splide__slide button-header-historico-pacientes rounded-lg p-4 text-center"
-        (click)="selectRegistro(registro.id)"
-        [ngClass]="{'button-header-historico-pacientes-focus': selectedRegistroId === registro.id}"
-        >
-        {{ registro.data | date:'dd/MM/yy' }}
-       </li>
-      </ul>
-    </div>
-  </div>
-  <app-form-conta-usuario [fields]="prontuarioFormFields" *ngIf="selectedRegistroId !== null"></app-form-conta-usuario>
+  <app-registro-prontuario-preview [registrosProntuarioPaciente]="registrosProntuarioPaciente"></app-registro-prontuario-preview>
 </main>

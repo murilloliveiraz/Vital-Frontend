@@ -9,6 +9,8 @@ import { DetalhesPacienteComponent } from '../detalhes-paciente/detalhes-pacient
 import { CommonModule } from '@angular/common';
 import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
 import { AuthGuard } from '../guard/auth-guard.service';
+import { RegistroProntuarioPreviewComponent } from 'src/app/components/registro-prontuario-preview/registro-prontuario-preview.component';
+import { RegistroProntuarioDetalhesComponent } from 'src/app/components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,10 @@ const routes: Routes = [
     },
     {
       path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent,
+      canActivate:[AuthGuard]
+    },
+    {
+      path: 'prontuario-registro/:id', component: RegistroProntuarioDetalhesComponent,
       canActivate:[AuthGuard]
     },
     {

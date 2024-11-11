@@ -1,0 +1,33 @@
+<main class="flex flex-col gap-9 justify-center mb-24">
+  <nav class="flex gap-5 pl-5 pt-9">
+    <button (click)="voltar()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    </button>
+    <h2 class="font-bold">{{ registro.data | date:'dd/MM/yy' }} - {{registro.conteudo.tipo}}</h2>
+  </nav>
+  <form [formGroup]="formGroup" class="w-full mx-auto">
+    <div *ngFor="let field of formFields" class="w-[340px] mb-3">
+      <label
+        [for]="field.label"
+        class="block mb-2 text-sm font-medium text-gray-900 w-full">
+        {{ field.label }}
+      </label>
+      <input
+        *ngIf="field.inputType === 'input'"
+        [type]="field.type"
+        [id]="field.label"
+        [placeholder]="field.placeholder"
+        [formControlName]="field.controlName"
+        class="input-color text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <textarea
+        *ngIf="field.inputType === 'textarea'"
+        [id]="field.label"
+        [placeholder]="field.placeholder"
+        [formControlName]="field.controlName"
+        class="input-color text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        rows="4">
+      </textarea>
+    </div>
+  </form>
+</main>

@@ -69,6 +69,8 @@ import { PacienteHistoricoAgendamentosComponent } from './components/paciente-hi
 import { AdminColaboradoresComponent } from './pages/admin-colaboradores/admin-colaboradores.component';
 import { AdminCadastrarColaboradorComponent } from './pages/admin-cadastrar-colaborador/admin-cadastrar-colaborador.component';
 import { ColaboradorCardComponent } from './components/colaborador-card/colaborador-card.component';
+import { RegistroProntuarioPreviewComponent } from './components/registro-prontuario-preview/registro-prontuario-preview.component';
+import { RegistroProntuarioDetalhesComponent } from './components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -131,7 +133,9 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     PacienteHistoricoAgendamentosComponent,
     AdminColaboradoresComponent,
     AdminCadastrarColaboradorComponent,
-    ColaboradorCardComponent
+    ColaboradorCardComponent,
+    RegistroProntuarioPreviewComponent,
+    RegistroProntuarioDetalhesComponent
   ],
   imports: [
     BrowserModule,

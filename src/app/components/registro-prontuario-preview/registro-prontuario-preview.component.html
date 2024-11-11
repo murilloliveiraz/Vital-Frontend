@@ -1,0 +1,37 @@
+<ol class="relative border-s border-[#108099] dark:border-gray-700 ml-10">
+  <li
+    class="mb-10 ms-4"
+    *ngFor="let registro of registrosProntuarioPaciente"
+    (click)="selectRegistro(registro.id)"
+    >
+      <div class="absolute w-3 h-3 bg-[#108099] rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+      <time class="mb-3 text-sm font-normal leading-none text-gray-700 dark:text-gray-500">{{ registro.data | date:'dd/MM/yy' }} - {{registro.conteudo.tipo}}</time>
+      <div class="card-exame-historico flex flex-col justify-center items-center max-w-sm bg-gray-50 border border-gray-300 rounded-lg mt-2 p-4">
+        <div class="w-[340px] mb-3">
+          <label
+          class="block mb-2 text-sm font-medium text-gray-700 w-full">
+          Queixa
+        </label>
+        <textarea
+          class="text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
+          rows="1"
+          [value]="registro?.conteudo.queixaDoPaciente"
+          >
+        </textarea>
+        </div>
+        <div class="w-[340px] mb-3">
+          <label
+          class="block mb-2 text-sm font-medium text-gray-700 w-full">
+          Diagnostico
+        </label>
+          <textarea
+          class="text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full"
+          rows="2"
+          [value]="registro?.conteudo.diagnostico">
+        </textarea>
+      </div>
+      <p class="text-xs text-gray-400">Clique para ver tudo</p>
+    </div>
+  </li>
+</ol>
+

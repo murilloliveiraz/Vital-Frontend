@@ -23,4 +23,9 @@ export class ProntuarioService {
     const url = `${this.baseURL}/${pacienteId}`;
     return this.http.get<ProntuarioRegistro[]>(url);
   }
+
+  getAnSpecificRegister(registerId: string): Observable<ProntuarioRegistro> {
+    const url = `${this.baseURL}/buscar-registro/${registerId}`;
+    return this.http.get<ProntuarioRegistro>(url);
+  }
 }
