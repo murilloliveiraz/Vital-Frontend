@@ -1,21 +1,30 @@
-<article class="flex items-center justify-between h-[130px] w-[330px] mb-3 card-exame-historico p-4 rounded-xl transition">
+<article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg transition hover:shadow-xl">
   <div>
-    <h3 class="font-semibold text-xl">{{consulta?.nome}}</h3>
-    <div>
-      <p class="text-xs mb-2">{{consulta?.local}}</p>
-      <p class="text-xs">{{consulta?.data | date: 'dd/MM/yy HH:mm'}}</p>
-      <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{consulta.tipoConsulta}}</span>
+    <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ consulta?.nome }}</h3>
+    <p class="text-xs text-gray-500">{{ consulta?.local }}</p>
+    <p class="text-xs text-gray-500">{{ consulta?.data | date: 'dd/MM/yy HH:mm' }}</p>
+    <div class="flex items-center mt-2 space-x-2">
+      <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">{{ consulta?.tipoConsulta }}</span>
+      <span *ngIf="consulta?.status == 'Agendado'" class="flex items-center text-xs text-gray-600 dark:text-white">
+        <span class="w-2.5 h-2.5 bg-yellow-200 rounded-full me-1.5"></span>Agendada
+      </span>
+      <span *ngIf="consulta?.status == 'Concluido'" class="flex items-center text-xs text-green-600 dark:text-white">
+        <span class="w-2.5 h-2.5 bg-green-300 rounded-full me-1.5"></span>Concluída
+      </span>
     </div>
-    <p class="text-xs">{{medico?.nome}}</p>
   </div>
-  <img *ngIf="consulta?.status == 'Concluido' && tela == 'paciente'" class="h-12 " src="/assets/images/download.svg" alt="download icone" srcset="" (click)="downloadAllDocuments(consulta)">
-  <img *ngIf="consulta?.status == 'Agendado' && tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
-  [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
-  <button
-    *ngIf="consulta?.status == 'Agendado' && consulta?.tipoConsulta == 'Remota' && tela == 'paciente'"
-    class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 flex"
-  >
-  <a href="{{consulta?.meetLink}}">Acessar</a>
-  </button>
-  <img *ngIf="consulta.status == 'Agendado' && consulta?.tipoConsulta == 'Presencial' && tela == 'paciente'" class="h-12 grayscale-disabled" src="/assets/images/download.svg" alt="download icone" srcset=""/>
+
+  <div class="flex items-center space-x-3">
+    <img *ngIf="consulta?.status == 'Concluido' && tela == 'paciente'" class="h-8 cursor-pointer" src="/assets/images/download.svg" alt="download icone" (click)="downloadAllDocuments(consulta)">
+
+    <img *ngIf="consulta?.status == 'Agendado' && tela == 'admin'" class="h-8 cursor-pointer" src="/assets/images/attach.svg" alt="attach icon" [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
+
+    <button *ngIf="consulta?.status == 'Agendado' && consulta?.tipoConsulta == 'Remota' && tela == 'paciente'"
+      class="bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg text-sm px-4 py-2 transition duration-150">
+      <a href="{{ consulta?.meetLink }}">Acessar</a>
+    </button>
+
+    <img *ngIf="consulta?.status == 'Agendado' && consulta?.tipoConsulta == 'Presencial' && tela == 'paciente'"
+      class="h-8 grayscale-disabled cursor-pointer" src="/assets/images/download.svg" alt="download icon disabled">
+  </div>
 </article>

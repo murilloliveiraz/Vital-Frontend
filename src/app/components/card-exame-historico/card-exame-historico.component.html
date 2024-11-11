@@ -1,13 +1,44 @@
-<article class="flex items-center justify-between h-[130px] w-[330px] mb-3 card-exame-historico p-4 rounded-xl transition">
-  <div>
-    <h3 class="font-semibold text-xl">{{exame.nome}}</h3>
+<article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg transition hover:shadow-xl">
+  <div class="flex flex-col">
+    <!-- Nome do Exame -->
+    <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ exame.nome }}</h3>
+
+    <!-- Local e Data -->
     <div>
-      <p class="text-xs mb-2">{{exame.local}}</p>
-      <p class="text-xs">{{exame.data | date: 'dd/MM/yy HH:mm'}}</p>
+      <p class="text-xs text-gray-500">{{ exame.local }}</p>
+      <p class="text-xs text-gray-500">{{ exame.data | date: 'dd/MM/yy HH:mm' }}</p>
+    </div>
+    <div class="flex items-center mt-2 space-x-2">
+      <span *ngIf="exame?.status == 'Agendado'" class="flex items-center text-xs text-gray-600 dark:text-white">
+        <span class="w-2.5 h-2.5 bg-yellow-200 rounded-full me-1.5"></span>Agendada
+      </span>
+      <span *ngIf="exame?.status == 'Concluido'" class="flex items-center text-xs text-green-600 dark:text-white">
+        <span class="w-2.5 h-2.5 bg-green-300 rounded-full me-1.5"></span>Concluída
+      </span>
     </div>
   </div>
-  <img *ngIf="exame.status == 'Concluido' && tela != 'admin'" class="h-12 cursor-pointer" src="/assets/images/download.svg" alt="download icone" (click)="downloadAllDocuments(exame)" srcset="">
-  <img *ngIf="tela == 'admin'" class="h-12 " src="/assets/images/attach.svg" alt="download icone" srcset=""
-  [routerLink]="['anexar-documento', 'exame', exame.id]">
-  <img *ngIf="exame.status == 'Agendado' && tela != 'admin'" class="h-12 grayscale-disabled" src="/assets/images/download.svg" alt="download icone" srcset="">
+
+  <div class="flex items-center space-x-4">
+    <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
+    <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
+         class="h-8 cursor-pointer"
+         src="/assets/images/download.svg"
+         alt="Download Ícone"
+         (click)="downloadAllDocuments(exame)"
+         srcset="">
+
+    <!-- Ícone de Anexar Documento para tela 'admin' -->
+    <img *ngIf="tela == 'admin'"
+         class="h-8 cursor-pointer"
+         src="/assets/images/attach.svg"
+         alt="Anexar Documento Ícone"
+         [routerLink]="['anexar-documento', 'exame', exame.id]">
+
+    <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
+    <img *ngIf="exame.status == 'Agendado' && tela != 'admin'"
+         class="h-8 grayscale-disabled cursor-not-allowed"
+         src="/assets/images/download.svg"
+         alt="Download Ícone Desabilitado"
+         srcset="">
+  </div>
 </article>
