@@ -5,7 +5,6 @@ import { AdminHomepageComponent } from '../admin-homepage/admin-homepage.compone
 import { AdminComponent } from './admin.component';
 import { AdminCadastrarPacienteComponent } from '../admin-cadastrar-paciente/admin-cadastrar-paciente.component';
 import { AdminCadastrarServicosComponent } from '../admin-cadastrar-servicos/admin-cadastrar-servicos.component';
-import { AdminAgendarExameComponent } from '../admin-agendar-exame/admin-agendar-exame.component';
 import { AdminCadastrarHospitalComponent } from '../admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from '../admin-cadastrar-medico/admin-cadastrar-medico.component';
 import { AdminServicosComponent } from '../admin-servicos/admin-servicos.component';

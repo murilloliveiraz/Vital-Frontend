@@ -5,7 +5,7 @@
     </button>
     <h2 class="font-bold">{{ registro.data | date:'dd/MM/yy' }} - {{registro.conteudo.tipo}}</h2>
   </nav>
-  <form [formGroup]="formGroup" class="w-full mx-auto">
+  <form [formGroup]="formGroup" class="mx-auto">
     <div *ngFor="let field of formFields" class="w-[340px] mb-3">
       <label
         [for]="field.label"

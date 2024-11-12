@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
-import { ExameConcluidoResponse } from './../../models/exame/ExameConcluidoResponse';
+import { Exame } from 'src/app/interfaces/Exame';
 
 @Component({
   selector: 'app-card-exame-historico',
@@ -8,7 +7,7 @@ import { ExameConcluidoResponse } from './../../models/exame/ExameConcluidoRespo
   styleUrls: ['./card-exame-historico.component.css']
 })
 export class CardExameHistoricoComponent {
-  @Input() exame: AgendarExameResponse | ExameConcluidoResponse;
+  @Input() exame: Exame;
   @Input() tela: string = '';
 
   downloadAllDocuments(exame: any) {

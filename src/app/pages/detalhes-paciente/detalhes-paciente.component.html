@@ -60,10 +60,7 @@
   [ngClass]="{'hidden': selectedButton === 'prontuario' || selectedButton === 'dados'}"
 >
   <app-paciente-historico-agendamentos
-    [examesAgendados]="examesAgendados"
-    [examesConcluidos]="examesConcluidos"
-    [consultasAgendadas]="consultasAgendados"
-    [consultasConcluidas]="consultasConcluidos"
+    [pacienteId]="paciente?.id"
     [tela]="tela">
   </app-paciente-historico-agendamentos>
 </section>

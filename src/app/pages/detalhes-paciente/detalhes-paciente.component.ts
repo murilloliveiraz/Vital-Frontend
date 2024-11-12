@@ -24,10 +24,6 @@ export class DetalhesPacienteComponent {
   @ViewChild(FormContaUsuarioComponent) pacienteFormComponent!: FormContaUsuarioComponent;
   paciente: PacienteResponseContract;
   prontuario: ProntuarioRegistro;
-  examesConcluidos: ExameConcluidoResponse[] = [];
-  examesAgendados: AgendarExameResponse[] = [];
-  consultasConcluidos: ConsultaConcluidaResponseContract[] = [];
-  consultasAgendados: AgendarConsultaResponseContract[] = [];
   tela: string = '';
   agendamentos: Agendamento[] = []
 
@@ -73,39 +69,9 @@ export class DetalhesPacienteComponent {
             { inputType: 'input', label: 'Sexo', controlName: 'sexo', type: 'text', value: this.paciente?.sexo, placeholder: 'Sexo', disabled: true },
             { inputType: 'input', label: 'Data de nascimento', controlName: 'dataDeNascimento', type: 'date', value: this.formatDate(this.paciente?.dataNascimento), placeholder: 'Data de nascimento', disabled: true }
           ];
-          this.buscarExamesAgendados(pacienteIdNumber)
-          this.buscarExamesConcluidos(pacienteIdNumber)
-          this.buscarConsultasAgendados(pacienteIdNumber)
-          this.buscarConsultasConcluidos(pacienteIdNumber)
         }
       });
     }
-  }
-
-  buscarExamesAgendados(id: number){
-    this.examesService.obterExamesAgendadosPorPaciente(id).subscribe((data: AgendarExameResponse[]) => {
-      this.examesAgendados = data;
-    });
-  }
-
-  buscarExamesConcluidos(id: number){
-    this.examesService.obterExamesConcluidosPorPaciente(id).subscribe((data: ExameConcluidoResponse[]) => {
-      this.examesConcluidos = data;
-    });
-  }
-
-  buscarConsultasAgendados(id: number){
-    this.consultasService.getConsultasAgendadasPorPaciente(id).subscribe((data: AgendarConsultaResponseContract[]) => {
-      this.consultasAgendados = data;
-      console.log(data)
-    });
-  }
-
-  buscarConsultasConcluidos(id: number){
-    this.consultasService.getConsultasConcluidasPorPaciente(id).subscribe((data: ConsultaConcluidaResponseContract[]) => {
-      this.consultasConcluidos = data;
-      console.log(data)
-    });
   }
 
   formatDate(date: Date): string | null {

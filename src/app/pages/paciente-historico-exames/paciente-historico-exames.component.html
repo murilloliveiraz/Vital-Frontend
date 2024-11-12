@@ -16,10 +16,7 @@
   </form>
 
   <app-paciente-historico-agendamentos
-    [examesAgendados]="examesAgendados"
-    [examesConcluidos]="examesConcluidos"
-    [consultasAgendadas]="consultasAgendadas"
-    [consultasConcluidas]="consultasConcluidas"
+    [pacienteId]="paciente?.id"
     [tela]="'paciente'">
   </app-paciente-historico-agendamentos>
 </main>

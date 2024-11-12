@@ -17,7 +17,7 @@
   <div class="flex items-center space-x-3">
     <img *ngIf="consulta?.status == 'Concluido' && tela == 'paciente'" class="h-8 cursor-pointer" src="/assets/images/download.svg" alt="download icone" (click)="downloadAllDocuments(consulta)">
 
-    <img *ngIf="consulta?.status == 'Agendado' && tela == 'admin'" class="h-8 cursor-pointer" src="/assets/images/attach.svg" alt="attach icon" [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
+    <img *ngIf="tela == 'admin'" class="h-8 cursor-pointer" src="/assets/images/attach.svg" alt="attach icon" [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
 
     <button *ngIf="consulta?.status == 'Agendado' && consulta?.tipoConsulta == 'Remota' && tela == 'paciente'"
       class="bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg text-sm px-4 py-2 transition duration-150">

@@ -37,7 +37,6 @@ import { AdminHomepageComponent } from './pages/admin-homepage/admin-homepage.co
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminCadastrarPacienteComponent } from './pages/admin-cadastrar-paciente/admin-cadastrar-paciente.component';
 import { AdminCadastrarServicosComponent } from './pages/admin-cadastrar-servicos/admin-cadastrar-servicos.component';
-import { AdminAgendarExameComponent } from './pages/admin-agendar-exame/admin-agendar-exame.component';
 import { AgendarExameFormComponent } from './components/agendar-exame-form/agendar-exame-form.component';
 import { AdminCadastrarHospitalComponent } from './pages/admin-cadastrar-hospital/admin-cadastrar-hospital.component';
 import { AdminCadastrarMedicoComponent } from './pages/admin-cadastrar-medico/admin-cadastrar-medico.component';
@@ -106,7 +105,6 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     AdminComponent,
     AdminCadastrarPacienteComponent,
     AdminCadastrarServicosComponent,
-    AdminAgendarExameComponent,
     AgendarExameFormComponent,
     AdminCadastrarHospitalComponent,
     AdminCadastrarMedicoComponent,
