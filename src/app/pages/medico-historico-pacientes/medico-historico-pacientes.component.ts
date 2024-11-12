@@ -1,8 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Exame } from 'src/app/models/exame';
-import { Paciente } from 'src/app/models/paciente';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
 import { PacienteService } from 'src/app/services/paciente.service';
 

@@ -1,6 +1,6 @@
-import { Exame } from 'src/app/models/exame';
 import { Component } from '@angular/core';
 import Splide from '@splidejs/splide';
+import { Exame } from 'src/app/interfaces/Exame';
 
 @Component({
   selector: 'app-paciente-home',

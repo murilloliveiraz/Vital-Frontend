@@ -11,6 +11,7 @@ import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-ex
 import { AuthGuard } from '../guard/auth-guard.service';
 import { RegistroProntuarioPreviewComponent } from 'src/app/components/registro-prontuario-preview/registro-prontuario-preview.component';
 import { RegistroProntuarioDetalhesComponent } from 'src/app/components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
+import { AdminAnexarDocumentoComponent } from '../admin-anexar-documento/admin-anexar-documento.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
     },
     {
       path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent,
+      canActivate:[AuthGuard]
+    },
+    {
+      path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
+      component: AdminAnexarDocumentoComponent,
       canActivate:[AuthGuard]
     },
    ]

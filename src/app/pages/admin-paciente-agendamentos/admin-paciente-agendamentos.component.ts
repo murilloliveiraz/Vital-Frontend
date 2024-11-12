@@ -1,9 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Consulta } from 'src/app/models/consulta';
-import { Documento } from 'src/app/models/documento';
-import { Exame } from 'src/app/models/exame';
 import { ExameConcluidoResponse } from 'src/app/models/exame/ExameConcluidoResponse';
 import { Paciente } from 'src/app/models/paciente';
 import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';

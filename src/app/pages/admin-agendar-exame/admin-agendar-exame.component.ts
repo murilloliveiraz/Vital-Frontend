@@ -1,9 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Exame } from 'src/app/models/exame';
 import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
-import { Paciente } from 'src/app/models/paciente';
 
 @Component({
   selector: 'app-admin-agendar-exame',

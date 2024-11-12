@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Exame } from 'src/app/models/exame';
+import { ExameConcluidoResponse } from 'src/app/models/exame/ExameConcluidoResponse';
 
 @Component({
   selector: 'app-paciente-exame-card',
@@ -7,5 +7,5 @@ import { Exame } from 'src/app/models/exame';
   styleUrls: ['./paciente-exame-card.component.css']
 })
 export class PacienteExameCardComponent {
-  @Input() exame: Exame;
+  @Input() exame: ExameConcluidoResponse;
 }

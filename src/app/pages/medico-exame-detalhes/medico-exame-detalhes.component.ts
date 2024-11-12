@@ -72,4 +72,8 @@ export class MedicoExameDetalhesComponent {
   voltar() {
     this.location.back();
   }
+
+  anexarArquivo(){
+    this.router.navigate(['medico/detalhes-paciente', this.exame.pacienteId.toString(), 'anexar-documento', 'exame', this.exame.id.toString()]);
+  }
 }
