@@ -1,26 +1,51 @@
-<main class="flex flex-col gap-9 mb-24">
-  <nav class="flex gap-5 pl-5 pt-9">
-    <button (click)="voltar()">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+<main class="flex flex-col gap-6 mb-24 max-w-md mx-auto justify-center items-center">
+  <!-- Header com botão de voltar e nome do paciente -->
+  <nav class="flex gap-3 w-full items-start justify-start pt-4 px-5">
+    <button (click)="voltar()" aria-label="Voltar">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+      </svg>
     </button>
-    <h2 class="font-bold">{{paciente?.nome}}</h2>
+    <h2 class="text-2xl font-semibold text-gray-700">{{paciente?.nome}}</h2>
   </nav>
-  <section class="grid grid-cols-3 max-w-sm pl-5 gap-5">
-    <div class="grid grid-rows-3 rounded-lg p-4 col-span-2 button-header-historico-pacientes">
-      <p class="font-semibold">Nome: {{paciente?.nome}}</p>
-      <p class="font-semibold">Sexo: {{paciente?.sexo}}</p>
-      <p class="font-semibold">Data de Nascimento: {{paciente?.dataNascimento | date: "dd/MM/yyyy"}}</p>
-    </div>
-  </section>
-  <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="anexarArquivo()">Anexar Arquivo</button>
 
+  <!-- Dados do Paciente -->
+  <section class="flex flex-col gap-2 shadow-md rounded-lg p-5 mx-5 button-header-historico-pacientes">
+    <p class="font-normal text-gray-800"><span class="font-semibold">Nome</span>: {{paciente?.nome}}</p>
+    <p class="font-normal text-gray-800"><span class="font-semibold">Sexo:</span> {{paciente?.sexo}}</p>
+    <p class="font-normal text-gray-800"><span class="font-semibold">Data de Nascimento:</span> {{paciente?.dataNascimento | date: "dd/MM/yyyy"}}</p>
+    <p class="font-normal"><span class="font-semibold">Alergias:</span> {{paciente?.alergias}}</p>
+    <p class="font-normal"><span class="font-semibold">Medicamentos:</span> {{paciente?.medicamentos}}</p>
+    <p class="font-normal"><span class="font-semibold">Histórico Familiar:</span> {{paciente?.historicoFamiliar}}</p>
+  </section>
   <section
-    class="flex flex-col justify-center items-center w-[384px] pl-5"
-  >
+  class="flex flex-col justify-center items-center w-full"
+  *ngIf="paciente"
+>
+  <app-prontuario-slider [pacienteId]="paciente.id"></app-prontuario-slider>
+</section>
+
+  <!-- Ações (Botões) -->
+  <div class="flex flex-col items-center gap-4 mx-5">
+    <button class="button-header-historico-pacientes-focus flex items-center justify-center gap-8 text-white font-semibold rounded-lg px-4 py-2 w-full max-w-xs" (click)="anexarArquivo()">
+      <svg  width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42 18C42 16.3431 40.6569 15 39 15H9C7.34315 15 6 16.3431 6 18V36C6 37.6569 7.34315 39 9 39H39C40.6569 39 42 37.6569 42 36V18Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11H22.0825C22.4473 11 22.7832 11.1987 22.9589 11.5184L26.805 18.5185C27.1712 19.1849 26.689 20 25.9286 20H9C8.44772 20 8 19.5523 8 19V12C8 11.4477 8.44772 11 9 11ZM22.0825 9C23.177 9 24.1847 9.59609 24.7117 10.5554L28.5579 17.5554C29.6564 19.5547 28.2099 22 25.9286 22H9C7.34315 22 6 20.6569 6 19V12C6 10.3431 7.34315 9 9 9H22.0825Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 15H27.5V17H8V15Z" fill="white"/>
+        </svg> Anexar Arquivo
+    </button>
+    <button class="button-header-historico-pacientes-focus flex items-center justify-center gap-8 text-white font-semibold rounded-lg px-4 py-2 w-full max-w-xs" (click)="inserirRegistro()">
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 7C17 5.34315 18.3431 4 20 4H28C29.6569 4 31 5.34315 31 7V9C31 10.6569 29.6569 12 28 12H20C18.3431 12 17 10.6569 17 9V7ZM20 6C19.4477 6 19 6.44772 19 7V9C19 9.55228 19.4477 10 20 10H28C28.5523 10 29 9.55228 29 9V7C29 6.44772 28.5523 6 28 6H20Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M18 7H13C11.3431 7 10 8.34315 10 10V41C10 42.6569 11.3431 44 13 44H35C36.6569 44 38 42.6569 38 41V10C38 8.34315 36.6569 7 35 7H30V9C30 10.1046 29.1046 11 28 11H20C18.8954 11 18 10.1046 18 9V7ZM15 21C15 20.4477 15.4477 20 16 20H23C23.5523 20 24 20.4477 24 21C24 21.5523 23.5523 22 23 22H16C15.4477 22 15 21.5523 15 21ZM16 15C15.4477 15 15 15.4477 15 16C15 16.5523 15.4477 17 16 17H31.5C32.0523 17 32.5 16.5523 32.5 16C32.5 15.4477 32.0523 15 31.5 15H16ZM17 29V31H19V29H17ZM16 27C15.4477 27 15 27.4477 15 28V32C15 32.5523 15.4477 33 16 33H20C20.5523 33 21 32.5523 21 32V28C21 27.4477 20.5523 27 20 27H16ZM31 29C31 30.6575 29.6575 32 28 32C26.3425 32 25 30.6575 25 29C25 27.3425 26.3425 26 28 26C29.6575 26 31 27.3425 31 29ZM28 33.3182C25.9975 33.3182 22 34.3842 22 36.5001V38.9999H34V36.5001C34 34.3842 30.0025 33.3182 28 33.3182Z" fill="white"/>
+        </svg>
+         Inserir Registro
+    </button>
+  </div>
+
+  <!-- Formulário de Conta Usuário -->
+  <section class="">
     <app-form-conta-usuario [fields]="formFields" *ngIf="formFields.length > 0"></app-form-conta-usuario>
   </section>
-  <div class="flex flex-col gap-4">
-    <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="inserirRegistro()">Inserir Registro</button>
-    <button class="button-header-historico-pacientes focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" (click)="concluirExame()">Concluir</button>
-  </div>
+  <button type="button" (click)="concluirExame()" class="text-white bg-gradient-to-r w-10/12 from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Concluir</button>
 </main>

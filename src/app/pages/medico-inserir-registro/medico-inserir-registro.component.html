@@ -5,12 +5,11 @@
     </button>
     <h2 class="font-bold">{{paciente.nome}}</h2>
   </nav>
-  <section class="grid grid-cols-3 max-w-sm pl-5 gap-5">
-    <img src="/assets/images/profile-picture.jpeg" alt="Foto de perfil" class="rounded-lg">
+  <section class="grid max-w-sm pl-5 gap-5">
     <div class="grid grid-rows-3 rounded-lg p-4 col-span-2 button-header-historico-pacientes">
-      <p class="font-semibold">Nome: {{paciente.nome}}</p>
-      <p class="font-semibold">Sexo: {{paciente.sexo}}</p>
-      <p class="font-semibold">Data de Nascimento: {{paciente.dataNascimento | date: "dd/MM/yyyy"}}</p>
+      <p class="font-normal text-gray-800"><span class="font-semibold">Nome</span>: {{paciente?.nome}}</p>
+      <p class="font-normal text-gray-800"><span class="font-semibold">Sexo:</span> {{paciente?.sexo}}</p>
+      <p class="font-normal text-gray-800"><span class="font-semibold">Data de Nascimento:</span> {{paciente?.dataNascimento | date: "dd/MM/yyyy"}}</p>
     </div>
   </section>
   <section

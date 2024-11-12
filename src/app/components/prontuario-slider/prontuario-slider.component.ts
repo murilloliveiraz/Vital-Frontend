@@ -27,17 +27,6 @@ export class ProntuarioSliderComponent {
     }
   }
 
-  // ngAfterViewInit(): void {
-  //   var splide = new Splide('#prontuario-slider', {
-  //     perPage: 3,
-  //     focus  : 0,
-  //     pagination: false,
-  //     arrows: false,
-  //     autoWidth: true
-  //   });
-
-  //   splide.mount();
-  // }
 
   selectRegistro(registroId: string) {
     this.selectedRegistroId = registroId;
