@@ -70,6 +70,11 @@ import { AdminCadastrarColaboradorComponent } from './pages/admin-cadastrar-cola
 import { ColaboradorCardComponent } from './components/colaborador-card/colaborador-card.component';
 import { RegistroProntuarioPreviewComponent } from './components/registro-prontuario-preview/registro-prontuario-preview.component';
 import { RegistroProntuarioDetalhesComponent } from './components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
+import { HospitaisSliderComponent } from './components/hospitais-slider/hospitais-slider.component';
+import { ServicosComponent } from './pages/servicos/servicos.component';
+import { HospitalDetalhesComponent } from './pages/hospital-detalhes/hospital-detalhes.component';
+import { MedicosComponent } from './pages/medicos/medicos.component';
+import { AdminAdicionarServicoAoHospitalComponent } from './pages/admin-adicionar-servico-ao-hospital/admin-adicionar-servico-ao-hospital.component';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -133,7 +138,12 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     AdminCadastrarColaboradorComponent,
     ColaboradorCardComponent,
     RegistroProntuarioPreviewComponent,
-    RegistroProntuarioDetalhesComponent
+    RegistroProntuarioDetalhesComponent,
+    HospitaisSliderComponent,
+    ServicosComponent,
+    HospitalDetalhesComponent,
+    MedicosComponent,
+    AdminAdicionarServicoAoHospitalComponent
   ],
   imports: [
     BrowserModule,
@@ -155,6 +165,7 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
   exports: [
     CommonModule,
     NgxSpinnerModule,
+    NgxSplideModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
