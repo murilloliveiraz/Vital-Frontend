@@ -1,0 +1,66 @@
+<main class="flex flex-col gap-9 mb-24 items-center">
+  <nav class="flex gap-5 pl-5 pt-9 w-full">
+    <button (click)="voltar()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    </button>
+    <h2 class="font-bold">{{hospital?.nome}}</h2>
+  </nav>
+<article class="flex justify-around w-[360px] button-header-historico-pacientes card-exame-historico p-4 rounded-xl transition">
+  <img src="assets/images/Hospital.svg" alt="Hospital Icone">
+  <div>
+    <h3 class="font-semibold text-xl mb-2">{{hospital?.nome}}</h3>
+    <div>
+      <p class="text-xs mb-2">{{hospital?.endereco}} - {{hospital?.estado}}</p>
+      <p class="text-xs mb-2">{{hospital?.telefone}}</p>
+    </div>
+  </div>
+</article>
+<h1 class="font-semibold self-start pl-5">Serviços</h1>
+<div class="max-w-sm">
+  <splide [options]="{ omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',
+      focus: 'center',}">
+    <splide-slide *ngFor="let servico of servicos | slice:0:5" class="p-0" style="padding: 0">
+      <app-servico-card
+        [imageUrl]="obterIconeServico(servico.nome)"
+        [titulo]="servico.nome">
+      </app-servico-card>
+    </splide-slide>
+    <splide-slide>
+      <app-servico-card
+            [imageUrl]="'/assets/images/mais.svg'"
+            [titulo]="'Ver todos'"
+            [routerLink]="['/' + redirect + '/servicos/' + hospital.hospitalId]">
+      </app-servico-card>
+    </splide-slide>
+  </splide>
+</div>
+<h1 class="font-semibold self-start pl-5">Médicos</h1>
+<div class="max-w-sm">
+  <splide
+    [options]="{
+      arrows: false,
+      gap: '10px',
+      autoWidth: true,
+      height: '160px',
+      focus: 0
+    }">
+    <splide-slide *ngFor="let medico of medicos | slice:0:5">
+      <article
+        class="flex gap-4 p-4 rounded-xl transition h-[130px] w-[300px] bg-white shadow-md">
+        <img src="assets/images/Medico.svg" class="w-12" alt="Ícone Médico">
+        <div>
+          <h3 class="font-semibold text-xl mb-3">{{medico.nome}}</h3>
+            <p class="text-sm mb-2">{{medico.especialidade}} - {{medico.crm}}</p>
+        </div>
+      </article>
+    </splide-slide>
+    <splide-slide>
+      <app-servico-card
+        [imageUrl]="'/assets/images/mais.svg'"
+        [titulo]="'Ver todos'"
+        [routerLink]="['/' + redirect + '/medicos/' + hospital.hospitalId]">
+      </app-servico-card>
+    </splide-slide>
+  </splide>
+</div>
+</main>
