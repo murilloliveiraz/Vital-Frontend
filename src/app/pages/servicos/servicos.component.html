@@ -1,0 +1,27 @@
+<main class="flex flex-col gap-9 mb-24 items-center">
+  <nav class="flex gap-5 pl-5 pt-9 self-start">
+    <button (click)="voltar()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    </button>
+    <h2 class="font-bold">Todos os Serviços</h2>
+  </nav>
+  <article *ngIf="hospital" class="flex justify-around w-[360px] button-header-historico-pacientes card-exame-historico p-4 rounded-xl transition">
+    <img src="assets/images/Hospital.svg" alt="Hospital Icone">
+    <div>
+      <h3 class="font-semibold text-xl mb-2">{{hospital?.nome}}</h3>
+      <div>
+        <p class="text-xs mb-2">{{hospital?.endereco}} - {{hospital?.estado}}</p>
+        <p class="text-xs mb-2">{{hospital?.telefone}}</p>
+      </div>
+    </div>
+  </article>
+  <button *ngIf="isADM" class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/adicionar-servicos'">Cadastrar Serviço</button>
+  <section class="grid grid-cols-3 place-items-center">
+    <div *ngFor="let servico of servicos" class="col-span-1">
+      <app-servico-card
+        [imageUrl]="obterIconeServico(servico.nome)"
+        [titulo]="servico.nome">
+      </app-servico-card>
+    </div>
+  </section>
+</main>
