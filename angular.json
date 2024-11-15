@@ -32,12 +32,11 @@
             "styles": [
               "src/styles.css",
               "node_modules/@splidejs/splide/dist/css/splide.min.css",
-              "node_modules/@splidejs/splide/dist/css/themes/splide.min.css",
               "node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css",
               "node_modules/ngx-spinner/animations/ball-spin.css"
             ],
             "scripts": [
-              "node_modules/@splidejs/splide/dist/js/splide.min.js",
+              "node_modules/@splidejs/splide/dist/js/splide.js",
               "node_modules/flowbite-datepicker/dist/js/datepicker-full.min.js"
             ]
           },
@@ -101,9 +100,13 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/@splidejs/splide/dist/css/splide.min.css",
+              "node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css",
               "node_modules/ngx-spinner/animations/ball-spin.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@splidejs/splide/dist/js/splide.js"
+            ]
           }
         }
       }
