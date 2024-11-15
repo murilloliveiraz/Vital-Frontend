@@ -34,6 +34,8 @@ export class AgendarExameFormComponent {
   servicosHospitalares: ServicoResponseContract[] = [];
   hospitais: HospitalResponseContract[] = [];
   medicos: MedicoResponseContract[] = [];
+  pacienteList: PacienteResponseContract[] = [];
+  filteredPacienteList: PacienteResponseContract[] = [];
   agendamentoForm: FormGroup;
 
   constructor(
@@ -95,10 +97,6 @@ export class AgendarExameFormComponent {
         this.selectedDate.setSeconds(0);
     }
   }
-
-  pacienteList: PacienteResponseContract[] = [];
-
-  filteredPacienteList: PacienteResponseContract[] = [];
 
   filterPacienteList() {
     const input = this.cpfInput.replace(/\D/g, '');

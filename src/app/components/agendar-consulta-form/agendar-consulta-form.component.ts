@@ -96,6 +96,12 @@ export class AgendarConsultaFormComponent {
     });
   }
 
+  getMedicosOfEspecialization(especializacao: string){
+    this.medicoService.getAllBySpecialization(especializacao).subscribe((data: MedicoResponseContract[]) => {
+      this.medicos = data;
+    });
+  }
+
   getAllHospitais(){
     this.hospitalService.getAll().subscribe((data: HospitalResponseContract[]) => {
       this.hospitais = data;
@@ -133,7 +139,11 @@ export class AgendarConsultaFormComponent {
     const selectedValue = selectElement.value;
     this.valor = this.servicosHospitalares.find(s => s.nome == selectedValue).valor;
     const especializacao = this.servicosHospitalares.find(s => s.nome == selectedValue).especializacao;
-    this.getMedicosOfEspecializationAtHospital(especializacao, this.hospital.hospitalId);
+    if(this.selectedRadio == "presencial"){
+      this.getMedicosOfEspecializationAtHospital(especializacao, this.hospital.hospitalId);
+    } else {
+      this.getMedicosOfEspecialization(especializacao);
+    }
   }
 
 
