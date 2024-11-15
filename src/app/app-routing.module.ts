@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { MenuAdmComponent } from './components/menu-adm/menu-adm.component';
-import { ResetPasswordPopupComponent } from './components/reset-password-pop-up/reset-password-pop-up.component';
 import { NewPasswordPopupComponent } from './components/new-password-popup/new-password-popup.component';
-import { AuthGuard } from './pages/guard/auth-guard.service';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,17 +16,20 @@ const routes: Routes = [
   {
     path: 'paciente',
     loadChildren: () => import('./pages/paciente/paciente-routing.module').then(m => m.PacienteRoutingModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data: { role: 'Paciente' }
   },
   {
     path: 'medico',
     loadChildren: () => import('./pages/medico/medico-routing.module').then(m => m.MedicoRoutingModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data: { role: 'Medico' }
   },
   {
     path: 'admin',
     loadChildren: () => import('./pages/admin/admin-routing.module').then(m => m.AdminRoutingModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    data: { role: 'Administrador' }
   },
   {
     path:'atualizar-senha', component: NewPasswordPopupComponent

@@ -8,8 +8,7 @@ import { MedicoHistoricoPacientesComponent } from '../medico-historico-pacientes
 import { DetalhesPacienteComponent } from '../detalhes-paciente/detalhes-paciente.component';
 import { CommonModule } from '@angular/common';
 import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
-import { AuthGuard } from '../guard/auth-guard.service';
-import { RegistroProntuarioPreviewComponent } from 'src/app/components/registro-prontuario-preview/registro-prontuario-preview.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RegistroProntuarioDetalhesComponent } from 'src/app/components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
 import { AdminAnexarDocumentoComponent } from '../admin-anexar-documento/admin-anexar-documento.component';
 
@@ -20,40 +19,49 @@ const routes: Routes = [
    children: [
     {
       path: '', component: MedicoHomepageComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'prontuario-registro/:id', component: RegistroProntuarioDetalhesComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'consulta-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'exame-detalhes/:id', component: MedicoExameDetalhesComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'exame-detalhes/:id/inserir-registro/:pacienteId', component: MedicoInserirRegistroComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'historico-pacientes', component: MedicoHistoricoPacientesComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'detalhes-paciente/:id', component: DetalhesPacienteComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
     {
       path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
       component: AdminAnexarDocumentoComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Medico' }
     },
    ]
   },

@@ -7,7 +7,10 @@ import { PacienteContaComponent } from '../paciente-conta/paciente-conta.compone
 import { PacienteHistoricoExamesComponent } from '../paciente-historico-exames/paciente-historico-exames.component';
 import { CheckoutComponent } from '../checkout/checkout.component';
 import { PacienteAgendarConsultaComponent } from '../paciente-agendar-consulta/paciente-agendar-consulta.component';
-import { AuthGuard } from '../guard/auth-guard.service';
+import { ServicosComponent } from '../servicos/servicos.component';
+import { HospitalDetalhesComponent } from '../hospital-detalhes/hospital-detalhes.component';
+import { MedicosComponent } from '../medicos/medicos.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,23 +19,43 @@ const routes: Routes = [
    children: [
     {
       path: '', component: PacienteHomeComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
     },
     {
       path: 'historico', component: PacienteHistoricoExamesComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
     },
     {
       path: 'conta', component: PacienteContaComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
+    },
+    {
+      path: 'servicos/:id', component: ServicosComponent,
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
+    },
+    {
+      path: 'medicos/:id', component: MedicosComponent,
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
     },
     {
       path: 'checkout/:id', component: CheckoutComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
+    },
+    {
+      path: 'hospitais/:id', component: HospitalDetalhesComponent,
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
     },
     {
       path: 'agendar-consulta', component: PacienteAgendarConsultaComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AuthGuard],
+      data: { role: 'Paciente' }
     },
    ]
   },
