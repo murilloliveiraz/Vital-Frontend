@@ -23,4 +23,10 @@ body {
   background-color: #108099;
   color: white;
 }
-
+.splide {
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  overflow: hidden;
+  max-width: 100%;
+}
