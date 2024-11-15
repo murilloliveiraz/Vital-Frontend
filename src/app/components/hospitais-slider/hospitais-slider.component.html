@@ -1,0 +1,7 @@
+<div class="max-w-sm">
+<splide [options]="{ focus: 0, width: '100%', omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px'}">
+  <splide-slide *ngFor="let hospital of hospitais">
+    <app-hospital-card [hospital]="hospital"></app-hospital-card>
+  </splide-slide>
+</splide>
+</div>
