@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,30 @@ export class AuthService {
     }
     this.limparDadosUsuario();
     return "";
+  }
+
+  getRoleFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.role || null;
+    } catch (error) {
+      console.error('Token inválido:', error);
+      return null;
+    }
+  }
+
+  isAdmin(): boolean {
+    return this.getRoleFromToken() === 'Administrador';
+  }
+
+  isPaciente(): boolean {
+    return this.getRoleFromToken() === 'Paciente';
+  }
+
+  isMedico(): boolean {
+    return this.getRoleFromToken() === 'Medico';
   }
 }
