@@ -3,6 +3,7 @@ import { PacienteResponseContract } from 'src/app/models/paciente/pacienteRespon
 import { AuthService } from 'src/app/services/auth.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { FormField } from 'src/app/interfaces/FormField';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paciente-conta',
@@ -13,7 +14,7 @@ export class PacienteContaComponent {
   paciente: PacienteResponseContract;
   formFields: FormField[] = [];
 
-  constructor(public authService: AuthService, public pacienteService: PacienteService) {}
+  constructor(public authService: AuthService, public pacienteService: PacienteService, private router: Router) {}
 
   ngOnInit() {
     this.carregarEmailUsuarioLogado();
@@ -58,4 +59,9 @@ export class PacienteContaComponent {
     return d.toISOString().split('T')[0];
   }
 
+  logout(){
+    this.authService.limparDadosUsuario();
+    this.authService.limparToken();
+    this.router.navigate(['/login']);
+  }
 }
