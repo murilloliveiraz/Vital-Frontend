@@ -40,6 +40,9 @@ export class MedicoService {
   getAllBySpecializationAndHospitalId(specialization: string, hospitalId: number): Observable<MedicoResponseContract[]> {
     return this.http.get<MedicoResponseContract[]>(`${this.apiUrl}/pesquisar/especializacao-e-hospital?specialization=${specialization}&id=${hospitalId}`);
   }
+  getAllByHospitalId(hospitalId: number): Observable<MedicoResponseContract[]> {
+    return this.http.get<MedicoResponseContract[]>(`${this.apiUrl}/pesquisar/hospital?id=${hospitalId}`);
+  }
 
   getById(id: number): Observable<MedicoResponseContract> {
     return this.http.get<MedicoResponseContract>(`${this.apiUrl}/${id}`);
