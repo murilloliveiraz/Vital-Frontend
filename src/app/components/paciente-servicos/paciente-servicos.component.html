@@ -1,30 +1,17 @@
-<div class="splide w-[400px] items-center" role="group" id="pacientes-servicos-slider" aria-label="Splide Basic">
-  <div class="splide__track">
-    <ul class="splide__list flex item-center gap-7">
-      <li class="splide__slide">
-        <app-paciente-servicos-card
-        [imageUrl]="'/assets/images/eletrocardiograma.png'"
-        [title]="'Eletrocardiograma'">
-      </app-paciente-servicos-card>
-      </li>
-      <li class="splide__slide">
-        <app-paciente-servicos-card
-        [imageUrl]="'/assets/images/hemograma.png'"
-        [title]="'Hemograma'">
-      </app-paciente-servicos-card>
-      </li>
-      <li class="splide__slide">
-        <app-paciente-servicos-card
-        [imageUrl]="'/assets/images/endoscopia.png'"
-        [title]="'Endoscopia'">
-      </app-paciente-servicos-card>
-      </li>
-      <li class="splide__slide">
-        <app-paciente-servicos-card
-        [imageUrl]="'/assets/images/urina.png'"
-        [title]="'Urina'">
-      </app-paciente-servicos-card>
-      </li>
-    </ul>
-  </div>
+<div class="max-w-sm">
+<splide [options]="{ focus: 0, omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',}">
+  <splide-slide *ngFor="let servico of servicos | slice:0:5" class="p-0" style="padding: 0">
+    <app-servico-card
+      [imageUrl]="obterIconeServico(servico.nome)"
+      [titulo]="servico.nome">
+    </app-servico-card>
+  </splide-slide>
+  <splide-slide>
+    <app-servico-card
+          [imageUrl]="'/assets/images/mais.svg'"
+          [titulo]="'Ver todos'"
+          [routerLink]="['servicos/0']">
+        </app-servico-card>
+  </splide-slide>
+</splide>
 </div>
