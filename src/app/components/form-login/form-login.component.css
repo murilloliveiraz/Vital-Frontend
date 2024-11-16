@@ -44,7 +44,7 @@ input {
   text-decoration: underline;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
 
   #loginButton {
     width: 300px;
@@ -69,7 +69,7 @@ input {
     margin-left: 23px;
   }
 
-}
+} */
 
 
 .textLoginPage {

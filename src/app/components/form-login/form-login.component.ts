@@ -41,6 +41,7 @@ export class FormLoginComponent {
         //@ts-ignore
         google.accounts.id.renderButton(
           document.getElementById("googleButton"),
+        { theme: "outline", size: "large", shape: "rectangular", width: 100 }
         );
         //@ts-ignore
         google.accounts.id.prompt((notification: PromptMomentNotification) => {});
