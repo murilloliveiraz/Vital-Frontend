@@ -1,4 +1,5 @@
-<article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg transition hover:shadow-xl">
+<article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+  <img src={{obterIconeServico(consulta.nome)}} alt="{{ consulta.nome }}" srcset="">
   <div>
     <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ consulta?.nome }}</h3>
     <p class="text-xs text-gray-500">{{ consulta?.local }}</p>
@@ -20,7 +21,7 @@
     <img *ngIf="tela == 'admin'" class="h-8 cursor-pointer" src="/assets/images/attach.svg" alt="attach icon" [routerLink]="['anexar-documento', 'consulta', consulta?.id]">
 
     <button *ngIf="consulta?.status == 'Agendado' && consulta?.tipoConsulta == 'Remota' && tela == 'paciente'"
-      class="bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg text-sm px-4 py-2 transition duration-150">
+      class="bg-[#108999] text-white font-medium rounded-lg text-sm px-4 py-2 transition duration-150">
       <a href="{{ consulta?.meetLink }}">Acessar</a>
     </button>
 
