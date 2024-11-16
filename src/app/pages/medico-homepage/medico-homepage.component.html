@@ -2,7 +2,7 @@
   <section class="bg-[#0093b9] w-full h-[280px] overflow-hidden">
     <img src="/assets/images/logoOpacity.png" alt="logo vital" class="w-[391px] h-[500px]">
   </section>
-  <section class="container rounded-tl-3xl rounded-tr-3xl z-10 mt-[-50px] bg-white flex flex-col items-center gap-6 mb-40">
+  <section class="container rounded-tl-3xl rounded-tr-3xl z-10 mt-[-50px] bg-white flex flex-col items-center gap-6">
     <img src="/assets/images/bannerHomePageMedico.png" alt="foto hospital" srcset="">
     <form class="max-w-md mx-auto w-11/12 mt-5">
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
@@ -19,7 +19,14 @@
     <h1 class="text-2xl font-bold">Próximos Pacientes</h1>
     <div>
       <h1 *ngIf="proximosExames.length < 1">Você não possui exames para atender</h1>
-      <app-ultimos-pacientes-card *ngIf="agendamentos.length > 0" [agendamentos]="agendamentos" tela="home"></app-ultimos-pacientes-card>
+      <app-ultimos-pacientes-card *ngIf="agendamentos.length > 0" [agendamentos]="agendamentos | slice:0:5" tela="home"></app-ultimos-pacientes-card>
     </div>
+    <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] flex items-center p-2 justify-center mb-20" (click)="logout()">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.5625 0H14.0625C14.5802 0 15 0.419783 15 0.93751V14.0625C15 14.5803 14.5802 15 14.0625 15H6.56247C6.04474 15 5.62496 14.5803 5.62496 14.0625V0.93751C5.62499 0.419783 6.04474 0 6.5625 0V0ZM8.43749 8.4375C8.95527 8.4375 9.375 8.01772 9.375 7.49999C9.375 6.98221 8.95527 6.56248 8.43749 6.56248C7.91971 6.56248 7.49998 6.98221 7.49998 7.49999C7.49998 8.01775 7.91971 8.4375 8.43749 8.4375Z" fill="white"/>
+        <path d="M9.05991e-06 7.50024L3.28125 4.68774V6.56273H4.6875V8.43773H3.28125V10.3127L9.05991e-06 7.50024Z" fill="white"/>
+        </svg>
+      <span class="ml-3">Sair</span>
+    </button>
   </section>
 </main>

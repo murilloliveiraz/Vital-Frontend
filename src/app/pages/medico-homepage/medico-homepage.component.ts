@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
 import { ExamesService } from 'src/app/services/exames.service';
 import { MedicoService } from 'src/app/services/medico.service';
@@ -15,7 +15,13 @@ import { Agendamento } from 'src/app/interfaces/Agendamento';
   styleUrls: ['./medico-homepage.component.css']
 })
 export class MedicoHomepageComponent {
-  constructor(private route: ActivatedRoute, private location: Location, private examesService: ExamesService, private medicoService: MedicoService, private authService: AuthService) {}
+  constructor(
+    private examesService: ExamesService,
+    private medicoService: MedicoService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
   proximosExames: AgendarExameResponse[] = [];
   proximasConsultas: AgendarExameResponse[] = [];
   medico: MedicoResponseContract;
@@ -78,5 +84,11 @@ export class MedicoHomepageComponent {
     this.agendamentos = [...exames, ...consultas];
 
     this.agendamentos.sort((a, b) => +new Date(a.data) - +new Date(b.data));
+  }
+
+  logout(){
+    this.authService.limparDadosUsuario();
+    this.authService.limparToken();
+    this.router.navigate(['/login']);
   }
 }
