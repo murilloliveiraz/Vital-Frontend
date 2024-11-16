@@ -12,4 +12,5 @@ export class MedicoCardComponent {
   @Input() cpf: string = '';
   @Input() email: string = '';
   @Input() ativo: boolean = true;
+  @Input() isADM: boolean = false;
 }

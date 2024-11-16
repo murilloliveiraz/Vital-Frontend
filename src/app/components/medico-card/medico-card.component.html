@@ -1,8 +1,11 @@
-<article class="flex flex-col gap-4 w-[330px] card-exame-historico p-4 rounded-xl transition">
-  <h3 class="font-semibold text-xl">{{nome}}</h3>
+<article class="flex gap-4 card-exame-historico p-4 rounded-xl transition h-[120px] w-[300px]">
+  <img src="assets/images/Medico.svg" alt="Medico Icone">
   <div>
-    <p class="text-sm mb-2">{{especialidade}} - {{crm}}</p>
-    <p class="text-xs mb-2">CPF: {{cpf}}</p>
-    <p class="text-xs mb-2">Email: {{email}}</p>
+    <h3 class="font-semibold text-xl">{{nome}}</h3>
+    <div>
+      <p class="text-sm mb-2">{{especialidade}} - {{crm}}</p>
+      <p *ngIf="isADM" class="text-xs mb-2">CPF: {{cpf}}</p>
+      <p *ngIf="isADM" class="text-xs mb-2">Email: {{email}}</p>
+    </div>
   </div>
 </article>
