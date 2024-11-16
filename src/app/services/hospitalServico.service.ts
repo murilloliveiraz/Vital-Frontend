@@ -4,10 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environment';
 import { HospitalResponseContract } from '../models/hospital/hospitalResponseContract';
 import { ServicoResponseContract } from '../models/servico/servicoResponseContract';
-export interface HospitalServicoRequestContract {
-  hospitalId: number;
-  servicoId: number;
-}
+import { AdicionarServicoAoHospital } from '../models/hospital-servico/AdicionarServicoAoHospital';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +29,7 @@ export class HospitalServicoService {
     return this.http.get<HospitalResponseContract[]>(url);
   }
 
-  post(hospitalServico: HospitalServicoRequestContract): Observable<any> {
+  post(hospitalServico: AdicionarServicoAoHospital): Observable<any> {
     return this.http.post<any>(this.apiUrl, hospitalServico);
   }
 
