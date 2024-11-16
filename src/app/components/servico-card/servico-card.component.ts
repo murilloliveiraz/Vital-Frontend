@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ServicoCardComponent {
   @Input() titulo: string = '';
-  @Input() descricao: string = '';
+  @Input() imageUrl: string = '';
 }
