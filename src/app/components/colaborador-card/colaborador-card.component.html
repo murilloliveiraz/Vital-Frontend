@@ -1,12 +1,54 @@
-<div class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
-  <div>
-    <h3 class="font-semibold">{{colaborador.nome}}</h3>
-    <p class="text-sm text-[#0e687b]">{{colaborador.cargo}}</p>
-  </div>
-  <div class="flex justify-between items-center">
+<div class="gap-5 hidden md:flex">
+  <div class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
     <div>
-      <p class="text-sm text-[#0e687b] font-semibold">Data da contratação: {{colaborador.dataCriacao| date: 'dd/MM/yyyy' }}</p>
-      <p class="text-sm font-normal">CPF: {{colaborador.email}}</p>
+      <h3 class="font-semibold">{{colaborador.nome}}</h3>
+      <p class="text-sm text-[#0e687b]">{{colaborador.cargo}}</p>
+    </div>
+    <div class="flex justify-between items-center">
+      <div>
+        <p class="text-sm text-[#0e687b] font-semibold">Data da contratação: {{colaborador.dataCriacao| date: 'dd/MM/yyyy' }}</p>
+        <p class="text-sm font-normal">CPF: {{colaborador.email}}</p>
+      </div>
     </div>
   </div>
-</div>
+  <button type="button" (click)="excluirColaborador(colaborador)" class="text-white w-[120px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Excluir colaborador</button>
+  </div>
+
+  <div class="max-w-sm md:hidden overflow-hidden">
+    <splide [options]="{
+      focus: 0,
+      omitEnd: false,
+      arrows: false,
+      gap: '20px',
+      autoWidth: true,
+      perPage: 1,
+      height: '160px',
+      pagination: false,
+      breakpoints: {
+        '640': { perPage: 1 }
+      }
+    }">
+      <!-- Slide de Consulta -->
+      <splide-slide class="items-center">
+        <div class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
+          <div>
+            <h3 class="font-semibold">{{colaborador.nome}}</h3>
+            <p class="text-sm text-[#0e687b]">{{colaborador.cargo}}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="text-sm text-[#0e687b] font-semibold">Data da contratação: {{colaborador.dataCriacao| date: 'dd/MM/yyyy' }}</p>
+              <p class="text-sm font-normal">CPF: {{colaborador.email}}</p>
+            </div>
+          </div>
+        </div>
+      </splide-slide>
+      <splide-slide>
+        <div class="flex justify-center items-center h-full">
+          <button type="button" (click)="excluirColaborador(colaborador)" class="text-white w-[120px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Excluir colaborador
+          </button>
+        </div>
+      </splide-slide>
+    </splide>
+  </div>
