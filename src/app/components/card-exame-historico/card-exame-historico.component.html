@@ -1,45 +1,122 @@
-<article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
-  <img src={{obterIconeServico(exame.nome)}} alt="{{ exame.nome }}" srcset="">
-  <div class="flex flex-col">
-    <!-- Nome do Exame -->
-    <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ exame.nome }}</h3>
+<div class="gap-5 hidden md:flex">
+  <article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+    <img src={{obterIconeServico(exame.nome)}} alt="{{ exame.nome }}" srcset="">
+    <div class="flex flex-col">
+      <!-- Nome do Exame -->
+      <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ exame.nome }}</h3>
 
-    <!-- Local e Data -->
-    <div>
-      <p class="text-xs text-gray-500">{{ exame.local }}</p>
-      <p class="text-xs text-gray-500">{{ exame.data | date: 'dd/MM/yy HH:mm' }}</p>
+      <!-- Local e Data -->
+      <div>
+        <p class="text-xs text-gray-500">{{ exame.local }}</p>
+        <p class="text-xs text-gray-500">{{ exame.data | date: 'dd/MM/yy HH:mm' }}</p>
+      </div>
+      <div class="flex items-center mt-2 space-x-2">
+        <span *ngIf="exame?.status == 'Agendado'" class="flex items-center text-xs text-gray-600 dark:text-white">
+          <span class="w-2.5 h-2.5 bg-yellow-200 rounded-full me-1.5"></span>Agendada
+        </span>
+        <span *ngIf="exame?.status == 'Concluido'" class="flex items-center text-xs text-green-600 dark:text-white">
+          <span class="w-2.5 h-2.5 bg-green-300 rounded-full me-1.5"></span>Concluída
+        </span>
+      </div>
     </div>
-    <div class="flex items-center mt-2 space-x-2">
-      <span *ngIf="exame?.status == 'Agendado'" class="flex items-center text-xs text-gray-600 dark:text-white">
-        <span class="w-2.5 h-2.5 bg-yellow-200 rounded-full me-1.5"></span>Agendada
-      </span>
-      <span *ngIf="exame?.status == 'Concluido'" class="flex items-center text-xs text-green-600 dark:text-white">
-        <span class="w-2.5 h-2.5 bg-green-300 rounded-full me-1.5"></span>Concluída
-      </span>
+
+    <div class="flex items-center space-x-4">
+      <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
+      <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
+           class="h-8 cursor-pointer"
+           src="/assets/images/download.svg"
+           alt="Download Ícone"
+           (click)="downloadAllDocuments(exame)"
+           srcset="">
+
+      <!-- Ícone de Anexar Documento para tela 'admin' -->
+      <img *ngIf="tela == 'admin'"
+           class="h-8 cursor-pointer"
+           src="/assets/images/attach.svg"
+           alt="Anexar Documento Ícone"
+           [routerLink]="['anexar-documento', 'exame', exame.id]">
+
+      <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
+      <img *ngIf="exame.status == 'Agendado' && tela != 'paciente'"
+           class="h-8 grayscale-disabled cursor-not-allowed"
+           src="/assets/images/download.svg"
+           alt="Download Ícone Desabilitado"
+           srcset="">
     </div>
+  </article>
+  <button *ngIf="exame.status == 'Agendado' && tela == 'paciente'" type="button" (click)="cancelarExame()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
   </div>
 
-  <div class="flex items-center space-x-4">
-    <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
-    <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
-         class="h-8 cursor-pointer"
-         src="/assets/images/download.svg"
-         alt="Download Ícone"
-         (click)="downloadAllDocuments(exame)"
-         srcset="">
+  <div class="max-w-sm md:hidden overflow-hidden">
+    <splide [options]="{
+      focus: 0,
+      omitEnd: false,
+      arrows: false,
+      gap: '20px',
+      autoWidth: true,
+      perPage: 1,
+      height: '160px',
+      pagination: false,
+      breakpoints: {
+        '640': { perPage: 1 }
+      }
+    }">
+      <!-- Slide de Consulta -->
+      <splide-slide>
+        <article class="flex items-center justify-between h-[140px] w-[350px] mb-3 card-exame-historico p-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+          <img src={{obterIconeServico(exame.nome)}} alt="{{ exame.nome }}" srcset="">
+          <div class="flex flex-col">
+            <!-- Nome do Exame -->
+            <h3 class="font-semibold text-lg mb-1 text-gray-800">{{ exame.nome }}</h3>
 
-    <!-- Ícone de Anexar Documento para tela 'admin' -->
-    <img *ngIf="tela == 'admin'"
-         class="h-8 cursor-pointer"
-         src="/assets/images/attach.svg"
-         alt="Anexar Documento Ícone"
-         [routerLink]="['anexar-documento', 'exame', exame.id]">
+            <!-- Local e Data -->
+            <div>
+              <p class="text-xs text-gray-500">{{ exame.local }}</p>
+              <p class="text-xs text-gray-500">{{ exame.data | date: 'dd/MM/yy HH:mm' }}</p>
+            </div>
+            <div class="flex items-center mt-2 space-x-2">
+              <span *ngIf="exame?.status == 'Agendado'" class="flex items-center text-xs text-gray-600 dark:text-white">
+                <span class="w-2.5 h-2.5 bg-yellow-200 rounded-full me-1.5"></span>Agendada
+              </span>
+              <span *ngIf="exame?.status == 'Concluido'" class="flex items-center text-xs text-green-600 dark:text-white">
+                <span class="w-2.5 h-2.5 bg-green-300 rounded-full me-1.5"></span>Concluída
+              </span>
+            </div>
+          </div>
 
-    <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
-    <img *ngIf="exame.status == 'Agendado' && tela != 'admin'"
-         class="h-8 grayscale-disabled cursor-not-allowed"
-         src="/assets/images/download.svg"
-         alt="Download Ícone Desabilitado"
-         srcset="">
+          <div class="flex items-center space-x-4">
+            <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
+            <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
+                 class="h-8 cursor-pointer"
+                 src="/assets/images/download.svg"
+                 alt="Download Ícone"
+                 (click)="downloadAllDocuments(exame)"
+                 srcset="">
+
+            <!-- Ícone de Anexar Documento para tela 'admin' -->
+            <img *ngIf="tela == 'admin'"
+                 class="h-8 cursor-pointer"
+                 src="/assets/images/attach.svg"
+                 alt="Anexar Documento Ícone"
+                 [routerLink]="['anexar-documento', 'exame', exame.id]">
+
+            <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
+            <img *ngIf="exame.status == 'Agendado' && tela != 'paciente'"
+                 class="h-8 grayscale-disabled cursor-not-allowed"
+                 src="/assets/images/download.svg"
+                 alt="Download Ícone Desabilitado"
+                 srcset="">
+          </div>
+        </article>
+      </splide-slide>
+
+      <!-- Slide de Botão Cancelar -->
+      <splide-slide *ngIf="exame.status == 'Agendado' && tela == 'paciente'">
+        <div class="flex justify-center items-center h-full">
+          <button type="button" (click)="cancelarExame()" class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Cancelar Exame
+          </button>
+        </div>
+      </splide-slide>
+    </splide>
   </div>
-</article>

@@ -4,6 +4,8 @@ import { DownloadService } from 'src/app/services/Download.service';
 import { ConsultaConcluidaResponseContract } from './../../models/consulta/consultaConcluidaResponseContract';
 import { MedicoResponseContract } from './../../models/medico/medicoResponseContract';
 import { Consulta } from 'src/app/interfaces/Consulta';
+import Swal from 'sweetalert2';
+import { ConsultaService } from 'src/app/services/consulta.service';
 
 @Component({
   selector: 'app-consulta-card',
@@ -15,7 +17,7 @@ export class ConsultaCardComponent {
   @Input() tela: string = '';
   medico: MedicoResponseContract;
 
-  constructor(private downloadService: DownloadService) {}
+  constructor(private consultaService: ConsultaService) {}
 
   downloadAllDocuments(consulta: Consulta) {
     consulta.documentos.forEach((documento, index) => {
@@ -55,5 +57,20 @@ export class ConsultaCardComponent {
   obterIconeServico(nomeServico: string): string | undefined {
     const servico = this.servicosHospitalares.find(s => s.nome === nomeServico);
     return servico ? servico.icone : '/assets/images/servicos/default.svg';
+  }
+
+  cancelarConsulta(){
+    this.consultaService.deletarConsulta(this.consulta.id).subscribe(() => {
+      Swal.fire({
+        title: "Consulta Cancelada!",
+        text: "A consulta foi cancelada e um email foi enviado para o paciente",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
   }
 }

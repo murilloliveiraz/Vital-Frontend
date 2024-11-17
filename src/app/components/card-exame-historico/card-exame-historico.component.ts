@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Exame } from 'src/app/interfaces/Exame';
+import { ExamesService } from 'src/app/services/exames.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card-exame-historico',
@@ -9,6 +11,8 @@ import { Exame } from 'src/app/interfaces/Exame';
 export class CardExameHistoricoComponent {
   @Input() exame: Exame;
   @Input() tela: string = '';
+
+  constructor(private examesService: ExamesService){}
 
   downloadAllDocuments(exame: any) {
     if (exame.arquivoResultadoUrl) {
@@ -50,5 +54,20 @@ export class CardExameHistoricoComponent {
   obterIconeServico(nomeServico: string): string | undefined {
     const servico = this.servicosHospitalares.find(s => s.nome === nomeServico);
     return servico ? servico.icone : '/assets/images/servicos/default.svg';
+  }
+
+  cancelarExame(){
+    this.examesService.deletarExame(this.exame.id).subscribe(() => {
+      Swal.fire({
+        title: "Exame cancelado!",
+        text: "O exame foi cancelado e um email foi enviado para o paciente",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
   }
 }
