@@ -1,11 +1,52 @@
-<article class="flex gap-4 card-exame-historico p-4 rounded-xl transition h-[120px] w-[300px]">
-  <img src="assets/images/Medico.svg" alt="Medico Icone">
-  <div>
-    <h3 class="font-semibold text-xl">{{nome}}</h3>
+<div class="gap-5 hidden md:flex">
+  <article class="flex gap-4 card-exame-historico p-4 rounded-xl transition w-[300px]">
+    <img src="assets/images/Medico.svg" alt="Medico Icone">
     <div>
-      <p class="text-sm mb-2">{{especialidade}} - {{crm}}</p>
-      <p *ngIf="isADM" class="text-xs mb-2">CPF: {{cpf}}</p>
-      <p *ngIf="isADM" class="text-xs mb-2">Email: {{email}}</p>
+      <h3 class="font-semibold text-xl">{{medico.nome}}</h3>
+      <div>
+        <p class="text-sm mb-2">{{medico.especialidade}} - {{medico.crm}}</p>
+        <p *ngIf="isADM" class="text-xs mb-2">CPF: {{medico.cpf}}</p>
+        <p *ngIf="isADM" class="text-xs mb-2">Email: {{medico.email}}</p>
+      </div>
     </div>
+  </article>
+  <button *ngIf="isADM" type="button" (click)="excluirMedico(medico)" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Excluir médico</button>
   </div>
-</article>
+
+  <div class="max-w-sm md:hidden overflow-hidden">
+    <splide [options]="{
+      focus: 0,
+      omitEnd: false,
+      arrows: false,
+      gap: '20px',
+      autoWidth: true,
+      perPage: 1,
+      height: '160px',
+      pagination: false,
+      breakpoints: {
+        '640': { perPage: 1 }
+      }
+    }">
+      <!-- Slide de Consulta -->
+      <splide-slide class="items-center">
+        <article class="flex gap-4 card-exame-historico p-4 rounded-xl transition w-[300px]">
+          <img src="assets/images/Medico.svg" alt="Medico Icone">
+          <div>
+            <h3 class="font-semibold text-xl">{{medico.nome}}</h3>
+            <div>
+              <p class="text-sm mb-2">{{medico.especialidade}} - {{medico.crm}}</p>
+              <p *ngIf="isADM" class="text-xs mb-2">CPF: {{medico.cpf}}</p>
+              <p *ngIf="isADM" class="text-xs mb-2">{{medico.email}}</p>
+            </div>
+          </div>
+        </article>
+      </splide-slide>
+      <splide-slide *ngIf="isADM">
+        <div class="flex justify-center items-center h-full">
+          <button type="button" (click)="excluirMedico(medico)" class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Excluir médico
+          </button>
+        </div>
+      </splide-slide>
+    </splide>
+  </div>
