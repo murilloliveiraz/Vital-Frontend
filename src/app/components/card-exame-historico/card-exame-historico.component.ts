@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Exame } from 'src/app/interfaces/Exame';
 import { ExamesService } from 'src/app/services/exames.service';
 import Swal from 'sweetalert2';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-card-exame-historico',
@@ -10,9 +11,10 @@ import Swal from 'sweetalert2';
 })
 export class CardExameHistoricoComponent {
   @Input() exame: Exame;
-  @Input() tela: string = '';
+  isADM: boolean = false;
+  isPaciente: boolean = false;
 
-  constructor(private examesService: ExamesService){}
+  constructor(private examesService: ExamesService, private authService: AuthService){}
 
   downloadAllDocuments(exame: any) {
     if (exame.arquivoResultadoUrl) {
@@ -25,6 +27,11 @@ export class CardExameHistoricoComponent {
         window.open(exame.urlResultadoClinicaExterna, '_blank');
       }, 1000); // 1000 ms de atraso entre cada abertura
     }
+  }
+
+  ngOnInit(){
+    this.isADM = this.authService.isAdmin();
+    this.isPaciente = this.authService.isPaciente();
   }
 
   servicosHospitalares = [

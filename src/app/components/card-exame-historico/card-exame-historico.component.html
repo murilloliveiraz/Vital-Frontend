@@ -22,7 +22,7 @@
 
     <div class="flex items-center space-x-4">
       <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
-      <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
+      <img *ngIf="exame.status == 'Concluido' && !isADM"
            class="h-8 cursor-pointer"
            src="/assets/images/download.svg"
            alt="Download Ícone"
@@ -30,21 +30,21 @@
            srcset="">
 
       <!-- Ícone de Anexar Documento para tela 'admin' -->
-      <img *ngIf="tela == 'admin'"
+      <img *ngIf="isADM"
            class="h-8 cursor-pointer"
            src="/assets/images/attach.svg"
            alt="Anexar Documento Ícone"
            [routerLink]="['anexar-documento', 'exame', exame.id]">
 
       <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
-      <img *ngIf="exame.status == 'Agendado' && tela != 'paciente'"
+      <img *ngIf="exame.status == 'Agendado' && !isADM"
            class="h-8 grayscale-disabled cursor-not-allowed"
            src="/assets/images/download.svg"
            alt="Download Ícone Desabilitado"
            srcset="">
     </div>
   </article>
-  <button *ngIf="exame.status == 'Agendado' && tela == 'paciente'" type="button" (click)="cancelarExame()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
+  <button *ngIf="exame.status == 'Agendado' && isPaciente" type="button" (click)="cancelarExame()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
   </div>
 
   <div class="max-w-sm md:hidden overflow-hidden">
@@ -86,32 +86,32 @@
 
           <div class="flex items-center space-x-4">
             <!-- Ícone de Download para status 'Concluído' (visível para tela diferente de 'admin') -->
-            <img *ngIf="exame.status == 'Concluido' && tela != 'admin'"
-                 class="h-8 cursor-pointer"
-                 src="/assets/images/download.svg"
-                 alt="Download Ícone"
-                 (click)="downloadAllDocuments(exame)"
-                 srcset="">
+            <img *ngIf="exame.status == 'Concluido' && !isADM"
+              class="h-8 cursor-pointer"
+              src="/assets/images/download.svg"
+              alt="Download Ícone"
+              (click)="downloadAllDocuments(exame)"
+              srcset="">
 
             <!-- Ícone de Anexar Documento para tela 'admin' -->
-            <img *ngIf="tela == 'admin'"
-                 class="h-8 cursor-pointer"
-                 src="/assets/images/attach.svg"
-                 alt="Anexar Documento Ícone"
-                 [routerLink]="['anexar-documento', 'exame', exame.id]">
+            <img *ngIf="isADM"
+                class="h-8 cursor-pointer"
+                src="/assets/images/attach.svg"
+                alt="Anexar Documento Ícone"
+                [routerLink]="['anexar-documento', 'exame', exame.id]">
 
             <!-- Ícone de Download desabilitado para status 'Agendado' (visível para tela diferente de 'admin') -->
-            <img *ngIf="exame.status == 'Agendado' && tela != 'paciente'"
-                 class="h-8 grayscale-disabled cursor-not-allowed"
-                 src="/assets/images/download.svg"
-                 alt="Download Ícone Desabilitado"
-                 srcset="">
+            <img *ngIf="exame.status == 'Agendado' && !isADM"
+                class="h-8 grayscale-disabled cursor-not-allowed"
+                src="/assets/images/download.svg"
+                alt="Download Ícone Desabilitado"
+                srcset="">
           </div>
         </article>
       </splide-slide>
 
       <!-- Slide de Botão Cancelar -->
-      <splide-slide *ngIf="exame.status == 'Agendado' && tela == 'paciente'">
+      <splide-slide *ngIf="exame.status == 'Agendado' && isPaciente">
         <div class="flex justify-center items-center h-full">
           <button type="button" (click)="cancelarExame()" class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
             Cancelar Exame
