@@ -48,7 +48,6 @@ export class PacienteHistoricoExamesComponent {
       }),
       switchMap((examesConcluidos: ExameConcluidoResponse[]) => {
         this.examesConcluidos = examesConcluidos;
-        console.log(examesConcluidos)
         return this.paciente ? this.buscarConsultasAgendadas(this.paciente.id) : of([]);
       }),
       switchMap((consultasAgendadas: AgendarConsultaResponseContract[]) => {
@@ -60,7 +59,6 @@ export class PacienteHistoricoExamesComponent {
         this.consultasConcluidas = consultasConcluidas;
       },
       error: (error) => {
-        console.error('Erro ao carregar dados:', error);
       }
     });
   }
