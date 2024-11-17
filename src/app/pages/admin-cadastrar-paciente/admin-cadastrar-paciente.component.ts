@@ -41,7 +41,7 @@ export class AdminCadastrarPacienteComponent {
 
   initDatePicker(): void {
     let date = new Datepicker(this.dateField.nativeElement, {
-      minDate: new Date(),
+      maxDate: new Date(),
       todayHighlight: true,
       autohide: true,
       format: "dd/mm/yyyy",
