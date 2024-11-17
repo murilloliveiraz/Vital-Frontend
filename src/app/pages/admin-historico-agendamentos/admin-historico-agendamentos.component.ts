@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Agendamento } from 'src/app/interfaces/Agendamento';
 import { ExamesService } from './../../services/exames.service';
-import { ExameConcluidoResponse } from 'src/app/models/exame/ExameConcluidoResponse';
 import { AgendarConsultaResponseContract } from 'src/app/models/consulta/agendarConsultaResponseContract';
 @Component({
   selector: 'app-admin-historico-agendamentos',
@@ -15,6 +14,7 @@ export class AdminHistoricoAgendamentosComponent {
   proximosExames: AgendarExameResponse[] = [];
   proximasConsultas: AgendarConsultaResponseContract[] = [];
   agendamentos: Agendamento[] = [];
+  cpfFiltro: string = '';
 
   constructor(private location: Location, private examesService: ExamesService, private consultaService: ConsultaService) {}
 
@@ -33,7 +33,6 @@ export class AdminHistoricoAgendamentosComponent {
   private obterConsultasAgendadas() {
     this.consultaService.getConsultasAgendadas().subscribe((data: AgendarConsultaResponseContract[]) => {
       this.proximasConsultas = data;
-      console.log(data)
       this.mixAndSortAgendamentos();
     });
   }
@@ -43,6 +42,7 @@ export class AdminHistoricoAgendamentosComponent {
       id: exame.id,
       nome: exame.nome,
       pacienteNome: exame.pacienteNome,
+      pacienteCPF: exame.pacienteCPF,
       local: exame.local,
       data: exame.data,
       tipo: 'exame',
@@ -54,6 +54,7 @@ export class AdminHistoricoAgendamentosComponent {
       id: consulta.id,
       nome: consulta.nome,
       pacienteNome: consulta.pacienteNome,
+      pacienteCPF: consulta.pacienteCPF,
       local: consulta.tipoConsulta,
       data: consulta.data,
       tipo: 'consulta',
@@ -64,6 +65,15 @@ export class AdminHistoricoAgendamentosComponent {
     this.agendamentos = [...exames, ...consultas];
 
     this.agendamentos.sort((a, b) => +new Date(a.data) - +new Date(b.data));
-    console.log(this.agendamentos)
+  }
+
+  filtrarPorCPF() {
+    if (this.cpfFiltro.trim() === '') {
+      this.mixAndSortAgendamentos();
+      return;
+    }
+
+    const cpf = this.cpfFiltro.trim();
+    this.agendamentos = this.agendamentos.filter(agendamento => agendamento.pacienteCPF === cpf);
   }
 }
