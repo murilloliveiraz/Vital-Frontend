@@ -24,6 +24,7 @@ import { ServicosComponent } from '../servicos/servicos.component';
 import { HospitalDetalhesComponent } from '../hospital-detalhes/hospital-detalhes.component';
 import { AdminAdicionarServicoAoHospitalComponent } from '../admin-adicionar-servico-ao-hospital/admin-adicionar-servico-ao-hospital.component';
 import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
+import { RegistroProntuarioDetalhesComponent } from 'src/app/components/registro-prontuario-detalhes/registro-prontuario-detalhes.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
     },
     {
       path: 'pacientes/novo', component: AdminCadastrarPacienteComponent,
+      canActivate:[AuthGuard],
+      data: { role: 'Administrador' }
+    },
+    {
+      path: 'prontuario-registro/:id', component: RegistroProntuarioDetalhesComponent,
       canActivate:[AuthGuard],
       data: { role: 'Administrador' }
     },
