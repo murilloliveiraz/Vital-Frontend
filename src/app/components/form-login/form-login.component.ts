@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CredentialResponse } from 'google-one-tap';
+import { ToastrService } from 'ngx-toastr';
 import { UsuarioLoginRequest } from 'src/app/models/usuario/usuarioLoginRequest';
 import { UsuarioLoginResponse } from 'src/app/models/usuario/usuarioLoginResponse';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,8 +18,12 @@ export class FormLoginComponent {
   isPopupVisible = false;
   isADM = false;
 
-  constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService){}
+  constructor(public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService, private toastr: ToastrService){}
   loginForm: FormGroup;
+
+  showError() {
+    this.toastr.error('Credenciais inválidas!', 'Erro ao fazer o login!');
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -62,7 +67,7 @@ export class FormLoginComponent {
         }
       },
       error: (err: any) => {
-        console.log('Ocorreu um erro');
+        this.showError();
       }
     };
 
@@ -87,7 +92,7 @@ export class FormLoginComponent {
         }
       },
       error: (err: any) => {
-        console.log('Ocorreu um erro');
+        this.showError();
       }
     };
 
