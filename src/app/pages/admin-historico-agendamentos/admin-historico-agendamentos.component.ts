@@ -46,7 +46,8 @@ export class AdminHistoricoAgendamentosComponent {
       local: exame.local,
       data: exame.data,
       tipo: 'exame',
-      pacienteId: exame.pacienteId
+      pacienteId: exame.pacienteId,
+      statusPagamento: exame.statusPagamento
     }));
 
     const consultas: Agendamento[] = this.proximasConsultas.map(consulta => ({
@@ -56,7 +57,8 @@ export class AdminHistoricoAgendamentosComponent {
       local: consulta.tipoConsulta,
       data: consulta.data,
       tipo: 'consulta',
-      pacienteId: consulta.pacienteId
+      pacienteId: consulta.pacienteId,
+      statusPagamento: consulta.statusPagamento
     }));
 
     this.agendamentos = [...exames, ...consultas];
