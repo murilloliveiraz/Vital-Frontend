@@ -29,7 +29,9 @@ export class CreditCardFormComponent {
 
     const valorConsulta = this.getValorConsulta();
 
-    this.createCardForm(mpInstance, valorConsulta);
+    if(valorConsulta){
+      this.createCardForm(mpInstance, valorConsulta);
+    }
   }
 
   get dadosForm(){
@@ -42,7 +44,7 @@ export class CreditCardFormComponent {
 
   private createCardForm(mpInstance: any, valorConsulta: number) {
     const cardForm = mpInstance.cardForm({
-      amount: "1.5",
+      amount: valorConsulta.toString(),
       iframe: true,
       form: {
         id: "form-checkout",
@@ -101,11 +103,16 @@ export class CreditCardFormComponent {
             cardholderName
           } = cardForm.getCardFormData();
 
+          const nomeCompleto = this.dadosForm["nome"]?.value || '';
+          const [primeiroNome, ...restoDoNome] = nomeCompleto.split(' ');
+          const sobrenome = restoDoNome.join(' ') || '';
+
           const creditCardRequest: CreditCardPayment = {
             token,
             consultaId: this.consulta.id,
             emailPagador: email,
-            nomePagador:  this.dadosForm["nome"]?.value,
+            nomePagador:  primeiroNome,
+            sobrenomePagador:  sobrenome,
             nomeServico: this.consulta.nome,
             valorConsulta: this.consulta.valorConsulta,
             paymentMethodId: payment_method_id,
