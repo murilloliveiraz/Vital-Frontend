@@ -23,6 +23,7 @@ import { MedicosComponent } from '../medicos/medicos.component';
 import { ServicosComponent } from '../servicos/servicos.component';
 import { HospitalDetalhesComponent } from '../hospital-detalhes/hospital-detalhes.component';
 import { AdminAdicionarServicoAoHospitalComponent } from '../admin-adicionar-servico-ao-hospital/admin-adicionar-servico-ao-hospital.component';
+import { MedicoExameDetalhesComponent } from '../medico-exame-detalhes/medico-exame-detalhes.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,11 @@ const routes: Routes = [
     },
     {
       path: 'consulta-detalhes/:id', component: MedicoConsultaDetalhesComponent,
+      canActivate:[AuthGuard],
+      data: { role: 'Administrador' }
+    },
+    {
+      path: 'exame-detalhes/:id', component: MedicoExameDetalhesComponent,
       canActivate:[AuthGuard],
       data: { role: 'Administrador' }
     },
