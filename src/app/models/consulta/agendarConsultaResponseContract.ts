@@ -11,6 +11,7 @@ export class AgendarConsultaResponseContract {
   data: Date;
   pacienteId: number;
   medicoId: number;
+  pacienteCPF: string;
   emailParaReceberNotificacoes: string;
   status: string;
   statusPagamento?: string;

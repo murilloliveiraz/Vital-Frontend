@@ -6,6 +6,7 @@ export class AgendarExameResponse {
     data: Date;
     pacienteId: number;
     medicoId: number;
+    pacienteCPF: string;
     emailParaReceberResultado: string;
     status: string;
     statusPagamento: string;
