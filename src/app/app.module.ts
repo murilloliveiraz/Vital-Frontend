@@ -75,6 +75,7 @@ import { ServicosComponent } from './pages/servicos/servicos.component';
 import { HospitalDetalhesComponent } from './pages/hospital-detalhes/hospital-detalhes.component';
 import { MedicosComponent } from './pages/medicos/medicos.component';
 import { AdminAdicionarServicoAoHospitalComponent } from './pages/admin-adicionar-servico-ao-hospital/admin-adicionar-servico-ao-hospital.component';
+import { ToastrModule } from 'ngx-toastr';
 const RxJS = [LoaderMiddleware, HTTPStatus];
 @NgModule({
   declarations: [
@@ -152,6 +153,7 @@ const RxJS = [LoaderMiddleware, HTTPStatus];
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
     NgxSpinnerModule
