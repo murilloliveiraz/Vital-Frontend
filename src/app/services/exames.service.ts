@@ -64,6 +64,14 @@ export class ExamesService {
     return this.http.put<ExameConcluidoResponse>(`${this.apiUrl}/concluir/${id}`, id);
   }
 
+  concluirPagamento(id: number): Observable<AgendarExameResponse> {
+    return this.http.put<AgendarExameResponse>(`${this.apiUrl}/atualizar-pagamento/${id}`, id);
+  }
+
+  getDatasOcupadas(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/datas-ocupadas`);
+  }
+
   adicionarResultadoUrlExterna(id: number, url: string): Observable<ExameConcluidoResponse> {
     return this.http.patch<ExameConcluidoResponse>(`${this.apiUrl}/${id}`, { url });
   }

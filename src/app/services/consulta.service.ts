@@ -58,6 +58,14 @@ export class ConsultaService {
     return this.http.put<AgendarConsultaResponseContract>(`${this.baseUrl}/${id}`, model);
   }
 
+  concluirPagamento(id: number): Observable<AgendarConsultaResponseContract> {
+    return this.http.put<AgendarConsultaResponseContract>(`${this.baseUrl}/atualizar-pagamento/${id}`, id);
+  }
+
+  getDatasOcupadas(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/datas-ocupadas`);
+  }
+
   concluirConsulta(id: number): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/concluir/${id}`, null);
   }
