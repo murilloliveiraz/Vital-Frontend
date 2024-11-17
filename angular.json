@@ -31,6 +31,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/@splidejs/splide/dist/css/splide.min.css",
               "node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css",
               "node_modules/ngx-spinner/animations/ball-spin.css"
@@ -100,6 +101,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/@splidejs/splide/dist/css/splide.min.css",
               "node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css",
               "node_modules/ngx-spinner/animations/ball-spin.css"

@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.2.0",
+    "@angular/animations": "^16.2.12",
     "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
@@ -27,6 +27,7 @@
     "jwt-decode": "^4.0.0",
     "ngx-spinner": "^16.0.2",
     "ngx-splide": "^5.0.1",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.2",
     "tslib": "^2.3.0",
