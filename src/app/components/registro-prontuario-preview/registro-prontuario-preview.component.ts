@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProntuarioRegistro } from 'src/app/models/prontuario/prontuarioRegistro';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-registro-prontuario-preview',
@@ -11,7 +12,7 @@ export class RegistroProntuarioPreviewComponent {
   @Input() registrosProntuarioPaciente: ProntuarioRegistro[];
   selectedRegistroId: string = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   selectRegistro(registroId: string) {
     this.selectedRegistroId = registroId;
@@ -25,7 +26,11 @@ export class RegistroProntuarioPreviewComponent {
         };
       });
     }
-    this.router.navigate(['medico/prontuario-registro', registroId]);
+    if(this.authService.isAdmin()){
+      this.router.navigate(['admin/prontuario-registro', registroId]);
+    }else {
+      this.router.navigate(['medico/prontuario-registro', registroId]);
+    }
   }
 
   getRegistroSelecionado(): ProntuarioRegistro {
