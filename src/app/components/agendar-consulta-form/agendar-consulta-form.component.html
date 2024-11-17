@@ -90,7 +90,7 @@
              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
            </svg>
        </div>
-        <input id="datepicker-autohide"  #dateField (changeDate)="onDatePicked($event)" datepicker-format="dd/mm/yyyy" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#108999] focus:border-[#108999] block w-full ps-10 p-2.5" placeholder="Select date">
+        <input id="datepicker-autohide"  #dateField (changeDate)="onDatePicked($event)" datepicker-format="dd/mm/yyyy" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#108999] focus:border-[#108999] block w-full ps-10 p-2.5" placeholder="Selecione a data" >
       </div>
       <p  *ngIf="!selectedDate"
        class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
@@ -101,130 +101,12 @@
               Selecione o horário
           </label>
           <ul id="timetable" class="grid w-full grid-cols-4 gap-2 mt-5">
-              <li>
-                  <input type="radio" id="8-am" value="08:00 AM" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="8-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      08:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="8-30-am" value="08:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="8-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      08:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="9-am" value="09:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="9-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      09:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="9-30-am" value="09:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="9-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      09:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="10-am" value="10:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="10-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      10:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="10-30-am" value="10:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="10-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      10:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="11-am" value="11:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="11-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      11:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="11-30-am" value="11:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="11-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      11:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="12-am" value="12:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="12-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      12:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="12-30-am" value="12:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="12-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      12:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="13-am" value="13:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="13-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      13:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="13-30-am" value="13:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="13-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      13:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="14-am" value="14:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="14-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      14:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="14-30-am" value="14:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="14-30-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      14:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="15-am" value="15:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="15-am"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      15:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="15-30-pm" value="15:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="15-30-pm"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      15:30
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="16-pm" value="16:00" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="16-pm"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      16:00
-                  </label>
-              </li>
-              <li>
-                  <input type="radio" id="16-30-pm" value="16:30" class="hidden peer" name="timetable" (change)="onTimePicked($event)">
-                  <label for="16-30-pm"
-                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]">
-                      16:30
+              <li *ngFor="let time of availableTimes">
+                  <input type="radio" id="{{time}}" [value]="time" class="hidden peer" name="timetable" (change)="onTimePicked($event)" [disabled]="isUnavailable(time)" >
+                  <label for="{{time}}"
+                      class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-[#108999] border-[#108999] dark:hover:text-white dark:border-[#108999] dark:peer-checked:border-[#108999] peer-checked:border-[#108999] peer-checked:bg-[#108999] hover:text-white peer-checked:text-white hover:bg-[#108999] dark:text-[#108999] dark:bg-gray-900 dark:hover:bg-[#108999] dark:hover:border-[#108999] dark:peer-checked:bg-[#108999]"
+                      [class.opacity-50]="isUnavailable(time)">
+                      {{time}}
                   </label>
               </li>
           </ul>

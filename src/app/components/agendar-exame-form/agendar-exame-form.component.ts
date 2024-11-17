@@ -29,6 +29,9 @@ export class AgendarExameFormComponent {
   showSuggestions = false;
   servico: ServicoResponseContract;
   hospitalId: number;
+  occupiedDates: Date[] = [];
+  availableTimes: string[] = [];
+  unavailableTimes: string[] = [];
   hospital: HospitalResponseContract;
   pacienteId: number;
   servicosHospitalares: ServicoResponseContract[] = [];
@@ -49,6 +52,7 @@ export class AgendarExameFormComponent {
     ){}
 
   ngOnInit(): void {
+    this.loadOccupiedDates();
     this.initDatePicker();
     this.getAllExamServices();
     this.agendamentoForm = this.formBuilder.group(
@@ -75,6 +79,7 @@ export class AgendarExameFormComponent {
 
   onDatePicked($event: any) {
     this.selectedDate = new Date($event.detail.date);
+    this.updateAvailableTimes(this.selectedDate);
     if (this.selectedTime) {
         this.combineDateAndTime();
     }
@@ -201,6 +206,52 @@ export class AgendarExameFormComponent {
       pacienteId: this.pacienteId || 0,
     }
     return dados;
+  }
+
+
+  loadOccupiedDates(): void {
+    this.examesService.getDatasOcupadas().subscribe((dates: string[]) => {
+      this.occupiedDates = dates.map(dateString => new Date(dateString));
+    });
+  }
+
+  getUnavailableTimesForDate(selectedDate: Date): string[] {
+    const selectedDay = selectedDate.toISOString().split('T')[0];
+    return this.occupiedDates
+      .filter(date => date.toISOString().startsWith(selectedDay))
+      .map(date => {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+      });
+  }
+
+  generateTimes(start: string, end: string, interval: number = 30): string[] {
+    const times: string[] = [];
+    const [startHours, startMinutes] = start.split(':').map(Number);
+    const [endHours, endMinutes] = end.split(':').map(Number);
+
+    let current = new Date(0, 0, 0, startHours, startMinutes);
+    const endTime = new Date(0, 0, 0, endHours, endMinutes);
+
+    while (current <= endTime) {
+      const hours = current.getHours().toString().padStart(2, '0');
+      const minutes = current.getMinutes().toString().padStart(2, '0');
+      times.push(`${hours}:${minutes}`);
+      current.setMinutes(current.getMinutes() + interval);
+    }
+    return times;
+  }
+
+  isUnavailable(time: string): boolean {
+    return this.unavailableTimes.includes(time);
+  }
+
+  updateAvailableTimes(selectedDate: Date) {
+    this.unavailableTimes = this.getUnavailableTimesForDate(selectedDate);
+
+    const allTimes = this.generateTimes('08:00', '17:00');
+    this.availableTimes = allTimes;
   }
 
 }

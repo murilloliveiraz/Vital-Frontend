@@ -10,6 +10,7 @@ import { HospitalServicoService } from 'src/app/services/hospitalServico.service
 import { ServicoService } from './../../services/servico.service';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
 import { PacienteService } from 'src/app/services/paciente.service';
+import { ConsultaService } from 'src/app/services/consulta.service';
 declare var Datepicker: any;
 @Component({
   selector: 'app-agendar-consulta-form',
@@ -24,6 +25,9 @@ export class AgendarConsultaFormComponent {
   servicosHospitalares: ServicoResponseContract[] = [];
   hospitais: HospitalResponseContract[] = [];
   medicos: MedicoResponseContract[] = [];
+  occupiedDates: Date[] = [];
+  availableTimes: string[] = [];
+  unavailableTimes: string[] = [];
   agendamentoForm: FormGroup;
   valor: number;
   hospital: HospitalResponseContract;
@@ -34,9 +38,10 @@ export class AgendarConsultaFormComponent {
   filteredPacienteList: PacienteResponseContract[] = [];
   @Input() isADM: boolean = false;
 
-  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService, public servicoService: ServicoService, private pacienteService: PacienteService) {}
+  constructor(public hospitalServicoService: HospitalServicoService, public hospitalService: HospitalService, public formBuilder: FormBuilder, public medicoService: MedicoService, public servicoService: ServicoService, private pacienteService: PacienteService, private consultaService: ConsultaService) {}
 
   ngOnInit(): void {
+    this.loadOccupiedDates();
     this.getAllHospitais();
     this.getAllServices();
     this.initDatePicker();
@@ -120,6 +125,7 @@ export class AgendarConsultaFormComponent {
 
   onDatePicked($event: any) {
     this.selectedDate = new Date($event.detail.date);
+    this.updateAvailableTimes(this.selectedDate);
     if (this.selectedTime) {
         this.combineDateAndTime();
     }
@@ -137,12 +143,15 @@ export class AgendarConsultaFormComponent {
   onServicoChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     const selectedValue = selectElement.value;
-    this.valor = this.servicosHospitalares.find(s => s.nome == selectedValue).valor;
-    const especializacao = this.servicosHospitalares.find(s => s.nome == selectedValue).especializacao;
-    if(this.selectedRadio == "presencial"){
-      this.getMedicosOfEspecializationAtHospital(especializacao, this.hospital.hospitalId);
-    } else {
-      this.getMedicosOfEspecialization(especializacao);
+    const servicoSelecionado = this.servicosHospitalares?.find(s => s.nome === selectedValue);
+    if (servicoSelecionado) {
+      this.valor = servicoSelecionado.valor;
+      const especializacao = servicoSelecionado.especializacao;
+      if (this.selectedRadio === "presencial") {
+        this.getMedicosOfEspecializationAtHospital(especializacao, this.hospital.hospitalId);
+      } else {
+        this.getMedicosOfEspecialization(especializacao);
+      }
     }
   }
 
@@ -193,5 +202,50 @@ export class AgendarConsultaFormComponent {
   onRadioChange(event: Event) {
     const target = event.target as HTMLInputElement;
     this.selectedRadio = target.value;
+  }
+
+  loadOccupiedDates(): void {
+    this.consultaService.getDatasOcupadas().subscribe((dates: string[]) => {
+      this.occupiedDates = dates.map(dateString => new Date(dateString));
+    });
+  }
+
+  getUnavailableTimesForDate(selectedDate: Date): string[] {
+    const selectedDay = selectedDate.toISOString().split('T')[0];
+    return this.occupiedDates
+      .filter(date => date.toISOString().startsWith(selectedDay))
+      .map(date => {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+      });
+  }
+
+  generateTimes(start: string, end: string, interval: number = 30): string[] {
+    const times: string[] = [];
+    const [startHours, startMinutes] = start.split(':').map(Number);
+    const [endHours, endMinutes] = end.split(':').map(Number);
+
+    let current = new Date(0, 0, 0, startHours, startMinutes);
+    const endTime = new Date(0, 0, 0, endHours, endMinutes);
+
+    while (current <= endTime) {
+      const hours = current.getHours().toString().padStart(2, '0');
+      const minutes = current.getMinutes().toString().padStart(2, '0');
+      times.push(`${hours}:${minutes}`);
+      current.setMinutes(current.getMinutes() + interval);
+    }
+    return times;
+  }
+
+  isUnavailable(time: string): boolean {
+    return this.unavailableTimes.includes(time);
+  }
+
+  updateAvailableTimes(selectedDate: Date) {
+    this.unavailableTimes = this.getUnavailableTimesForDate(selectedDate);
+
+    const allTimes = this.generateTimes('08:00', '17:00');
+    this.availableTimes = allTimes;
   }
 }
