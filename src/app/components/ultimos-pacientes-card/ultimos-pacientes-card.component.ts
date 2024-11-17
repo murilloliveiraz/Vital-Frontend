@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PacienteService } from './../../services/paciente.service';
 import { Agendamento } from 'src/app/interfaces/Agendamento';
 import { AgendarExameResponse } from 'src/app/models/exame/AgendarExameResponse';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-ultimos-pacientes-card',
@@ -17,7 +18,7 @@ export class UltimosPacientesCardComponent {
   @Input() tela: string = '';
   pacientes: PacienteResponseContract[] = [];
 
-  constructor(private router: Router, private pacienteService: PacienteService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   redirecionarParaConsulta(agendamento: Agendamento) {
     if ('tipo' in agendamento) {
@@ -32,11 +33,19 @@ export class UltimosPacientesCardComponent {
   }
 
   acessarConsulta(consultaId: number) {
-    this.router.navigate(['medico/consulta-detalhes', consultaId]);
+    if(this.authService.isMedico()){
+      this.router.navigate(['medico/consulta-detalhes', consultaId]);
+    } else {
+      this.router.navigate(['admin/consulta-detalhes', consultaId]);
+    }
   }
 
   acessarExame(exameId: number) {
-    this.router.navigate(['medico/exame-detalhes', exameId]);
+    if(this.authService.isMedico()){
+      this.router.navigate(['medico/exame-detalhes', exameId]);
+    } else {
+      this.router.navigate(['admin/exame-detalhes', exameId]);
+    }
   }
 
   acessarPacienteAdmin(pacienteId: number) {

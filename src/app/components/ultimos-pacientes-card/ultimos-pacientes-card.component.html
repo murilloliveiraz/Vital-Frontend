@@ -27,14 +27,22 @@
     </div>
   </ng-container>
   <ng-container *ngIf="tela == 'agendamentos'">
-    <div *ngFor="let item of agendamentos" class="w-[360px] grid grid-rows-2 gap-8 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
+    <div *ngFor="let item of agendamentos" class="w-[360px] grid grid-rows-2 gap-3 ultimos-pacientes-card cursor-pointer p-4 rounded-lg">
       <div>
         <h3 class="font-semibold">{{item.pacienteNome || ""}}</h3>
         <p class="text-sm text-[#0e687b]">{{ item.nome || ""}}</p>
+        <div class="flex items-center mt-2 space-x-2">
+          <span *ngIf="item?.statusPagamento == 'Pendente'" class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded">
+            Pagamento Pendente
+          </span>
+          <span *ngIf="item?.statusPagamento == 'Concluido'" class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded">
+            Pagamento Concluído
+          </span>
+        </div>
       </div>
       <div class="flex justify-between items-center">
         <p class="text-sm text-[#0e687b] font-semibold">{{ item.data | date: 'hh:mm dd/MM/yyyy' }}</p>
-        <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-12 w-28" (click)="acessarPacienteAdmin(item.pacienteId)">Acessar</button>
+        <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-sm px-3 py-2 h-12 w-28" (click)="redirecionarParaConsulta(item)">Acessar</button>
       </div>
     </div>
   </ng-container>
