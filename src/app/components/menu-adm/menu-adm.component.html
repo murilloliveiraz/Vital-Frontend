@@ -59,8 +59,8 @@
   </ul>
 
   <!-- Logout Button -->
-  <div class="absolute bottom-4 left-4">
-    <a [routerLink]="'/login'" class="flex items-center p-2 text-white rounded-lg hover:bg-[#108999]">
+  <div class="absolute bottom-4 left-4" (click)="logout()">
+    <a class="flex items-center p-2 text-white rounded-lg hover:bg-[#108999]">
       <img src="assets/images/components/admin/menu/sair.svg" alt="Icon 1" class="h-6 w-6 bg-transparent">
 
       <span class="ml-3">Sair</span>
