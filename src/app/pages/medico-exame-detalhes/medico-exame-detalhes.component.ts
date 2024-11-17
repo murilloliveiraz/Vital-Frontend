@@ -7,6 +7,8 @@ import { of, switchMap } from 'rxjs';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { PacienteResponseContract } from 'src/app/models/paciente/pacienteResponseContract';
 import Swal from 'sweetalert2';
+import { AuthService } from './../../services/auth.service';
+import { FormField } from 'src/app/interfaces/FormField';
 
 @Component({
   selector: 'app-medico-exame-detalhes',
@@ -16,11 +18,18 @@ import Swal from 'sweetalert2';
 export class MedicoExameDetalhesComponent {
   exame: AgendarExameResponse;
   paciente: PacienteResponseContract;
-  formFields = [];
+  formFields: FormField[] = [];
+  isADM: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private location: Location, private examesService: ExamesService, private pacienteService: PacienteService) {}
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    private examesService: ExamesService,
+    private pacienteService: PacienteService,
+    private authService: AuthService) {}
 
   ngOnInit() {
+    this.isADM = this.authService.isAdmin();
     const exameIdParameter = this.route.snapshot.paramMap.get('id');
 
     if (exameIdParameter) {
@@ -68,12 +77,45 @@ export class MedicoExameDetalhesComponent {
     });
   }
 
+  cancelarExame(){
+    this.examesService.deletarExame(this.exame.id).subscribe(() => {
+      Swal.fire({
+        title: "Exame Cancelado!",
+        text: "O exame foi cancelado e um email foi enviado para o paciente",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
+  }
 
   voltar() {
     this.location.back();
   }
 
   anexarArquivo(){
-    this.router.navigate(['medico/detalhes-paciente', this.exame.pacienteId.toString(), 'anexar-documento', 'exame', this.exame.id.toString()]);
+    if(this.isADM){
+      this.router.navigate(['admin/detalhes-paciente', this.exame.pacienteId.toString(), 'anexar-documento', 'exame', this.exame.id.toString()]);
+    } else {
+      this.router.navigate(['medico/detalhes-paciente', this.exame.pacienteId.toString(), 'anexar-documento', 'exame', this.exame.id.toString()]);
+    }
+  }
+
+  concluirPagamento(){
+    this.examesService.concluirPagamento(this.exame.id).subscribe(() => {
+      Swal.fire({
+        title: "Pagamento Concluído",
+        text: "O status do pagamento foi alterado para: Concluido.",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
   }
 }
