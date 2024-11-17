@@ -7,6 +7,7 @@ import { HospitalServicoService } from 'src/app/services/hospitalServico.service
 import { HospitalResponseContract } from 'src/app/models/hospital/hospitalResponseContract';
 import { HospitalService } from 'src/app/services/hospital.service';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-servicos',
@@ -18,7 +19,7 @@ export class ServicosComponent {
   hospital: HospitalResponseContract;
   isADM: boolean = false;
 
-  constructor(public servicoService: ServicoService,public hospitalService: HospitalService, public hospitalServicoService: HospitalServicoService, private location: Location, private route: ActivatedRoute, private authService: AuthService) {}
+  constructor(public servicoService: ServicoService, public hospitalService: HospitalService, public hospitalServicoService: HospitalServicoService, private location: Location, private route: ActivatedRoute, private authService: AuthService) {}
 
   ngOnInit(): void {
     if (this.authService.isAdmin()) {
@@ -72,5 +73,19 @@ export class ServicosComponent {
 
   voltar() {
     this.location.back();
+  }
+
+  excluirServico(servico: ServicoResponseContract){
+    this.hospitalServicoService.delete(this.hospital.hospitalId, servico.servicoId).subscribe(() => {
+      Swal.fire({
+        title: "O Serviço foi removido do hospital!",
+        imageUrl: "/assets/images/joiaconcluido.png",
+        imageWidth: 250,
+        imageHeight: 200,
+        imageAlt: "Registro inserido icone",
+        confirmButtonColor: "#0099B9",
+        confirmButtonText: "Concluído",
+      });
+    });
   }
 }
