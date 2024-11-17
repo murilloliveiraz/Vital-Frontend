@@ -54,9 +54,6 @@ export class PacienteHistoricoAgendamentosComponent {
 
           this.mixAndSortExames();
           this.mixAndSortConsultas();
-
-          console.log('Exames:', this.exames);
-          console.log('Consultas:', this.consultas);
         },
         error: (err) => {
           console.error('Erro ao carregar dados:', err);
@@ -98,6 +95,7 @@ export class PacienteHistoricoAgendamentosComponent {
       data: exame.data,
       arquivoResultadoUrl: exame.arquivoResultadoUrl,
       status: exame.status,
+      statusPagamento: exame.statusPagamento,
       tipo: "exame",
       urlResultadoClinicaExterna: exame.urlResultadoClinicaExterna
     }));
@@ -109,6 +107,7 @@ export class PacienteHistoricoAgendamentosComponent {
       data: exame.data,
       arquivoResultadoUrl: "",
       status: exame.status,
+      statusPagamento: exame.statusPagamento,
       tipo: "exame",
       urlResultadoClinicaExterna: ""
     }));
@@ -130,6 +129,7 @@ export class PacienteHistoricoAgendamentosComponent {
       local: consulta.local,
       data: consulta.data,
       status: consulta.status,
+      statusPagamento: consulta.statusPagamento,
       tipo: "consulta",
       documentos: consulta.documentos,
       tipoConsulta: consulta.tipoConsulta,
@@ -142,6 +142,7 @@ export class PacienteHistoricoAgendamentosComponent {
       local: consulta.local,
       data: consulta.data,
       status: consulta.status,
+      statusPagamento: consulta.statusPagamento,
       tipo: "consulta",
       documentos: consulta.documentos,
       tipoConsulta: consulta.tipoConsulta,
