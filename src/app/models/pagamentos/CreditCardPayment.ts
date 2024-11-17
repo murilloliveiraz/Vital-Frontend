@@ -6,6 +6,7 @@ export class CreditCardPayment {
     installments: number;
     consultaId: number;
     nomePagador: string;
+    sobrenomePagador: string;
     paymentMethodId: string;
     emailPagador: string;
     type: string;

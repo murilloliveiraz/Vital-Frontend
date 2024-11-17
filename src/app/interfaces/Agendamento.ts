@@ -3,6 +3,7 @@ export interface Agendamento {
   nome: string;
   pacienteNome: string;
   local?: string;
+  statusPagamento?: string;
   data: Date;
   tipo: 'exame' | 'consulta';
   pacienteId: number;

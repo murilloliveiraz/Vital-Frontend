@@ -4,6 +4,7 @@ export class ConsultaConcluidaResponseContract {
   id: number;
   nome: string;
   status: string;
+  statusPagamento: string;
   valorConsulta?: number;
   tipoConsulta: string;
   local?: string;

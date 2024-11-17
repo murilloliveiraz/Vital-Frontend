@@ -8,6 +8,7 @@ export class AgendarExameResponse {
     medicoId: number;
     emailParaReceberResultado: string;
     status: string;
+    statusPagamento: string;
     queixasDoPaciente: string;
     observacoesDaClinica: string;
     tipo: 'exame';
