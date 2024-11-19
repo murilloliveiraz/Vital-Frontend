@@ -21,8 +21,9 @@
           class="mt-2 text-xs text-red-600 dark:text-red-500"><span class="font-medium">Campo Obrigatório!</span></p>
         <button class="senhaEsq" (click)="showPopup()" >Esqueci minha senha</button>
         </div>
-        <button  [disabled]="!loginForm.valid" type="submit" id="loginButton" class="text-white bg-[#0093B9] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-cente">Entrar</button>
+        <button  [disabled]="!loginForm.valid" type="submit" id="loginButton" class="text-white bg-[#0093B9] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Entrar</button>
       </form>
+      <p class="text-xs font-normal place-self-center mt-3">ou</p>
       <button  [disabled]="!loginForm.valid" id="googleButton" type="button" class="text-white bg-[#0093B9] hover:bg-[#4285F4]/90 focus:ring-1 w-full focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2">
       <img id="googleIcon" src="../assets/images/googleicon.png" alt="">
       Entrar com o Google
