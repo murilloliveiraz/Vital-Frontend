@@ -9,6 +9,9 @@ import { PacienteService } from 'src/app/services/paciente.service';
 })
 export class AdminHomepageComponent {
   isOpen = false;
+  searchTerm: string = '';
+
+  filteredPacientes: PacienteResponseContract[] = [];
 
   constructor(public pacienteService: PacienteService) {}
 
@@ -21,6 +24,20 @@ export class AdminHomepageComponent {
   ngOnInit(): void {
     this.pacienteService.getAll().subscribe((data: PacienteResponseContract[]) => {
       this.pacientes = data;
+      this.filteredPacientes = this.pacientes;
     });
+  }
+
+  filtrarPacientes() {
+    const lowerCaseTerm = this.searchTerm.toLowerCase();
+    this.filteredPacientes = this.pacientes.filter(paciente =>
+      paciente.nome.toLowerCase().includes(lowerCaseTerm) ||
+      paciente.cpf.includes(lowerCaseTerm)
+    );
+  }
+
+  onSearchSubmit(event: Event) {
+    event.preventDefault();
+    this.filtrarPacientes();
   }
 }

@@ -1,4 +1,5 @@
 <main class="flex flex-col items-center gap-8">
+  <h2 class="font-semibold text-2xl mx-auto">Todos os Médicos</h2>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/medicos/novo'">Cadastrar Medico</button>
   <app-medico-card *ngFor="let medico of medicos" [medico]="medico" [isADM]="true"></app-medico-card>
 </main>

@@ -1,30 +1,17 @@
 input {
   border: none;
+  background-color: #ececec;
 }
 
 .forma {
   width: 380px;
-  height: 470px;
+  height: 520px;
   display: grid;
   place-content: center;
   align-items: center;
   border-radius: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-weight: bold;
-}
-
-#googleButton {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  color: #0093B9;
-  background-color: white;
-}
-
-#googleIcon {
-  width: 16px;
-  height: auto;
-  margin: 3px;
 }
 
 .senhaEsq {

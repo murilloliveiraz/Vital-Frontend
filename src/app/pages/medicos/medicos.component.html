@@ -5,7 +5,7 @@
         <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
       </svg>
     </button>
-    <h2 class="font-bold">Todos os Serviços</h2>
+    <h2 class="font-bold">Todos os Médicos</h2>
   </nav>
 
   <article *ngIf="hospital" class="flex justify-around w-[360px] button-header-historico-pacientes card-exame-historico p-4 rounded-xl transition">
@@ -21,7 +21,7 @@
   <button *ngIf="isADM" class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/medicos/novo'">Cadastrar Medico</button>
   <section class="flex gap-5 w-full">
     <aside class="w-1/3 pl-3 rounded-lg">
-      <h3 class="text-xl font-semibold mb-4">Serviços</h3>
+      <h3 class="text-xl font-semibold mb-4">Médicos</h3>
       <ul class="space-y-4">
         <li *ngFor="let servico of servicos" class="cursor-pointer flex gap-1 hover:bg-gray-200 p-2 rounded-lg"
             (click)="selecionarServico(servico)">
@@ -32,9 +32,9 @@
     </aside>
     <aside class="w-2/3">
       <div *ngIf="medicos.length > 0; else noMedicos" class="grid md:grid-cols-2 gap-4">
-        <div *ngFor="let medico of medicos" class="p-4 flex border rounded-lg shadow">
+        <div *ngFor="let medico of medicos" class="p-4 flex items-center border rounded-lg shadow">
           <img src="assets/images/Medico.svg" alt="Foto do Médico" class="h-12 w-12 rounded-full mx-auto">
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 w-5/6">
             <h4 class="text-lg font-bold text-center mt-2">{{ medico.nome }}</h4>
             <p class="text-sm text-center text-gray-500">{{ medico.especialidade }}</p>
             <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg p-1 text-sm " [routerLink]="'/paciente/agendar-consulta'">Agendar</button>

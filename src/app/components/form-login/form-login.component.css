@@ -80,41 +80,28 @@ input {
   z-index: 2;
   margin-top: 55px;
   font-weight: bold;
-  margin-left: 25px;
+}
+
+.textLoginTitle{
+  z-index: 2;
+}
+
+.textLoginPage{
+  display: flex;
 }
 
 .imageLogin {
-  display: none;
+  display: flex;
+  width: auto;
+  z-index: 1;
+  opacity: 17%;
 }
 
 h2 {
-  display: none;
-}
-
-@media (min-width: 1200px) {
-
-  h2 {
-    display: flex;
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    z-index: 1;
-    color: #0B8FAC;
-  }
-
-  .textLoginTitle{
-    z-index: 2;
-  }
-
-  .textLoginPage{
-    display: flex;
-  }
-
-  .imageLogin {
-    display: flex;
-    width: auto;
-    z-index: 1;
-    opacity: 13%;
-  }
-
+  display: flex;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  z-index: 1;
+  color: #0B8FAC;
 }

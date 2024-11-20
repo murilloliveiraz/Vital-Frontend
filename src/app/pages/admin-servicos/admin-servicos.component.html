@@ -1,6 +1,7 @@
 <main class="flex flex-col items-center gap-8">
+  <h2 class="font-semibold text-2xl mx-auto">Todos os Serviços</h2>
   <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] m-auto" [routerLink]="'/admin/servicos/novo'">Cadastrar Serviço</button>
-  <section class="grid grid-cols-3 gap-3">
+  <section class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 place-items-center">
     <app-servico-card *ngFor="let item of servicos" [imageUrl]="obterIconeServico(item.nome)" [titulo]="item.nome"></app-servico-card>
   </section>
 </main>

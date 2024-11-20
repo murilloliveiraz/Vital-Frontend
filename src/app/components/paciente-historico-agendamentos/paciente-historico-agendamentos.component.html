@@ -1,3 +1,16 @@
+<form (submit)="onSearchSubmit($event)" class="max-w-md mx-auto w-11/12 mb-9" *ngIf="tela == 'paciente'">
+  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
+  <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+      </div>
+      <input type="search" id="default-search" [(ngModel)]="searchTerm" name="searchTerm" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#108999] focus:border-[#108999]" placeholder="Pesquisar" required />
+      <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-[#108999] hover:bg-[#108999] focus:ring-4 focus:outline-none focus:ring-[#108999] font-medium rounded-lg text-sm px-4 py-2">Buscar</button>
+  </div>
+</form>
+
 <div class="flex justify-center items-center mb-4">
   <button
     type="button"
@@ -23,16 +36,16 @@
     class="flex flex-col justify-center items-center"
     *ngIf="selectedType === 'exames'"
   >
-    <app-card-exame-historico *ngFor="let item of exames" [tela]="tela" [exame]="item">
+    <app-card-exame-historico *ngFor="let item of filteredExames" [tela]="tela" [exame]="item">
     </app-card-exame-historico>
-    <h1 *ngIf="exames.length < 1">Você não possui nenhum exame</h1>
+    <h1 *ngIf="filteredExames.length < 1">Você não possui nenhum exame</h1>
   </section>
 
   <section
   class="flex flex-col justify-center items-center"
   *ngIf="selectedType == 'consultas'"
   >
-    <app-consulta-card *ngFor="let item of consultas" [consulta]="item" [tela]="tela"></app-consulta-card>
-    <h1 *ngIf="consultas.length < 1">Você não possui nenhuma consulta</h1>
+    <app-consulta-card *ngFor="let item of filteredConsultas" [consulta]="item" [tela]="tela"></app-consulta-card>
+    <h1 *ngIf="filteredConsultas.length < 1">Você não possui nenhuma consulta</h1>
   </section>
 </section>

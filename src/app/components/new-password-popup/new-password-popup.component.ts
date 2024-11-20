@@ -40,8 +40,8 @@ export class NewPasswordPopupComponent {
   resetPassword() {
     const observer = {
       next: (response: string) => {
-        this.close.emit();
-        this.router.navigate["/"]
+        this.onClose();
+        this.router.navigate(["/"]);
         Swal.fire({
           title: "A senha foi restaurada!",
           imageUrl: "/assets/images/joiaconcluido.png",
@@ -51,7 +51,6 @@ export class NewPasswordPopupComponent {
           confirmButtonColor: "#0099B9",
           confirmButtonText: "Concluído",
         });
-        this.isPopupVisible2 = false;
       },
       error: (err: any) => {
         console.log('Ocorreu um erro');

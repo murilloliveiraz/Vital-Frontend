@@ -1,6 +1,5 @@
-<main class="flex flex-col gap-6 mb-24 max-w-md mx-auto justify-center items-center">
-  <!-- Header com botão de voltar e nome do paciente -->
-  <nav class="flex gap-3 w-full items-start justify-start pt-4 px-5">
+<main class="flex flex-col gap-6 mb-24 w-full justify-center items-center">
+  <nav class="flex gap-3 w-full items-start justify-start pt-4 px-5 self-start">
     <button (click)="voltar()" aria-label="Voltar">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
@@ -9,7 +8,6 @@
     <h2 class="text-2xl font-semibold text-gray-700">{{paciente?.nome}}</h2>
   </nav>
 
-  <!-- Dados do Paciente -->
   <section class="flex flex-col gap-2 shadow-md rounded-lg p-5 mx-5 button-header-historico-pacientes">
     <p class="font-normal text-gray-800"><span class="font-semibold">Nome</span>: {{paciente?.nome}}</p>
     <p class="font-normal text-gray-800"><span class="font-semibold">Sexo:</span> {{paciente?.sexo}}</p>
@@ -24,8 +22,6 @@
 >
   <app-prontuario-slider [pacienteId]="paciente.id"></app-prontuario-slider>
 </section>
-
-  <!-- Ações (Botões) -->
   <div class="flex flex-col items-center gap-4 mx-5">
     <button class="button-header-historico-pacientes-focus flex items-center justify-center gap-8 text-white font-semibold rounded-lg px-4 py-2 w-full max-w-xs" (click)="anexarArquivo()">
       <svg  width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,15 +39,14 @@
     </button>
   </div>
 
-  <!-- Formulário de Conta Usuário -->
   <section class="">
     <app-form-conta-usuario [fields]="formFields" *ngIf="formFields.length > 0"></app-form-conta-usuario>
   </section>
   <div class="flex gap-4">
-    <button type="button" (click)="concluirExame()" class="text-white bg-gradient-to-r w-full from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Concluir Exame</button>
-    <button type="button" *ngIf="isADM" (click)="cancelarExame()" class="text-white w-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Exame</button>
+    <button type="button" *ngIf="isADM" (click)="cancelarExame()" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Exame</button>
+    <button type="button" (click)="concluirExame()" class="text-white bg-gradient-to-r  from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Concluir Exame</button>
   </div>
-  <button *ngIf="isADM" (click)="concluirPagamento()"  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-green-600 rounded-lg group bg-gradient-to-br from-green-400 to-green-600 group-hover:from-green-400 w-10/12 group-hover:to-green-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+  <button *ngIf="isADM" (click)="concluirPagamento()"  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-green-600 rounded-lg group bg-gradient-to-br from-green-400 to-green-600 group-hover:from-green-400 max-w-sm group-hover:to-green-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
     <span class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
     Concluir o pagamento
     </span>

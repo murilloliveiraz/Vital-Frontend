@@ -30,7 +30,7 @@
       class="h-8 grayscale-disabled cursor-pointer" src="/assets/images/download.svg" alt="download icon disabled">
   </div>
 </article>
-<button type="button" (click)="cancelarConsulta()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
+<button type="button" (click)="cancelarConsulta()" *ngIf="consulta.status == 'Agendado' && (isPaciente || isADM)"  class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
 </div>
 
 <div class="w-[360px] md:hidden overflow-hidden">
@@ -82,7 +82,7 @@
     <!-- Slide de Botão Cancelar -->
     <splide-slide>
       <div class="flex justify-center items-center h-full">
-        <button type="button" (click)="cancelarConsulta()" class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        <button type="button" (click)="cancelarConsulta()" *ngIf="consulta.status == 'Agendado' && (isPaciente || isADM)"  class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Cancelar Consulta
         </button>
       </div>

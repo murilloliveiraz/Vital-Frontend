@@ -41,6 +41,7 @@ export class ResetPasswordPopupComponent {
           confirmButtonColor: "#0099B9",
           confirmButtonText: "Concluído",
         });
+        this.onClose();
       },
       error: (err: any) => {
         console.log('Ocorreu um erro');

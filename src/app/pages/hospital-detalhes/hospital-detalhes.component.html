@@ -1,4 +1,4 @@
-<main class="flex flex-col gap-9 mb-24 items-center">
+<main class="flex flex-col gap-9 mb-24 items-center w-full">
   <nav class="flex gap-5 pl-5 pt-9 w-full">
     <button (click)="voltar()">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
@@ -15,10 +15,19 @@
     </div>
   </div>
 </article>
-<h1 class="font-semibold self-start pl-5">Serviços</h1>
-<div class="max-w-sm">
-  <splide [options]="{ omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',
-      focus: 'center',}">
+<div class="max-w-sm md:max-w-xl lg:max-w-4xl">
+  <h1 class="font-semibold self-start pl-5">Serviços</h1>
+  <splide [options]="
+  { omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',
+      mediaQuery: 'min',
+      focus: 'center',
+      width: '100%',
+      breakpoints: {
+        '1024': {
+          perPage: 4,
+        }
+      }}
+      ">
     <splide-slide *ngFor="let servico of servicos | slice:0:5" class="p-0" style="padding: 0">
       <app-servico-card
         [imageUrl]="obterIconeServico(servico.nome)"
@@ -34,8 +43,8 @@
     </splide-slide>
   </splide>
 </div>
-<h1 class="font-semibold self-start pl-5">Médicos</h1>
-<div class="max-w-sm">
+<div class="max-w-sm md:max-w-xl lg:max-w-4xl">
+  <h1 class="font-semibold self-start pl-5">Médicos</h1>
   <splide
     [options]="{
       arrows: false,

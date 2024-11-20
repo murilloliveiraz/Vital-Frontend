@@ -26,6 +26,9 @@ export class PacienteHistoricoAgendamentosComponent {
   consultasAgendadas: AgendarConsultaResponseContract[] = [];
   exames: Exame[] = []
   consultas: Consulta[] = []
+  filteredExames: Exame[] = []
+  filteredConsultas: Consulta[] = []
+  searchTerm: string = '';
 
   constructor(
     public pacienteService: PacienteService,
@@ -114,6 +117,7 @@ export class PacienteHistoricoAgendamentosComponent {
 
 
     this.exames = [...examesAgendados, ...examesConcluidos];
+    this.filteredExames = [...examesAgendados, ...examesConcluidos];
 
     this.exames.sort((a, b) => {
       if (a.status === "Agendado" && b.status === "Concluido") return -1;
@@ -151,6 +155,7 @@ export class PacienteHistoricoAgendamentosComponent {
 
 
     this.consultas = [...consultasAgendadas, ...consultasConcluidas];
+    this.filteredConsultas = [...consultasAgendadas, ...consultasConcluidas];
 
     this.consultas.sort((a, b) => {
       if (a.status === "Agendado" && b.status === "Concluido") return -1;
@@ -161,5 +166,22 @@ export class PacienteHistoricoAgendamentosComponent {
 
   selectType(type: string) {
     this.selectedType = type;
+  }
+
+  filtrar() {
+    const lowerCaseTerm = this.searchTerm.toLowerCase();
+    this.filteredConsultas = this.consultas.filter(consulta =>
+      consulta.nome.toLowerCase().includes(lowerCaseTerm)
+    );
+    this.filteredExames = this.exames.filter(exame =>
+      exame.nome.toLowerCase().includes(lowerCaseTerm)
+    );
+    console.log(this.filteredExames)
+    console.log(this.filteredConsultas)
+  }
+
+  onSearchSubmit(event: Event) {
+    event.preventDefault();
+    this.filtrar();
   }
 }

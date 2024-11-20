@@ -1,5 +1,12 @@
-<div class="max-w-sm">
-<splide [options]="{ focus: 0, omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',}">
+<div class="max-w-sm md:max-w-xl lg:max-w-4xl">
+<splide [options]="{ focus: 0, omitEnd: true, arrows: false, gap: '10px', perPage: 3, height: '160px',
+  width: '100%',
+  mediaQuery: 'min',
+      breakpoints: {
+        '768': {
+          perPage: 4,
+        }
+      }}">
   <splide-slide *ngFor="let servico of servicos | slice:0:5" class="p-0" style="padding: 0">
     <app-servico-card
       [imageUrl]="obterIconeServico(servico.nome)"

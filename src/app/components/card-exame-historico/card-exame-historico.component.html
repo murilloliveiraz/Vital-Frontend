@@ -44,7 +44,7 @@
            srcset="">
     </div>
   </article>
-  <button *ngIf="exame.status == 'Agendado' && isPaciente" type="button" (click)="cancelarExame()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
+  <button *ngIf="exame.status == 'Agendado' && (isPaciente || isADM)" type="button" (click)="cancelarExame()" class="text-white w-[100px] bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar Consulta</button>
   </div>
 
   <div class="max-w-sm md:hidden overflow-hidden">
@@ -111,7 +111,7 @@
       </splide-slide>
 
       <!-- Slide de Botão Cancelar -->
-      <splide-slide *ngIf="exame.status == 'Agendado' && isPaciente">
+      <splide-slide *ngIf="exame.status == 'Agendado' && (isPaciente || isADM)">
         <div class="flex justify-center items-center h-full">
           <button type="button" (click)="cancelarExame()" class="text-white w-[100px] h-full bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
             Cancelar Exame

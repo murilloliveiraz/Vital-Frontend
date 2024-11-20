@@ -1,11 +1,11 @@
-<article class="flex gap-8 w-[300px] card-exame-historico p-4 rounded-xl transition" (click)="acessarHospital(hospital.hospitalId)">
-  <img src="assets/images/Hospital.svg" alt="Hospital Icone">
+<article class="flex gap-8 w-[300px] md:w-[360px] h-[140px] md:h-[180px] shadow-xl p-4 rounded-xl transition items-center" (click)="acessarHospital(hospital.hospitalId)">
+  <img src="assets/images/Hospital.svg" alt="Hospital Icone" class="h-16">
   <div>
     <h3 class="font-semibold text-xl">{{hospital?.nome}}</h3>
     <div>
-      <p class="text-xs mb-2">{{hospital?.endereco}} - {{hospital?.estado}}</p>
-      <p class="text-xs mb-2">{{hospital?.telefone}}</p>
-      <p class="text-xs text-gray-400">Clique para ver detalhes</p>
+      <p class="text-xs md:text-base mb-2">{{hospital?.endereco}} - {{hospital?.estado}}</p>
+      <p class="text-xs md:text-base mb-2">{{hospital?.telefone}}</p>
+      <p class="text-xs md:text-base text-gray-400">Clique para ver detalhes</p>
     </div>
   </div>
 </article>

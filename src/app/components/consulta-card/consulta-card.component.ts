@@ -6,6 +6,7 @@ import { MedicoResponseContract } from './../../models/medico/medicoResponseCont
 import { Consulta } from 'src/app/interfaces/Consulta';
 import Swal from 'sweetalert2';
 import { ConsultaService } from 'src/app/services/consulta.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-consulta-card',
@@ -16,12 +17,18 @@ export class ConsultaCardComponent {
   @Input() consulta: Consulta;
   @Input() tela: string = '';
   medico: MedicoResponseContract;
+  isADM: boolean = false;
+  isPaciente: boolean = false;
 
-  constructor(private consultaService: ConsultaService) {}
+  constructor(private consultaService: ConsultaService, private authService: AuthService) {}
+
+  ngOnInit(){
+    this.isADM = this.authService.isAdmin();
+    this.isPaciente = this.authService.isPaciente();
+  }
 
   downloadAllDocuments(consulta: Consulta) {
     consulta.documentos.forEach((documento, index) => {
-      console.log(documento)
       if (documento.arquivoResultadoUrl) {
         setTimeout(() => {
           window.open(documento.arquivoResultadoUrl, '_blank');
