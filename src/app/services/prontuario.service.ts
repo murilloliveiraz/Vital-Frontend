@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InserirRegistroNoProntuarioModel } from '../models/prontuario/inserirRegistroNoProntuarioModel';
 import { Observable } from 'rxjs';
-import { ProntuarioResponse } from '../models/prontuario/prontuarioResponse';
 import { ProntuarioRegistro } from '../models/prontuario/prontuarioRegistro';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'

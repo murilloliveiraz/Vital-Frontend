@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { PacienteRequestContract } from '../models/paciente/pacienteRequestContract';
 import { PacienteResponseContract } from '../models/paciente/pacienteResponseContract';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'

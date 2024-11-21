@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 import { AgendarExameResponse } from '../models/exame/AgendarExameResponse';
 import { ExameConcluidoResponse } from '../models/exame/ExameConcluidoResponse';
 

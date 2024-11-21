@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 import { PixPayment } from '../models/pagamentos/PixPayment';
 import { Observable } from 'rxjs';
 

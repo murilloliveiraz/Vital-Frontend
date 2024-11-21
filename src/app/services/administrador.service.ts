@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AdminRequestContract } from '../models/administrador/adminRequestContract';
 import { AdminResponseContract } from '../models/administrador/adminResponseContract';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'

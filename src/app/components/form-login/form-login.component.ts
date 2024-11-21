@@ -7,7 +7,7 @@ import { UsuarioLoginRequest } from 'src/app/models/usuario/usuarioLoginRequest'
 import { UsuarioLoginResponse } from 'src/app/models/usuario/usuarioLoginResponse';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginService } from 'src/app/services/login.service';
-import { environment } from 'src/environment';
+import { environment } from '../../environment';
 
 @Component({
   selector: 'app-form-login',
