@@ -1,5 +1,5 @@
 const fs = require('fs');
-const targetPath = './src/environments/environment.prod.ts';
+const targetPath = './src/environment.prod.ts';
 
 const environmentFileContent = `
   export const environment = {
