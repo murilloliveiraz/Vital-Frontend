@@ -4,7 +4,7 @@ const targetPath = './src/environment.prod.ts';
 const environmentFileContent = `
   export const environment = {
     production: true,
-    endpoint: "${process.env.ENDPOINT}",
+    endPoint: "${process.env.ENDPOINT}",
     clientId: "${process.env.CLIENT_ID}",
     mercadoPagoAPIKey: "${process.env.MERCADOPAGO}",
   };
