@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 import { AgendarConsultaResponseContract } from '../models/consulta/agendarConsultaResponseContract';
 import { AgendarConsultaRequestContract } from '../models/consulta/agendarConsultaRequestContract';
 import { ConsultaConcluidaResponseContract } from '../models/consulta/consultaConcluidaResponseContract';

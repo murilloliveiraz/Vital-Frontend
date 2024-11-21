@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { loadMercadoPago } from '@mercadopago/sdk-js';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 
 declare global {
   interface Window {

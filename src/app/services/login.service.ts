@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioLoginRequest } from '../models/usuario/usuarioLoginRequest';
 import { UsuarioLoginResponse } from '../models/usuario/usuarioLoginResponse';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 import { ResetPasswordContract } from '../models/utils/resetPasswordContract';
 
 @Injectable({

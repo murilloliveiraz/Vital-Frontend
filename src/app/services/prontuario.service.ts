@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InserirRegistroNoProntuarioModel } from '../models/prontuario/inserirRegistroNoProntuarioModel';
 import { Observable } from 'rxjs';
 import { ProntuarioRegistro } from '../models/prontuario/prontuarioRegistro';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'

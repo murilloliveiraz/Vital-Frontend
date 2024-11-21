@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 import { HospitalRequestContract } from '../models/hospital/hospitalRequestContract';
 import { Observable } from 'rxjs';
 import { HospitalResponseContract } from '../models/hospital/hospitalResponseContract';

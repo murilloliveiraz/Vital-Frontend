@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment';
+import { environment } from '../environments/environment';
 import { ServicoRequestContract } from '../models/servico/servicoRequestContract';
 import { Observable } from 'rxjs';
 import { ServicoResponseContract } from '../models/servico/servicoResponseContract';
