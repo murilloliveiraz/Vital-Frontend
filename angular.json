@@ -57,7 +57,7 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "src/environment/environment.ts",
+                  "replace": "src/environments/environment.ts",
                   "with": "src/environment.prod.ts"
                 }
               ],
