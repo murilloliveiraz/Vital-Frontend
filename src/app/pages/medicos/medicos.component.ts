@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HospitalResponseContract } from 'src/app/models/hospital/hospitalResponseContract';
 import { MedicoResponseContract } from 'src/app/models/medico/medicoResponseContract';
 import { ServicoResponseContract } from 'src/app/models/servico/servicoResponseContract';
@@ -28,7 +28,8 @@ export class MedicosComponent {
     public medicoService: MedicoService,
     private route: ActivatedRoute,
     private location: Location,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -85,5 +86,11 @@ export class MedicosComponent {
 
   voltar() {
     this.location.back();
+  }
+
+  agendarExame(){
+    if(this.isADM){
+      // router
+    }
   }
 }

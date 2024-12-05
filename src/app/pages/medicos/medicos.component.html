@@ -37,7 +37,7 @@
           <div class="flex flex-col gap-2 w-5/6">
             <h4 class="text-lg font-bold text-center mt-2">{{ medico.nome }}</h4>
             <p class="text-sm text-center text-gray-500">{{ medico.especialidade }}</p>
-            <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg p-1 text-sm " [routerLink]="'/paciente/agendar-consulta'">Agendar</button>
+            <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg p-1 text-sm " (click)="agendarExame()">Agendar</button>
           </div>
         </div>
       </div>

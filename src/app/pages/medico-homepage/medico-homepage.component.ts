@@ -8,6 +8,7 @@ import { MedicoResponseContract } from './../../models/medico/medicoResponseCont
 import { AuthService } from 'src/app/services/auth.service';
 import { forkJoin, of, switchMap } from 'rxjs';
 import { Agendamento } from 'src/app/interfaces/Agendamento';
+import { AgendarConsultaResponseContract } from 'src/app/models/consulta/agendarConsultaResponseContract';
 import { ConsultaService } from 'src/app/services/consulta.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class MedicoHomepageComponent {
   ) {}
 
   proximosExames: AgendarExameResponse[] = [];
-  proximasConsultas: AgendarExameResponse[] = [];
+  proximasConsultas: AgendarConsultaResponseContract[] = [];
   medico: MedicoResponseContract;
   agendamentos: Agendamento[] = []
 
@@ -46,25 +47,28 @@ export class MedicoHomepageComponent {
         this.medico = medico;
 
         if (medico) {
+          // Use forkJoin para combinar chamadas de exames e consultas
           return forkJoin({
             exames: this.carregarExamesAgendados(medico.id),
             consultas: this.carregarConsultasAgendadas(medico.id)
           });
         }
 
-        return of({ exames: [], consultas: [] });
+        return of({ exames: [], consultas: [] }); // Retorna estrutura vazia se não houver médico
       })
     ).subscribe({
       next: ({ exames, consultas }) => {
+
         this.proximosExames = exames;
-        this.proximasConsultas = consultas;
+        this.proximasConsultas = consultas; // Supondo que exista essa variável para consultas
         this.mixAndSortAgendamentos();
       },
       error: (error) => {
-        console.error('Erro ao carregar dados:', error);
+
       }
     });
   }
+
 
   private carregarExamesAgendados(medicoId: number) {
     return this.examesService.obterExamesAgendadosPorMedico(medicoId);

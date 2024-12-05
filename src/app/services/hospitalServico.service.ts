@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from 'src/environment';
 import { HospitalResponseContract } from '../models/hospital/hospitalResponseContract';
 import { ServicoResponseContract } from '../models/servico/servicoResponseContract';
 import { AdicionarServicoAoHospital } from '../models/hospital-servico/AdicionarServicoAoHospital';
