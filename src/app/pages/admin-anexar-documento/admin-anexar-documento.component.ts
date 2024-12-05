@@ -114,6 +114,5 @@ export class AdminAnexarDocumentoComponent {
         }
       });
     }
-    this.router.navigate(['/admin']);
   }
 }

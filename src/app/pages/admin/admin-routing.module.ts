@@ -129,8 +129,8 @@ const routes: Routes = [
     {
       path: 'detalhes-paciente/:pacienteId/anexar-documento/:tipo/:id',
       component: AdminAnexarDocumentoComponent,
-      canActivate:[AuthGuard],
-      data: { role: 'Administrador' }
+      canActivate: [AuthGuard],
+      data: { roles: ['Administrador', 'Medico'] }
     },
     {
       path: 'colaboradores', component: AdminColaboradoresComponent,

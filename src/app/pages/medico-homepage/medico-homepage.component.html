@@ -18,7 +18,7 @@
     </form>
     <h1 class="text-2xl font-bold">Próximos Pacientes</h1>
     <div>
-      <h1 *ngIf="proximosExames.length < 1">Você não possui exames para atender</h1>
+      <h1 *ngIf="agendamentos.length < 1">Você não possui agendamentos para atender</h1>
       <app-ultimos-pacientes-card *ngIf="agendamentos.length > 0" [agendamentos]="agendamentos | slice:0:5" tela="home"></app-ultimos-pacientes-card>
     </div>
     <button class="button-header-historico-pacientes-focus focus:ring-4 font-medium rounded-lg text-lg px-3 py-2 h-12 w-[270px] flex items-center p-2 justify-center mb-20" (click)="logout()">

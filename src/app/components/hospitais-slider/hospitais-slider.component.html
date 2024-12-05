@@ -1,5 +1,5 @@
 <div class="max-w-sm h-[230px] py-4 md:max-w-xl lg:max-w-4xl">
-<splide [options]="{ focus: 0, width: '100%', omitEnd: true, arrows: false, gap: '10px', perPage: 3, heigth: '90%'}">
+<splide [options]="{ focus: 0, width: '100%', omitEnd: true, arrows: false, autoWidth: true, gap: '10px', heigth: '90%', pagination: false}">
   <splide-slide *ngFor="let hospital of hospitais">
     <app-hospital-card [hospital]="hospital"></app-hospital-card>
   </splide-slide>

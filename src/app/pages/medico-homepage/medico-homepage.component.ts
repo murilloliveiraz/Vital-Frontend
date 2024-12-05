@@ -6,8 +6,9 @@ import { ExamesService } from 'src/app/services/exames.service';
 import { MedicoService } from 'src/app/services/medico.service';
 import { MedicoResponseContract } from './../../models/medico/medicoResponseContract';
 import { AuthService } from 'src/app/services/auth.service';
-import { of, switchMap } from 'rxjs';
+import { forkJoin, of, switchMap } from 'rxjs';
 import { Agendamento } from 'src/app/interfaces/Agendamento';
+import { ConsultaService } from 'src/app/services/consulta.service';
 
 @Component({
   selector: 'app-medico-homepage',
@@ -17,6 +18,7 @@ import { Agendamento } from 'src/app/interfaces/Agendamento';
 export class MedicoHomepageComponent {
   constructor(
     private examesService: ExamesService,
+    private consultaService: ConsultaService,
     private medicoService: MedicoService,
     private authService: AuthService,
     private router: Router
@@ -42,11 +44,20 @@ export class MedicoHomepageComponent {
     this.medicoService.getByEmail(email).pipe(
       switchMap((medico: MedicoResponseContract) => {
         this.medico = medico;
-        return medico ? this.carregarExamesAgendados(medico.id) : of([]);
+
+        if (medico) {
+          return forkJoin({
+            exames: this.carregarExamesAgendados(medico.id),
+            consultas: this.carregarConsultasAgendadas(medico.id)
+          });
+        }
+
+        return of({ exames: [], consultas: [] });
       })
     ).subscribe({
-      next: (exames: AgendarExameResponse[]) => {
+      next: ({ exames, consultas }) => {
         this.proximosExames = exames;
+        this.proximasConsultas = consultas;
         this.mixAndSortAgendamentos();
       },
       error: (error) => {
@@ -57,6 +68,10 @@ export class MedicoHomepageComponent {
 
   private carregarExamesAgendados(medicoId: number) {
     return this.examesService.obterExamesAgendadosPorMedico(medicoId);
+  }
+
+  private carregarConsultasAgendadas(medicoId: number) {
+    return this.consultaService.getConsultasAgendadasPorMedico(medicoId);
   }
 
   private mixAndSortAgendamentos() {
