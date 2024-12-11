@@ -61,6 +61,10 @@ export class AdmLoginFormComponent {
     return this, this.loginForm.controls;
   }
 
+  loginDePaciente(){
+    this.router.navigate(['/']);
+  }
+
   loginUser() {
     const observer = {
       next: (usuario: UsuarioLoginResponse) => {

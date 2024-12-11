@@ -90,7 +90,9 @@ export class MedicosComponent {
 
   agendarExame(){
     if(this.isADM){
-      // router
+      this.router.navigate(['admin/agendamentos/novo']);
+    } else {
+      this.router.navigate(['paciente/agendar-consulta']);
     }
   }
 }
